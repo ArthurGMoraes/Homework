@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="https://getbootstrap.com/docs/5.3/assets/css/docs.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <header >
+        <nav class="navbar navbar-default navbar-fixed-top pt-0">
+            <div id="barra" class="container-fluid p-0 mt-0">
+                <a class="navbar-brand justify-content-center mx-auto" href="#index.html">
+                    <img src="https://img.freepik.com/premium-vector/hand-drawn-monkey-playing-guitar_145832-22.jpg?w=2000"
+                        alt="Guitar" width="80" height="80" class="ms-5 me-0">
+                </a>
+
+                <nav class="header">
+                    <input type="checkbox" id="menuToggle">
+            <label for="menuToggle" class="menu-icon">
+              <i class="fa fa-bars"></i>
+              <i class="fa fa-times-circle"></i>
+            </label>
+                <ul class="nav nav-pills justify-content-start menu ">
+                    <li class="nav-item dropdown  mx-auto">
+                        <a class="nav-link dropdown-toggle text-bg-dark text-light" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Produtos</a>
+                        <ul class="dropdown-menu text-bg-dark">
+                          <li><a class="dropdown-item text-light " href="#">Gibson</a></li>
+                          <li><a class="dropdown-item text-light" href="#">ESP</a></li>
+                          <li><a class="dropdown-item text-light" href="#">Fender</a></li>
+                          
+                          <li><a class="dropdown-item text-light" href="#">Jackson</a></li>
+                        </ul>
+                      </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link active text-bg-dark" href="#">Venda sua guitarra</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link active text-bg-dark" href="#">Favoritos</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link active text-bg-dark" href="#">Carrinho</a>
+                    </li>
+                </ul>
+            </nav>
+
+                <div class="p-3 mt-0 mx-auto">
+
+                    <form class="d-flex justify-content-center" role="search">
+                        <input  class="form-control me-2 text-bg-light" type="search" placeholder="Busque seu produto" aria-label="Search">
+                        <button id="search" class="btn btn-outline-success text-bg-dark" type="submit">Pesquisar</button>
+                    </form>
+                </div>
+
+                <ul class="nav nav-pills justify-content-end mx-auto">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link active text-bg-dark" aria-current="page" href="#">Login</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link text-bg-dark" href="#">Cadastre-se</a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+        </nav>
+
+
+
+    </header>
+
+    <main>
+
+        <div class="row row-cols-1 row-cols-md-3 mx-auto mb-0 pb-0 ">
+            <div id="carouselExampleIndicators" class="carousel slide mx-auto my-auto container-fluid" data-bs-ride="carousel" >
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                        class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                        aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                        aria-label="Slide 3"></button>
+                </div>
+                <div class="carousel-inner my-auto">
+                    <div class="carousel-item active" data-bs-interval="7500">
+                        <img src="https://i.pinimg.com/originals/87/6a/bc/876abccf934addbe61079f308d16fe9c.png" class="d-block w-100 fill"
+                        class="w-100 h-100" alt="...">
+                    </div>
+                    <div class="carousel-item " data-bs-interval="7500">
+                        <img src="https://cdn.mos.cms.futurecdn.net/A4DvmoMxSrBwskdZpSb84W.jpg"
+                            class="w-100 h-100"  alt="...">
+                    </div>
+                    <div class="carousel-item" data-bs-interval="7500">
+                        <img src="https://i.pinimg.com/originals/9a/40/c4/9a40c4150da89e4e73920e66fc394db5.png" class="d-block w-100"
+                        class="w-100 h-100"  alt="...">
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+
+
+            <div class="container-fluid list-group pt-3 mx-auto ps-2  ">
+                <h5 id="itens" class="bg-body-secondary py-3 rounded-top mb-0 "> Itens mais vistos</h5>
+                <div class="row row-cols-1 row-cols-md-3  mx-auto ">
+                    <a href="#" class="list-group-item list-group-item-action w-50">
+                        <img src="https://images.guitarguitar.co.uk/cdn/small/160/753_gg_whatlp_Custom1959Cherry%20Teaburst.jpg"
+                            class="card-img-top" style="width:100 ; max-height:214px" alt="..."> Gibson Les Paul </a>
+                    <a href="#" class="list-group-item list-group-item-action w-50">
+                        <img src="https://images.reverb.com/image/upload/s--2utJ0ELm--/a_0/f_auto,t_large/v1673283049/vqrhgpnhf1na2mc4too7.jpg"
+                            class="card-img-top" style="width:100 ; max-height:214px"   alt="..."> ESP Snapper</a>
+                    <a href="#" class="list-group-item list-group-item-action w-50">
+                        <img src="https://d1nl8byu0zovrm.cloudfront.net/Custom/Content/Products/39/81/3981_guitarra-fender-mex-road-worn-50-stratocaster-black-c-bag-pr-6706-013-1012-306_l4_638074816143446630.png"
+                            class="card-img-top" style="width:100 ; max-height:214px" alt="..."> Fender Stratocaster </a>
+                    <a href="#" class="list-group-item list-group-item-action w-50 ">
+                        <img src="https://cdn.shopify.com/s/files/1/1210/3886/products/ISS10037C-GIBSONISS10037CUSED1985CUSTOMSHOPEXPLORERWHITEWHARDCASE-31_800x.jpg?v=1631638047"
+                            class="card-img-top" style="width:100 ; max-height:214px" alt="..."> Gibson Explorer</a>
+                </div>
+
+
+
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div id="produtos" class="row row-cols-2 row-cols-md-6 mx-auto  g-3  mt-3 ">
+
+            <div class=" col ">
+                <div class="card  h-75 text-bg-warning ">
+
+                    <div class="card-body">
+
+                        <h5 class="card-title ">Newsletter!</h5>
+                        <p class="card-text ">Assine nosso newsletter indicando seu email no seguimento abaixo.</p>
+                        <label for="exampleInputEmail1" class="form-label">Email:</label>
+                        <input type="email" class="form-control w-100" id="exampleInputEmail1"
+                            aria-describedby="emailHelp">
+                        <div id="emailHelp" class="form-text "></div>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-75 mx-auto mb-3 ">Submit</button>
+
+
+
+                </div>
+            </div>
+        
+           
+            <a href="#" class="text-black text-decoration-none ">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://images.guitarguitar.co.uk/cdn/small/160/753_gg_whatlp_Custom1959Cherry%20Teaburst.jpg"
+                            class="card-img-top" alt="...">
+                        <div class="card-body pb-5 ">
+                            <h5 class="card-title">Gibson Les Paul</h5>
+                            <p class="card-text">$3499.99. </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="text-black text-decoration-none ">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://guitarshopfolkestone.co.uk/wp-content/uploads/2018/09/Gibson-Les-Paul-Custom-1971-Sunburst-2-e1601762197920.jpg"
+                            class="card-img-top" style="width:auto; height: auto;" alt="...">
+                        <div class="card-body pb-4">
+                            <h5 class="card-title">Gibson Les Paul Custom</h5>
+                            <p class="card-text">$3499.99 </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="text-black text-decoration-none ">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://cdn.shopify.com/s/files/1/0343/4368/2183/products/gibson-electric-guitars-solid-body-gibson-custom-shop-flying-v-custom-ebony-gloss-w-ebony-fingerboard-csfvcebgh1e-cs103012-fd-28978009538695_2315x.jpg?v=1650084254"
+                            class="card-img-top" alt="...">
+                        <div class="card-body pb-4">
+                            <h5 class="card-title">Gibson Flying V Custom</h5>
+                            <p class="card-text">$3499.99 </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="text-black text-decoration-none ">
+                <div class="col">
+                    <div class="card  h-100">
+                        <img src="https://i.pinimg.com/originals/7f/05/fa/7f05fab3ee0d8ce7601e4ae547053e75.png"
+                            class="card-img-top" alt="...">
+                        <div class="card-body pb-5">
+                            <h5 class="card-title">ESP Snapper</h5>
+                            <p class="card-text">$3499.99 </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="text-black text-decoration-none ">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://d1nl8byu0zovrm.cloudfront.net/Custom/Content/Products/39/81/3981_guitarra-fender-mex-road-worn-50-stratocaster-black-c-bag-pr-6706-013-1012-306_l4_638074816143446630.png"
+                            class="card-img-top" alt="...">
+                        <div class="card-body pb-5">
+                            <h5 class="card-title">Fender Stratocaster</h5>
+                            <p class="card-text">$3499.99 </p>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <a href="#" class="text-black text-decoration-none ">
+                <div class="col">
+                    <div class="card h-100">
+                        <img src="https://cdn.shopify.com/s/files/1/1210/3886/products/ISS10037C-GIBSONISS10037CUSED1985CUSTOMSHOPEXPLORERWHITEWHARDCASE-31_800x.jpg?v=1631638047"
+                            class="card-img-top" alt="...">
+                        <div class="card-body pb-5">
+                            <h5 class="card-title">Gibson Explorer</h5>
+                            <p class="card-text">$3499.99 </p>
+                        </div>
+                    </div>
+                </div>
+                <a href="#" class="text-black text-decoration-none ">
+                    <div class="col">
+                        <div class="card h-100">
+                            <img src="https://cdn.shopify.com/s/files/1/1140/2426/products/ESP-LTD-EC-256FM-Electric-Guitar-See-Thru-Cobalt-Blue-17957_large.jpg?v=1626465633"
+                                class="card-img-top" alt="...">
+                            <div class="card-body pb-5">
+                                <h5 class="card-title">Esp Eclipse</h5>
+                                <p class="card-text">$3499.99 </p>
+                            </div>
+                        </div>
+                    </div>
+                    </a>
+                    <a href="#" class="text-black text-decoration-none ">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://i.ebayimg.com/images/g/MdQAAOSwBMNiiFFN/s-l1600.jpg"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body pb-4 ">
+                                    <h5 class="card-title">Jackson Randy Rhoads</h5>
+                                    <p class="card-text">$3499.99. </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="text-black text-decoration-none ">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://max.guitars/media/catalog/product/cache/55c72fef4415145db30bd2dcfee62df6/m/a/max_guitar_art-17523_gibson_les_paul_60_special_dc_01124-1_1.jpg"
+                                    class="card-img-top" style="width:auto; height: auto;" alt="...">
+                                <div class="card-body pb-5">
+                                    <h5 class="card-title">Gibson Les Paul DC</h5>
+                                    <p class="card-text">$3499.99 </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="text-black text-decoration-none ">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://cdn.shopify.com/s/files/1/0343/4368/2183/products/gibson-electric-guitars-solid-body-gibson-flying-v-black-2009-u3144990401-17679685288071_3086x.jpg?v=1649811911"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body pb-5">
+                                    <h5 class="card-title">Gibson Flying V </h5>
+                                    <p class="card-text">$3499.99 </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="text-black text-decoration-none ">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://images.reverb.com/image/upload/s--otXlFKmj--/f_auto,t_large/v1565072098/rnokaskvmpqjadsaqfzt.jpg"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body pb-5">
+                                    <h5 class="card-title">ESP Horizon</h5>
+                                    <p class="card-text">$3499.99 </p>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#" class="text-black text-decoration-none ">
+                        <div class="col">
+                            <div class="card h-100">
+                                <img src="https://cdn.shopify.com/s/files/1/0343/4368/2183/products/gibson-electric-guitars-solid-body-gibson-explorer-black-u3759899916-29099012587655_1024x1024.jpg?v=1647498920"
+                                    class="card-img-top" alt="...">
+                                <div class="card-body pb-5">
+                                    <h5 class="card-title">Gibson Explorer</h5>
+                                    <p class="card-text">$3499.99 </p>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="#" class="text-black text-decoration-none ">
+                            <div class="col">
+                                <div class="card h-100">
+                                    <img src="https://www.pitbullaudio.com/media/catalog/product/2/0/20220222-dsc07232.jpg?quality=100&bg-color=255,255,255&fit=bounds&height=&width="
+                                        class="card-img-top" alt="...">
+                                    <div class="card-body pb-5">
+                                        <h5 class="card-title">ESP E-II Horizon</h5>
+                                        <p class="card-text">$3499.99 </p>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                            <a href="#" class="text-black text-decoration-none ">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="https://cdn.shopify.com/s/files/1/0343/4368/2183/products/gibson-electric-guitars-solid-body-gibson-sg-standard-black-refin-1968-u4179199801-29945849282695_2000x.jpg?v=1667580963"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body pb-5 ">
+                                            <h5 class="card-title">Gibson SG</h5>
+                                            <p class="card-text">$3499.99. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-black text-decoration-none ">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="https://cdn.shopify.com/s/files/1/1140/2426/products/Charvel-Pro-Mod-San-Dimas-Style-1-Electric-Guitar-Chlorine-Burst-15060_1600x1600.jpg?v=1652809412"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body pb-5 ">
+                                            <h5 class="card-title">Charvel Pro-Mod</h5>
+                                            <p class="card-text">$3499.99. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-black text-decoration-none ">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="https://auctions.c.yimg.jp/images.auctions.yahoo.co.jp/image/dr000/auc0307/users/cf980afb2d99315a30b24003834cca9c228b5a8e/i-img1200x1200-1657449314fxq5tg563348.jpg"
+                                            class="card-img-top" alt="...">
+                                        <div id="custom" class="card-body  ">
+                                            <h5 class="card-title">Gibson Explorer Custom</h5>
+                                            <p class="card-text">$3499.99. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#" class="text-black text-decoration-none ">
+                                <div class="col">
+                                    <div class="card h-100">
+                                        <img src="https://max.guitars/media/catalog/product/cache/55c72fef4415145db30bd2dcfee62df6/a/r/art-06366_1_1.jpg"
+                                            class="card-img-top" alt="...">
+                                        <div class="card-body pb-5 ">
+                                            <h5 class="card-title">Fender Telecaster </h5>
+                                            <p class="card-text">$3499.99. </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        
+                            
+        </div>
+        
+
+
+        
+
+
+
+
+
+    </main>
+
+    <footer class="mt-5 row row-cols-1 row-cols-md12 mx-auto ">
+
+  
+        <div class="row Fselos col d-flex container-fluid w-50 mt-3 mb-3 ms-3">
+            <div class=" col-md-12">
+                <h5 class="text-warning ms-2 ">Formas de Pagamento</h5>
+                <img class="footpgto ipixMP" alt="MercadoPago Pix"
+                    src="https://img.terabyteshop.com.br/cartoes/fpr_pixMP.png"><img class="footpgto imercadopago"
+                    alt="Cartão Mercado Pago" src="https://img.terabyteshop.com.br/cartoes/fpr_mercadopago.png"><img
+                    class="footpgto imercadopago2c" alt="MercadoPago 2 cartões"
+                    src="https://img.terabyteshop.com.br/cartoes/fpr_mercadopago2c.png"><img class="footpgto inupay"
+                    alt="NuPay" src="https://img.terabyteshop.com.br/cartoes/fpr_nupay.png"><img
+                    class="footpgto iboleto" alt="Boleto MP"
+                    src="https://img.terabyteshop.com.br/cartoes/fpr_boleto.png">
+            </div>
+
+
+        </div>
+
+        <div class="row Fselos col d-flex container-fluid w-25 nav justify-content-center mt-3 mb-3">
+            <div class=" col-md-12">
+                <h5 class="text-warning  ">Contato</h5>
+                <p class="text-warning  ">(XX)XXXXX-XXXX</p>
+            </div>
+
+
+        </div>
+
+
+
+        <div class="row Fselos col d-flex container-fluid w-25 mt-3 mb-5">
+            <div class="nav  col-md-12">
+                <h5 class="text-warning ms-3 ">Redes Sociais</h5>
+                <ul class="nav nav-pills mt-0 pt-0">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">  <img src="https://logodownload.org/wp-content/uploads/2015/04/whatsapp-logo-1-1.png"
+                        alt="Guitar" width="40" height="40"></a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#" > <img src="https://png.pngtree.com/png-clipart/20221019/original/pngtree-instagram-social-platform-icon-png-image_8704818.png" alt="Guitar" width="40" height="40"> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" > <img src="https://img.freepik.com/icones-gratis/twitter_318-177987.jpg" alt="Guitar" width="40" height="40"> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" > <img src="https://www.facebook.com/images/fb_icon_325x325.png" alt="Guitar" width="40" height="40"> </a>
+                    </li>
+                  </ul>
+                  
+            </div>
+
+
+        </div>
+     
+
+       
+
+
+
+
+
+    </footer>
+
+
+</body>
+
+</html>

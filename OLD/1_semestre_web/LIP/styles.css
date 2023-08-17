@@ -1,0 +1,62 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: #F3EED9;
+  }
+
+  .header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: #570515;
+  }
+
+  .TITULO {
+    
+    font-family: sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 30px;
+    line-height: 58px;
+    text-align: center;
+    
+    color: #E38686;
+  }
+
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 150px;
+  }
+
+  .item {
+    text-align: center;
+  }
+
+  .pessoas {
+    width: 300px;
+    height: 400px;
+  }
+  .qrcode{
+    width: 100px;
+    height: 100px;
+  }
+
+  .item p {
+    margin-top: 10px;
+  }
+
+  footer {
+    background-color: #798897;
+    padding: 20px;
+    text-align: center;
+  }
+
+  @media (max-width: 800px) {
+    .container{
+        padding: 150px 0px;
+        grid-template-columns: repeat(1, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+    }
+}

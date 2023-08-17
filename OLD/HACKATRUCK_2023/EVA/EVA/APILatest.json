@@ -1,0 +1,722 @@
+[
+    {
+        "id": "ac718986e84b61d7",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "60dadde42539d500",
+        "type": "http in",
+        "z": "ac718986e84b61d7",
+        "name": "GET - Noticias",
+        "url": "/noticias",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "5924b0956371a079"
+            ]
+        ]
+    },
+    {
+        "id": "bea4bd4732a467ad",
+        "type": "http in",
+        "z": "ac718986e84b61d7",
+        "name": "POST - Noticias",
+        "url": "/noticias",
+        "method": "post",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "9048747e19c2f5be"
+            ]
+        ]
+    },
+    {
+        "id": "292c7fd5205ac9bd",
+        "type": "http in",
+        "z": "ac718986e84b61d7",
+        "name": "DELETE - Noticias",
+        "url": "/noticias",
+        "method": "delete",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "1421f0f5306c6d22"
+            ]
+        ]
+    },
+    {
+        "id": "9048747e19c2f5be",
+        "type": "cloudantplus out",
+        "z": "ac718986e84b61d7",
+        "name": "EVA - NOTICIAS",
+        "cloudant": "3c1dec6ca8c4d1ad",
+        "database": "evanoticias",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 340,
+        "y": 160,
+        "wires": [
+            [
+                "580516fc7c1479ac",
+                "217962eaa7ca0c3d"
+            ]
+        ]
+    },
+    {
+        "id": "1421f0f5306c6d22",
+        "type": "cloudantplus out",
+        "z": "ac718986e84b61d7",
+        "name": "EVA - NOTICIAS",
+        "cloudant": "3c1dec6ca8c4d1ad",
+        "database": "evanoticias",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "delete",
+        "x": 340,
+        "y": 280,
+        "wires": [
+            [
+                "f8f995a9556070a3",
+                "da9f3eb24cb24a6c"
+            ]
+        ]
+    },
+    {
+        "id": "5924b0956371a079",
+        "type": "cloudantplus in",
+        "z": "ac718986e84b61d7",
+        "name": "EVA - NOTICIAS",
+        "cloudant": "3c1dec6ca8c4d1ad",
+        "database": "evanoticias",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 340,
+        "y": 60,
+        "wires": [
+            [
+                "5eca41d7573a6850",
+                "d22f709fb1f47cd2"
+            ]
+        ]
+    },
+    {
+        "id": "5eca41d7573a6850",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "DB Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 540,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "f8f995a9556070a3",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "DB Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 540,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "580516fc7c1479ac",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "DB Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 540,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d22f709fb1f47cd2",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "217962eaa7ca0c3d",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "da9f3eb24cb24a6c",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 340,
+        "wires": []
+    },
+    {
+        "id": "221021ff82c6fe2b",
+        "type": "http in",
+        "z": "ac718986e84b61d7",
+        "name": "GET - Usuário",
+        "url": "/usuario",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 440,
+        "wires": [
+            [
+                "2da82ffe528ddf1d"
+            ]
+        ]
+    },
+    {
+        "id": "ccd54d76a5151369",
+        "type": "http in",
+        "z": "ac718986e84b61d7",
+        "name": "PUT - Usuário",
+        "url": "/usuario",
+        "method": "put",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 540,
+        "wires": [
+            [
+                "f6509c0ba4ed092c"
+            ]
+        ]
+    },
+    {
+        "id": "f6509c0ba4ed092c",
+        "type": "cloudantplus out",
+        "z": "ac718986e84b61d7",
+        "name": "EVA - USUARIO",
+        "cloudant": "3c1dec6ca8c4d1ad",
+        "database": "evausuario",
+        "service": "_ext_",
+        "payonly": true,
+        "operation": "insert",
+        "x": 340,
+        "y": 540,
+        "wires": [
+            [
+                "a13c97e80886b167",
+                "05e550a36b4c7cbe"
+            ]
+        ]
+    },
+    {
+        "id": "2da82ffe528ddf1d",
+        "type": "cloudantplus in",
+        "z": "ac718986e84b61d7",
+        "name": "EVA - USUARIO",
+        "cloudant": "3c1dec6ca8c4d1ad",
+        "database": "evausuario",
+        "service": "_ext_",
+        "search": "_all_",
+        "design": "",
+        "index": "",
+        "x": 340,
+        "y": 440,
+        "wires": [
+            [
+                "0b59c217b55a3987",
+                "ece9cc61ab63efa6"
+            ]
+        ]
+    },
+    {
+        "id": "0b59c217b55a3987",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "DB Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 540,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "a13c97e80886b167",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "DB Response",
+        "statusCode": "",
+        "headers": {},
+        "x": 540,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "ece9cc61ab63efa6",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "GET -  User",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 530,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "05e550a36b4c7cbe",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "Debug",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "30fba5d2c70b0ef1",
+        "type": "watson-text-to-speech",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "lang": "en-US",
+        "langhidden": "en-US",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "voice": "en-US_LisaVoice",
+        "voicehidden": "en-US_LisaVoice",
+        "format": "audio/wav",
+        "password": "",
+        "apikey": "v7R91Hb7IOb02Oc6nIZhLt0ibbeO0j7bxCsIlcyNKG9C",
+        "payload-response": true,
+        "service-endpoint": "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/6244d52d-996b-4930-831e-ad99c1e1e37d",
+        "x": 1340,
+        "y": 820,
+        "wires": [
+            [
+                "fb238575c15b4dd2",
+                "4c8bed03bd3b89e3",
+                "724603df1399b85f"
+            ]
+        ]
+    },
+    {
+        "id": "6a124eda93668025",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 2",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "fb238575c15b4dd2",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1510,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "4c8bed03bd3b89e3",
+        "type": "play audio",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "voice": "90",
+        "x": 1530,
+        "y": 860,
+        "wires": []
+    },
+    {
+        "id": "a9b25130cd12789f",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 10",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1340,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "6d64c4b982dead68",
+        "type": "http response",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1550,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "bb4ccaf6e0e8f005",
+        "type": "play audio",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "voice": "96",
+        "x": 1570,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "5bcebf7a92b4e153",
+        "type": "function",
+        "z": "ac718986e84b61d7",
+        "name": "getRandomTitle",
+        "func": "msg.payload = msg.payload.articles[Math.floor(Math.random() * msg.payload.articles.length)].title\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 940,
+        "y": 860,
+        "wires": [
+            [
+                "6903d31e9451f351"
+            ]
+        ]
+    },
+    {
+        "id": "633c68f995e80a39",
+        "type": "http request",
+        "z": "ac718986e84b61d7",
+        "name": "GET - Feed",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "query",
+        "url": "https://newsapi.org/v2/everything?searchIn=title&sortBy=popularity&apiKey=bd51aa4fb45542de836cc0a02ff661f5",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "credentials": {},
+        "x": 610,
+        "y": 800,
+        "wires": [
+            [
+                "9f4ede3b63ce4f08",
+                "e05ac910a819fedd"
+            ]
+        ]
+    },
+    {
+        "id": "f303a97cdf9b7dfe",
+        "type": "http in",
+        "z": "ac718986e84b61d7",
+        "name": "GET - Audio",
+        "url": "/audio",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 130,
+        "y": 760,
+        "wires": [
+            [
+                "a09cccc4d4092f1d",
+                "74bcfd2d46d296da"
+            ]
+        ]
+    },
+    {
+        "id": "a09cccc4d4092f1d",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 320,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "9f4ede3b63ce4f08",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 7",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 780,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "a82686f18e3adfc9",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 9",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "74bcfd2d46d296da",
+        "type": "function",
+        "z": "ac718986e84b61d7",
+        "name": "formatQueryParams",
+        "func": "let isPT = msg.payload.portugues\nlet lingua = \"\"\n\nif(isPT == \"True\"){lingua = \"pt\"}else{lingua=\"en\"}\n\nmsg.payload = {\"q\": msg.payload.tema,\n                \"from\": msg.payload.data,\n                \"language\": lingua,\n                }\n\nmsg['lingua'] = lingua\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 360,
+        "y": 800,
+        "wires": [
+            [
+                "633c68f995e80a39",
+                "a82686f18e3adfc9",
+                "590d5006891554e4"
+            ]
+        ]
+    },
+    {
+        "id": "590d5006891554e4",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 11",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "724603df1399b85f",
+        "type": "debug",
+        "z": "ac718986e84b61d7",
+        "name": "debug 12",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1520,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "6903d31e9451f351",
+        "type": "switch",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "property": "lingua",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "pt",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "en",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 1110,
+        "y": 800,
+        "wires": [
+            [
+                "a9b25130cd12789f",
+                "9b59f1a4333b0373"
+            ],
+            [
+                "6a124eda93668025",
+                "30fba5d2c70b0ef1"
+            ]
+        ]
+    },
+    {
+        "id": "e05ac910a819fedd",
+        "type": "switch",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "property": "payload.articles.length",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "0",
+                "vt": "num"
+            },
+            {
+                "t": "neq",
+                "v": "0",
+                "vt": "num"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 790,
+        "y": 800,
+        "wires": [
+            [
+                "4a7943102be1af75"
+            ],
+            [
+                "5bcebf7a92b4e153"
+            ]
+        ]
+    },
+    {
+        "id": "4a7943102be1af75",
+        "type": "function",
+        "z": "ac718986e84b61d7",
+        "name": "noticiaNoResults",
+        "func": "msg.payload = \"AVISO. Nenhuma notícia encontrada.\"\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 950,
+        "y": 740,
+        "wires": [
+            [
+                "a9b25130cd12789f",
+                "9b59f1a4333b0373"
+            ]
+        ]
+    },
+    {
+        "id": "9b59f1a4333b0373",
+        "type": "watson-text-to-speech",
+        "z": "ac718986e84b61d7",
+        "name": "",
+        "lang": "pt-BR",
+        "langhidden": "pt-BR",
+        "langcustom": "NoCustomisationSetting",
+        "langcustomhidden": "",
+        "voice": "pt-BR_IsabelaV3Voice",
+        "voicehidden": "en-US_LisaVoice",
+        "format": "audio/wav",
+        "password": "",
+        "apikey": "v7R91Hb7IOb02Oc6nIZhLt0ibbeO0j7bxCsIlcyNKG9C",
+        "payload-response": true,
+        "service-endpoint": "https://api.us-south.text-to-speech.watson.cloud.ibm.com/instances/6244d52d-996b-4930-831e-ad99c1e1e37d",
+        "x": 1340,
+        "y": 580,
+        "wires": [
+            [
+                "6d64c4b982dead68",
+                "bb4ccaf6e0e8f005"
+            ]
+        ]
+    },
+    {
+        "id": "3c1dec6ca8c4d1ad",
+        "type": "cloudantplus",
+        "host": "https://apikey-v2-xqmwqcwxzw39a34csad7x4mhe9k08798uohg4ihq9o7:40f8a5b2dea8e8dd04aee009c2247092@bbd3c0ee-d0c8-455b-bbd3-8d6d996c2c0a-bluemix.cloudantnosqldb.appdomain.cloud",
+        "name": "EVA CLOUD",
+        "useapikey": true
+    }
+]

@@ -1,0 +1,122 @@
+body{
+    background-color: aquamarine;
+}
+
+header{
+    height: 100px;
+    width: 100% ;
+    background: url("https://img.elo7.com.br/product/600x380/2BA0708/caneca-pato-verde-cartoon.jpg") no-repeat ;
+    border-bottom: solid 1px lightgrey;
+    background-position: 0% 50%;
+    background-size: 100% 100%;
+}
+
+main {
+    width: 70%;
+    float: left;
+    background-color: lightgoldenrodyellow;
+}
+
+aside {
+    float: left;
+    width: 30%;
+    background-color: lightgray;
+}
+
+/* Componente Caixa Menu Principal */
+
+.menu-principal {
+    right: 0px;
+    float: left;
+    margin: 25px 0px;
+}
+
+.menu-principal ul {
+    list-style-type: none;
+}
+
+.menu-principal ul li {
+    display: inline-block;
+}
+
+.menu-principal ul li a {
+    text-decoration: none;
+    color: black;
+    padding: 5px;
+    background-color: lightblue;
+}
+
+.menu-principal ul li a:hover {
+    background-color: black;
+    color: white    
+}
+
+img.thumbnail{
+    width: 20%;
+}
+
+.data {
+    color:red
+}
+
+* {
+    font-family: Georgia
+}
+
+/* Componente Caixa Post */
+.caixa-post {
+    padding: 10px 10px;
+    clear: both;
+}
+
+.caixa-post img {
+    display: block;
+    float: left;
+    margin-right: 10px;
+    width: 70px
+}
+
+.caixa-post h4 {
+    color: darkred;
+    font-size: 60%;
+    margin-bottom: 10px
+}
+
+.caixa-post p.texto {
+    font-size: 80%;
+}
+
+.caixa-post span:nth-child(3) {
+    background-color: lightskyblue;
+    color: white;
+    display: inline-block;
+    border-radius: 5px;
+    padding: 3px
+}
+
+/* Componente Caixa Pesquisa */
+.caixa-pesquisa {
+    margin: 20px;
+    margin-bottom: 30px;
+}
+
+.caixa-pesquisa h3 {
+    margin-bottom: 10px;
+}
+
+/* Componente Caixa Categoria */
+.caixa-categoria {
+    margin: 20px;
+}
+
+.caixa-categoria h3 {
+    margin-bottom: 10px;
+}
+
+.caixa-categoria ul {
+    list-style-type: none;
+}
+
+.caixa-categoria a {
+    text-decoration: none;
+}

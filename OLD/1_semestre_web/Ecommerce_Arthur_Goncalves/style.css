@@ -1,0 +1,222 @@
+body {
+    background-image: linear-gradient(to bottom right, rgb(60, 52, 52), rgb(0, 0, 0));
+  }
+header {
+    
+    
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    z-index: 6;
+  }
+
+
+ 
+
+@media (max-width: 464.9px) { 
+    body {
+
+        padding-top:275px;
+    }
+ }
+
+ @media (min-width: 465px) and (max-width: 555px){
+    body {
+
+        padding-top:235px;
+    }
+ }
+
+ @media (min-width: 556px) and (max-width: 784px){
+    body {
+
+        padding-top:200px;
+    }
+ }
+
+ @media (min-width: 785px) and (max-width: 988px){
+    body {
+
+        padding-top:175px;
+    }
+ }
+
+ @media (min-width: 988px) and (max-width: 2000px){
+    body {
+
+        padding-top:100px;
+    }
+ }
+
+
+
+ @media (max-width: 800px) { 
+
+
+#carouselExampleIndicators{
+    width: 100%;
+}
+}
+ 
+@media (min-width: 1000px) and (max-width: 3000px) { 
+
+#carouselExampleIndicators{
+    width: 50%;
+}
+ }
+
+h5#itens{
+    font-size: large;
+    text-align: center;
+    
+
+}
+
+
+footer{
+    background-color: rgb(69, 68, 67);
+    
+}
+
+header #barra{
+    background-color: rgb(240, 202, 155);
+}
+
+button #search{
+    color: white;
+}
+  
+
+
+@media (max-width: 999px) { 
+
+
+    #produtos {
+        width: 100%;
+        
+        
+    }
+    }
+
+    @media (min-width: 1000px) and (max-width: 3000px) { 
+
+        #produtos{
+            width: 100%;
+           
+        }
+         }
+         
+   
+         @media (max-width: 768px) { 
+
+        #custom{
+            padding-bottom: 13%;
+           
+        }
+         }
+
+         @media (min-width: 1000px) and (max-width: 3000px) { 
+
+            #custom{
+                padding-bottom: 10%;
+               
+            }
+             }
+
+             
+             
+             
+             .menu {
+                display: block;
+              }
+              
+              .menu li {
+                margin-left: 10px;
+              }
+              
+              .menu li a {
+                display: block;
+                padding: 10px;
+              }
+              
+              #menuToggle {
+                display: none;
+              }
+              .menu-icon {
+                display: none;
+              }
+
+
+    
+              @media screen and (max-width: 768px) {
+
+                
+                .header  {
+                  display: absolute;
+                    width: 100%;
+                    height: 100%;
+                }
+                .menu {
+                    display: flex;
+                    position: fixed;
+                    flex-wrap: wrap;
+                    align-content: center;
+                    top: 0px;
+                    left: 0px;
+                    width: 100%;
+                    height: 0%;
+                    background-color: rgba(0, 0, 0, 0.7);
+                    overflow: hidden;
+                    -webkit-transition: height 0.3s;
+                    -moz-transition: height 0.3s;
+                    -ms-transition: height 0.3s;
+                    -o-transition: height 0.3s;
+                    transition: height 0.3s;
+                }
+              
+                .menu li {
+                  display: block;
+                  width: 100%;
+                  margin-left: 0px;
+                  margin-bottom: 20px;
+                }
+              
+                .menu li a {
+                    display: block;
+                    text-align: center;
+                    width: 100%;
+              
+                }
+                .menu-icon {
+                    width: 50px;
+                    height: inherit;
+                    display: block;
+                    position: absolute;
+                    top: 15px;
+                    right: 30px;
+                    line-height: 60px;
+                    color: white;
+                    z-index: 999;
+                }
+                #menuToggle:checked ~ label i:nth-child(2) {
+                  display: block;
+                }
+                #menuToggle:checked ~ label i:first-child {
+                  display: none;
+                }
+                #menuToggle:not(:checked) ~ label i:first-child {
+                  display: block;
+                }
+                #menuToggle:not(:checked) ~ label i:nth-child(2) {
+                  display: none;
+                }
+              
+                #menuToggle:checked ~ ul {
+                    height: 100%;
+                }
+                .menu-icon i {
+                    font-size: 1.7em;
+                }
+              }
+        
+       

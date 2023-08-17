@@ -1,0 +1,1 @@
+O primeiro imprime o valor atual da varivael e depois subtrai 1 da mesma, enquanto o segundo imprime o valor da variavel reduzido em 1
