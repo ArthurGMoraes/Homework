@@ -1,0 +1,44 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\material\2SEMES~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\material\2SEMES~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\material\2SEMES~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\material\2SEMES~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\material\2SEMES~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\va_math.vpi";
+S_000001e7e6d0b440 .scope module, "Guia_0203" "Guia_0203" 2 5;
+ .timescale 0 0;
+v000001e7e6d0b5d0_0 .var "b", 7 0;
+v000001e7e6d09e50_0 .var/real "x", 0 0;
+S_000001e7e6d067b0 .scope begin, "main" "main" 2 11, 2 11 0, S_000001e7e6d0b440;
+ .timescale 0 0;
+    .scope S_000001e7e6d0b440;
+T_0 ;
+    %pushi/real 1442840576, 4065; load=0.671875
+    %store/real v000001e7e6d09e50_0;
+    %pushi/vec4 172, 0, 8;
+    %store/vec4 v000001e7e6d0b5d0_0, 0, 8;
+    %end;
+    .thread T_0;
+    .scope S_000001e7e6d0b440;
+T_1 ;
+    %fork t_1, S_000001e7e6d067b0;
+    %jmp t_0;
+    .scope S_000001e7e6d067b0;
+t_1 ;
+    %vpi_call 2 12 "$display", "Guia_0203 - Tests" {0 0 0};
+    %vpi_call 2 13 "$display", "x = %f", v000001e7e6d09e50_0 {0 0 0};
+    %vpi_call 2 14 "$display", "b = 0.%8b", v000001e7e6d0b5d0_0 {0 0 0};
+    %vpi_call 2 15 "$display", "b = 0.%x%x (16)", &PV<v000001e7e6d0b5d0_0, 4, 4>, &PV<v000001e7e6d0b5d0_0, 0, 4> {0 0 0};
+    %vpi_call 2 16 "$display", "b = 0.%o%o%o (8) ", &PV<v000001e7e6d0b5d0_0, 6, 2>, &PV<v000001e7e6d0b5d0_0, 3, 3>, &PV<v000001e7e6d0b5d0_0, 0, 3> {0 0 0};
+    %end;
+    .scope S_000001e7e6d0b440;
+t_0 %join;
+    %end;
+    .thread T_1;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "G02_3b.v";
