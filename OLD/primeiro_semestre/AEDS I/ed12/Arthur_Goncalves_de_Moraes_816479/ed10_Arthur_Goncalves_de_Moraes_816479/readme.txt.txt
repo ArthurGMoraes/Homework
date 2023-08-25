@@ -1,0 +1,1 @@
+fui ver a correcao do ed10 e percebi que o arquivo dos exercicios nao estava la. Na hora de enviar o exclui junto com o executavel

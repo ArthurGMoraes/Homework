@@ -1,0 +1,63 @@
+PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS
+Instituto de Ciências Exatas e de Informática
+
+Síntese sobre os três tipos lógicos de pesquisa∗
+Summary on the three logical research methods
+
+Arthur Gonçalves de Moraes1
+Theldo Cruz 2
+
+Resumo
+Este artigo irá abordar os três princiapis tipos lógicos de pesquisa, comparando suas carac-
+terísticas de maneira a indicar suas diferenças e importância. Os tipos de pesquisa serão
+divididos de acordo com 2 principais características: Relacional ou descritiva, a primeira
+podendo ser subdividida por associação ou interferência.
+Palavras-chave: Pesquisa. Síntese.
+
+∗Artigo apresentado ao professor Theldo Cruz como exercício.
+
+1Aluno do Programa de Graduação em Ciência da Computação, Brasil – agmoraes@sga.pucminas.br.
+2Professor do Programa de Graduação em Ciência da Computação, Brasil – .
+Síntese sobre os três tipos lógicos de pesquisa
+
+Abstract
+This article will cover the three main logical research methods, comparing their character-
+istics in a way that indicates their differences and importance. The types of research will
+be divided according to 2 main characteristics: Relational or descriptive, the first can be
+subdivided by association or interference.
+Keywords: Research. Summary.
+
+Belo Horizonte, p. 09-06, jun. 2023 2
+
+Síntese sobre os três tipos lógicos de pesquisa
+
+1 OBJETIVO
+A pesquisa científica é uma ferramenta essencial para a produção de conhecimento. Existem diferentes tipos de pesquisas, 
+cada uma com suas características específicas. Neste contexto, destacam-se os três tipos lógicos de pesquisa: descritiva, por associação e por interferência. 
+A distinção entre esses tipos está relacionada à presença ou ausência de hipóteses e à forma como os conteúdos se relacionam entre si.
+
+2 DISCUSSÃO
+2.1 Pesquisa Descritiva
+A pesquisa descritiva é caracterizada por não necessitar de uma hipótese prévia. Nesse tipo de pesquisa, a investigação parte de uma indagação e busca 
+obter dados que descrevam o objeto de estudo. Por exemplo, um estudo que busca analisar as características demográficas de uma determinada população 
+sem estabelecer relações entre as variáveis.
+
+2.2 Pesquisa por associação
+A pesquisa por associação requer a formulação de uma hipótese, e seu objetivo é estabelecer relações entre dois ou mais conteúdos, sem afirmar que um causa o outro. 
+Essas pesquisas buscam identificar a existência de correlações estatísticas entre variáveis, mas não determinam a relação causal entre elas. Por exemplo, um estudo que 
+investiga a relação entre o consumo de café e a incidência de doenças cardíacas em uma amostra populacional.
+
+2.3 Pesquisa por interferência 
+A pesquisa por interferência exige a formulação de uma hipótese e busca relacionar dois ou mais conteúdos, explicando como um influencia o outro. Esse tipo de pesquisa procura 
+estabelecer relações de causa e efeito entre as variáveis investigadas. Por exemplo, um estudo que analisa a relação entre o uso de um novo medicamento e a melhoria 
+dos sintomas de uma determinada doença. A pesquisa por interferência requer rigor metodológico para controlar variáveis e garantir a validade interna dos resultados.
+
+3 CONCLUSÃO
+Ao longo deste texto, foram apresentados e discutidos os três tipos lógicos de pesquisa: descritiva, por associação e por interferência. Cada tipo tem suas particularidades em relação 
+à presença de hipóteses e à forma como os conteúdos se relacionam entre si. Os videos de Gilson Volpato complementam a discussão, fornecendo informações adicionais sobre 
+os tipos de pesquisa mencionados. É importante compreender as diferenças entre esses tipos para selecionar a abordagem mais adequada ao seu objeto de estudo, tornando-o enxuto. 
+A pesquisa científica desempenha um papel crucial na expansão do conhecimento e na promoção do avanço nas diversas áreas do saber.
+
+REFERÊNCIAS
+VOLPATO, Gilson. (2012). AULA 20 de 42 - TRÊS TIPOS LÓGICOS DE PESQUISA]. Disponível em: https://www.youtube.com/watch?v=XoTQo7fUf0s. Acesso em: 09 jun. 2023.
+VOLPATO, Gilson. (2012). AULA 24 de 42 - POR ONDE COMEÇAR?. Disponível em: https://www.youtube.com/watch?v=piP6xslHQmE. Acesso em: 09 jun. 2023.
