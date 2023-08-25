@@ -1,0 +1,71 @@
+body{
+    margin: 0px auto;
+    padding: 0px;
+    background-color: #1a447e;
+  }
+
+header{
+    justify-content: center;
+    top: 0;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    padding: 1rem 0;
+    background-color: #0f3161;
+    display: flex;
+    z-index: 1;
+}
+
+.NomeApp{
+    color: #DAA520;
+    font-family: sans-serif;
+    margin-left: 20px;
+}
+
+.headerIcons{
+    margin-left:40px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.headerIcons img{
+    margin-right: 10px;
+    margin-left: 10px;
+    height: 40px;
+    width: 40px;
+}
+
+   /* Hide the default scrollbar */
+   ::-webkit-scrollbar {
+    width: 10px;
+    background-color: #f5f5f5;
+    border-radius: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    border-radius: 5px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  
+  footer {
+    background-color: #798897;
+    padding: 20px 0px;
+    text-align: center;
+    bottom:auto;
+    margin-top: 100px;
+    position: absolute;
+    width: 100%;
+
+  }
+  

@@ -1,0 +1,115 @@
+main{
+    font-family: sans-serif;
+    justify-content: center;
+    margin: 150px;
+    display: grid;
+}
+
+.dadosUsuario{
+    height: 300px;
+    width: 600px;
+    grid-template-columns: repeat(3, 1fr);
+    display: flex;
+    margin: 10px auto;
+    background-color: #ffffff80;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 1px 0px #00000060;
+}
+
+.dadosUsuario .texto {
+    margin: auto 10px;
+    color: black;
+}
+
+.dadosUsuario img{
+    margin: auto 20px;
+    height: 200px;
+    width: 170px;
+}
+
+.funcionalidades{
+    justify-content: center;
+    height: 400px;
+    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    margin: 20px auto;
+    color: black;
+    background-color: #ffffff80;
+    padding: 30px;
+    border-radius: 5px;
+    box-shadow: 3px 3px 1px 0px #00000060;
+}
+
+.funcionalidades .dicas {
+    align-items: center;
+    width: 400px;
+    height: auto;
+    margin: 40px 90px;
+    overflow: auto;
+}
+
+.funcionalidades .limiteDiv {
+    margin: 40px 90px;
+    overflow: auto;
+    height: auto;
+}
+
+.destaque {
+    background-color: #eef06d;
+    padding: 5px;
+    margin: 10px 0;
+    border-radius: 12px;
+  }
+
+  button {
+    text-align: center;
+    padding: 5px 10px;
+    border-radius: 5px;
+    background-color: #FDB813;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  input{
+    margin: 10px;
+    background-color: #FDB813;
+  }
+
+  @media (max-width: 1000px) {
+    .funcionalidades {
+        width: auto;
+        grid-template-columns: repeat(1, 1fr);
+       
+    }
+    .funcionalidades .dicas {
+        align-items: center;
+        width: auto;
+        height: auto;
+        margin: 0;
+        overflow: auto;
+    }
+    
+    .funcionalidades .limiteDiv {
+        margin: 0;
+        overflow: auto;
+        height: auto;
+    }
+
+    main{
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        margin: 150px 0;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .dadosUsuario{
+        height: auto;
+        width: auto;
+        grid-template-columns: repeat(1, 1fr);
+        display: grid;
+        margin: 10px auto;
+    }
+}

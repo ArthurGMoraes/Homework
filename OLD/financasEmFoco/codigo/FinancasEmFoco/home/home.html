@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="..\public\style.css" rel="stylesheet">
+    <link href="home.css" rel="stylesheet">
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <div class="NomeApp"><h1>Finaças em Foco</h1></div>
+        <div class="headerIcons">
+            <a href="..\home\home.html"><img src="..\public\home-icon.png"></a>
+            <a href="..\dinheiro\dinheiro.html"><img src="..\public\dinheiroIcon.png"></a>
+            <a href="..\investimentos\investimentos.html"><img src="..\public\graphIcon.png"></a>
+            <a href="..\perfil\perfil.html"><img src="..\public\profileIcon.png"></a>
+        </div>
+    </header>
+
+    <main>
+        <div class="content">
+            <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+            <script src="https://cdn.amcharts.com/lib/5/xy.js"></script>
+            <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+            <h1>Lucro Mensal</h1>
+            <div id="chartdiv"></div>
+            <div id="warningDiv"></div>
+        </div>
+        <div class="rendasDiv">
+            <div class="listaRendas">
+        
+                <div class="comandos">
+                  <h1>Lista de Rendas</h1>
+                  <input type="text" id="nomeRenda" placeholder="Nome do Renda">
+                  <input type="number" id="valorRenda" placeholder="Valor do Renda">
+                  <button onclick="adicionarRenda(); reloadPage() " >Adicionar Renda</button>
+                </div>
+                <div class="resultados"><ul id="rendas">
+                  <!-- As rendas serão adicionados aqui -->
+                </ul></div>
+                
+              </div>
+        </div>
+        <div class="calendarioDiv">
+            <div class="inputsCalendario">
+            <label for="date">Data:</label>
+            <input type="date" id="date">
+            <br>
+            <label for="name">Nome:</label>
+            <input type="text" id="name">
+            <br>
+            <label for="valor">Valor:</label>
+            <input type="text" id="valor">
+            <br>
+            <button onclick="pinOnCalendar()">Adicionar data</button>
+        </div>
+        
+            <div id="calendarContainer">
+                
+                <h2 id="monthYear"></h2>
+                <div class="btncalendario">
+                <button onclick="previousMonth()">&lt;</button>
+                <button onclick="nextMonth()">&gt;</button>
+            </div>
+        
+                <table id="calendar">
+                    <thead>
+                        <tr>
+                            <th>Dom</th>
+                            <th>Seg</th>
+                            <th>Ter</th>
+                            <th>Qua</th>
+                            <th>Qui</th>
+                            <th>Sex</th>
+                            <th>Sab</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+                <div id="selectedDate"></div>
+            <div id="pins"></div>
+            </div>
+        
+            
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            Alice Azevedo, Arthur Gonçalves, Breno Amorim, Estevão Freitas, Luan Barbosa, Luiz Cortat </p>
+        <p>Ciència da Computação - PUC Minas</p>
+      </footer>
+    <script src="javascript.js"></script>
+</body>
+</html>

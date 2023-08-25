@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="..\public\style.css" rel="stylesheet">
+    <link href="perfil.css" rel="stylesheet">
+    <title>Perfil</title>
+</head>
+<body>
+    <header>
+        <div class="NomeApp"><h1>Finaças em Foco</h1></div>
+        <div class="headerIcons">
+          <a href="..\home\home.html"><img src="..\public\home-icon.png"></a>
+          <a href="..\dinheiro\dinheiro.html"><img src="..\public\dinheiroIcon.png"></a>
+          <a href="..\investimentos\investimentos.html"><img src="..\public\graphIcon.png"></a>
+          <a href="..\perfil\perfil.html"><img src="..\public\profileIcon.png"></a>
+        </div>
+    </header>
+    <main>
+      <div class="dadosUsuario">
+        <img src="avatar.png">
+        <div class="texto">
+            <h1 id="logado"></h1>
+
+    
+            <div class="justify-center">
+                <button id="sair" onclick="sair()"> Sair </button>
+            </div>
+        </div>
+      </div>
+      <div class="funcionalidades">
+        <div class="dicas">
+            <div>
+                <label for="search-input">Pesquisa:</label>
+                <input type="text" id="search-input">
+                <button class="pesquisar" onclick="pesquisar()">Destacar</button>
+              </div>
+            
+              <div id="dicas-list">
+                <!-- Dicas serão adicionadas dinamicamente aqui -->
+              </div>
+            
+        </div>
+        <div class="limiteDiv">
+            <div id="gastos"  method="post" action="https://postman-echo.com/post"> 
+                <p>
+                <label for="limite">Insira o valor limite de gastos:</label><br>
+                </p>   	
+                <input type="text" id="limite" name="limite">
+                <button type="submit" id="salvarLimite">Salvar</button>
+            </div>
+            <p>Meu limite atual:</p>
+            <div id="telaLimite"></div>
+            <button id="btnMostrarDados">Limites Antigos</button>
+            <div id="telaLimite2"></div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <p>
+          Alice Azevedo, Arthur Gonçalves, Breno Amorim, Estevão Freitas, Luan Barbosa, Luiz Cortat </p>
+      <p>Ciència da Computação - PUC Minas</p>
+    </footer>
+</body>
+
+<script src="script.js"></script>
+
+</html>
