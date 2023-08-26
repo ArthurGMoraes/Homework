@@ -1,0 +1,9 @@
+Porta AND = &&
+Porta OR = ||
+Porta NOT = !
+
+p.q = && = ^
+p+q = || = v
+p' = !p = ~
+
+negacao -> conjuncao -> disjuncao
