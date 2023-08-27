@@ -1,9 +1,9 @@
 // Arthur Goncalves de Moraes 816479
 
-module SoP (output s, input x, y, z); // mintermos
-// m 0 1 2 3 4
-assign s = (~x&~y&~z) | (~x&~y&z) | (~x&y&~z) | (~x&y&z) | (x&~y&~z);
-endmodule // SoP
+module PoS (output S, input X, Y, Z); // MAXTERMOS
+// M 5 6 7
+ assign S = (~X| Y|~Z) & (~X|~Y| Z) & (~X|~Y|~Z);
+endmodule // PoS
 
 // ---------------------
 // -- test_module
@@ -12,7 +12,7 @@ module test_module;
 reg x, y, z;
 wire s1;
 // instancias
-SoP SOP1 (s1, x, y, z);
+PoS PoS1 (s1, x, y, z);
 // valores iniciais
 initial begin: start
 x=1'bx; y=1'bx; z=1'bx;  // indefinidos
