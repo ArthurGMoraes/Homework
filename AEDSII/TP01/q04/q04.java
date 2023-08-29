@@ -21,13 +21,15 @@ class q04{
         // Inicializacao de variaveis
         int tamanho = palavra.length();
         int i = 0;
-        String resposta = palavra;
+        String resposta = "";
 
         // Loop percorre toda a string alterando o caracter da base pelo da troca
         for (i = 0; i < tamanho; i++){ 
             if(palavra.charAt(i) == base){
-                resposta = resposta.substring(0, i) + troca + resposta.substring(i + 1);  // utilizacao
-            } 
+                resposta += troca;                             // troca de caracter
+            } else {
+                resposta += palavra.charAt(i);                 // formar string
+            }
         } 
         return resposta;
     }
