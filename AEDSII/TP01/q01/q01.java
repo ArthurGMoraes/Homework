@@ -1,6 +1,7 @@
 class q01{
     public static void main (String[] args){
         MyIO myIo = new MyIO();
+        myIo.setCharset("ASCII");
         String palavra;
         do{
             palavra = myIo.readLine();
@@ -12,7 +13,7 @@ class q01{
 
     public static String palindromo (String palavra){
         MyIO myIo = new MyIO();
-        int tamanho = palavra.length();      // int tamanho = palavra.length() - 1; para linux, porem no verde da menos %
+        int tamanho = palavra.length();      
         //myIo.println(tamanho);
         int i = 0;
         int f = tamanho - 1;

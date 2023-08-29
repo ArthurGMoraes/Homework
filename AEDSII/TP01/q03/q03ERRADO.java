@@ -1,13 +1,16 @@
 class q03ERRADO {
     public static void main(String[] args) {
+        MyIO myIo = new MyIO();
         String input;
-
+        
         do {
-            input = MyIO.readLine();
+            input = myIo.readLine();
             
             if (!input.equalsIgnoreCase("FIM")) {
                 String encryptedText = encrypt(input);
-                MyIO.println(encryptedText);
+                myIo.setCharset("ASCII");
+                myIo.println(encryptedText);
+                //System.out.println(encryptedText);
             }
         } while (!input.equalsIgnoreCase("FIM"));
     }

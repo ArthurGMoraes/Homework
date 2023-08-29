@@ -22,10 +22,10 @@ int palindromo (char* palavra){
 int main(void)
 {
     int resposta = 0;
-    char *palavra = malloc(512);
+    char *palavra = malloc(1024);
     do
     {
-        fgets(palavra, 512, stdin);
+        fgets(palavra, 1024, stdin);
         if ((strlen(palavra) > 0) && (palavra[strlen (palavra) - 1] == '\n'))
         palavra[strlen (palavra) - 1] = '\0';
         if (strcmp(palavra, "FIM\0") != 0)
