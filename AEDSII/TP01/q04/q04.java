@@ -28,7 +28,7 @@ class q04{
             if(palavra.charAt(i) == base){
                 resposta += troca;                             // troca de caracter
             } else {
-                resposta += palavra.charAt(i);                 // formar string
+                resposta += palavra.charAt(i);                 // formar string com as letras ao alteradas
             }
         } 
         return resposta;
