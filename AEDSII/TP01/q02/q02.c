@@ -26,10 +26,10 @@ int main(void)
 {
     // Inicializando variaveis
     int resposta = 0;
-    char *palavra = malloc(1024);                   // Alocacao de memoria 
+    char *palavra = malloc(1000);                   // Alocacao de memoria 
     do
     {
-        fgets(palavra, 1024, stdin);                // leitura da entrada substituindo o scanf para leitura de espacos
+        fgets(palavra, 1000, stdin);                // leitura da entrada substituindo o scanf para leitura de espacos
         if ((strlen(palavra) > 0) && (palavra[strlen (palavra) - 1] == '\n'))
         palavra[strlen (palavra) - 1] = '\0';       // formatacao da entrada
 
