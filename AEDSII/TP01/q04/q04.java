@@ -5,7 +5,7 @@ class q04{
         //Inicializacao de variaveis, MyIO e Random
         Random gerador = new Random( );
         MyIO myIo = new MyIO();
-        gerador . setSeed ( 4 );
+        gerador.setSeed ( 4 );
         String palavra;
 
         do{
