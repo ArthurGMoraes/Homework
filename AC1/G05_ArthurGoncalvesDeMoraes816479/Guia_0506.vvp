@@ -1,0 +1,80 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\va_math.vpi";
+S_000002d91852bba0 .scope module, "test_f5" "test_f5" 2 31;
+ .timescale 0 0;
+v000002d918526a40_0 .net "a", 0 0, L_000002d9183d49e0;  1 drivers
+v000002d918526ae0_0 .net "b", 0 0, L_000002d9183d4b30;  1 drivers
+v000002d9183e4180_0 .var "x", 0 0;
+v000002d91842c750_0 .var "y", 0 0;
+S_000002d91852cff0 .scope begin, "main" "main" 2 41, 2 41 0, S_000002d91852bba0;
+ .timescale 0 0;
+S_000002d91852d180 .scope module, "moduloA" "f5a" 2 36, 2 8 0, S_000002d91852bba0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_000002d9183d4dd0 .functor NAND 1, v000002d9183e4180_0, v000002d91842c750_0, C4<1>, C4<1>;
+L_000002d9183d4ac0 .functor NAND 1, L_000002d9183d4dd0, v000002d9183e4180_0, C4<1>, C4<1>;
+L_000002d9183d4c10 .functor NAND 1, L_000002d9183d4dd0, v000002d91842c750_0, C4<1>, C4<1>;
+L_000002d9183d49e0 .functor NAND 1, L_000002d9183d4c10, L_000002d9183d4ac0, C4<1>, C4<1>;
+v000002d918526f50_0 .net "a", 0 0, v000002d9183e4180_0;  1 drivers
+v000002d918526d30_0 .net "b", 0 0, v000002d91842c750_0;  1 drivers
+v000002d918527170_0 .net "c", 0 0, L_000002d9183d4dd0;  1 drivers
+v000002d91852d310_0 .net "d", 0 0, L_000002d9183d4ac0;  1 drivers
+v000002d91852d3b0_0 .net "e", 0 0, L_000002d9183d4c10;  1 drivers
+v000002d91852b7b0_0 .net "s", 0 0, L_000002d9183d49e0;  alias, 1 drivers
+S_000002d918526770 .scope module, "moduloB" "f5b" 2 37, 2 24 0, S_000002d91852bba0;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_000002d9183d4b30 .functor XOR 1, v000002d9183e4180_0, v000002d91842c750_0, C4<0>, C4<0>;
+v000002d91852b850_0 .net "a", 0 0, v000002d9183e4180_0;  alias, 1 drivers
+v000002d918526900_0 .net "b", 0 0, v000002d91842c750_0;  alias, 1 drivers
+v000002d9185269a0_0 .net "s", 0 0, L_000002d9183d4b30;  alias, 1 drivers
+    .scope S_000002d91852bba0;
+T_0 ;
+    %fork t_1, S_000002d91852cff0;
+    %jmp t_0;
+    .scope S_000002d91852cff0;
+t_1 ;
+    %vpi_call 2 42 "$display", "Guia_0506 - Arthur Goncalves de Moraes - 816479" {0 0 0};
+    %vpi_call 2 43 "$display", "Test module" {0 0 0};
+    %vpi_call 2 44 "$display", " x y a b" {0 0 0};
+    %vpi_call 2 46 "$monitor", "%4b %4b %4b %4b", v000002d9183e4180_0, v000002d91842c750_0, v000002d918526a40_0, v000002d918526ae0_0 {0 0 0};
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002d9183e4180_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002d91842c750_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002d9183e4180_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002d91842c750_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002d9183e4180_0, 0, 1;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000002d91842c750_0, 0, 1;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002d9183e4180_0, 0, 1;
+    %pushi/vec4 1, 0, 1;
+    %store/vec4 v000002d91842c750_0, 0, 1;
+    %end;
+    .scope S_000002d91852bba0;
+t_0 %join;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0506.v";
