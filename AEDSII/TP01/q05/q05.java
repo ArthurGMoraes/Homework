@@ -12,17 +12,21 @@ class q05{
                 int[] valores = new int[tamanho];
                 for (int i = 0; i < tamanho; i++){
                     valores[i] = myIo.readInt();
-                    //myIo.println(valores[i]);
                 }   
-                expressao = myIo.readString();
-                myIo.println(expressao);
+                expressao = myIo.readLine();
+                expressao = trocaOperadores(expressao);
             }
         } while (tamanho > 0);             // Loop para executar a funcao enquanto o tamanho for > 0
     }
 
-    public static String and(int[] valores){
-
+    public static String fazerBool(String exp){
+        int tamanho = exp.length();
         
+        for (int i = 0; i < tamanho, i++){
+            if (exp.charAt(i) == 'a' && exp.charAt(i+1) == 'n' && exp.charAt(i+2) == 'd'){
+                if(char)  
+            }
+        }
         return "SIM";
     }
 }
