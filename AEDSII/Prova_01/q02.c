@@ -10,7 +10,6 @@ int arredondar(double valor, double corte){
     } else {
         resposta = (int) valor;
     }
-    
     return resposta;
 }
 
