@@ -1,0 +1,123 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\va_math.vpi";
+S_0000021d3d76b230 .scope module, "test_comp" "test_comp" 2 25;
+ .timescale 0 0;
+v0000021d3d76ae40_0 .var "a", 3 0;
+v0000021d3d769fe0_0 .var "b", 3 0;
+v0000021d3d76a080_0 .net "final", 3 0, L_0000021d3d771f80;  1 drivers
+v0000021d3d76a1c0_0 .net "resultado", 0 0, L_0000021d3d768df0;  1 drivers
+L_0000021d3d771da0 .part v0000021d3d76ae40_0, 0, 1;
+L_0000021d3d772700 .part v0000021d3d769fe0_0, 0, 1;
+L_0000021d3d7718a0 .part v0000021d3d76ae40_0, 1, 1;
+L_0000021d3d772a20 .part v0000021d3d769fe0_0, 1, 1;
+L_0000021d3d771b20 .part v0000021d3d76ae40_0, 2, 1;
+L_0000021d3d7727a0 .part v0000021d3d769fe0_0, 2, 1;
+L_0000021d3d771f80 .concat8 [ 1 1 1 1], L_0000021d3d769330, L_0000021d3d768c30, L_0000021d3d769100, L_0000021d3d7691e0;
+L_0000021d3d773100 .part v0000021d3d76ae40_0, 3, 1;
+L_0000021d3d7722a0 .part v0000021d3d769fe0_0, 3, 1;
+L_0000021d3d772840 .part L_0000021d3d771f80, 0, 1;
+L_0000021d3d772ca0 .part L_0000021d3d771f80, 1, 1;
+L_0000021d3d7716c0 .part L_0000021d3d771f80, 2, 1;
+L_0000021d3d771bc0 .part L_0000021d3d771f80, 3, 1;
+S_0000021d3d72cff0 .scope module, "CB0" "compBit" 2 34, 2 9 0, S_0000021d3d76b230;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "compS1";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000021d3d769330 .functor XNOR 1, L_0000021d3d771da0, L_0000021d3d772700, C4<0>, C4<0>;
+v0000021d3d76a8a0_0 .net "a", 0 0, L_0000021d3d771da0;  1 drivers
+v0000021d3d76a120_0 .net "b", 0 0, L_0000021d3d772700;  1 drivers
+v0000021d3d76a760_0 .net "compS1", 0 0, L_0000021d3d769330;  1 drivers
+S_0000021d3d72d180 .scope module, "CB1" "compBit" 2 35, 2 9 0, S_0000021d3d76b230;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "compS1";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000021d3d768c30 .functor XNOR 1, L_0000021d3d7718a0, L_0000021d3d772a20, C4<0>, C4<0>;
+v0000021d3d76a6c0_0 .net "a", 0 0, L_0000021d3d7718a0;  1 drivers
+v0000021d3d76a800_0 .net "b", 0 0, L_0000021d3d772a20;  1 drivers
+v0000021d3d76aa80_0 .net "compS1", 0 0, L_0000021d3d768c30;  1 drivers
+S_0000021d3d726820 .scope module, "CB2" "compBit" 2 36, 2 9 0, S_0000021d3d76b230;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "compS1";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000021d3d769100 .functor XNOR 1, L_0000021d3d771b20, L_0000021d3d7727a0, C4<0>, C4<0>;
+v0000021d3d76a4e0_0 .net "a", 0 0, L_0000021d3d771b20;  1 drivers
+v0000021d3d76a300_0 .net "b", 0 0, L_0000021d3d7727a0;  1 drivers
+v0000021d3d76ab20_0 .net "compS1", 0 0, L_0000021d3d769100;  1 drivers
+S_0000021d3d7269b0 .scope module, "CB3" "compBit" 2 37, 2 9 0, S_0000021d3d76b230;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "compS1";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+L_0000021d3d7691e0 .functor XNOR 1, L_0000021d3d773100, L_0000021d3d7722a0, C4<0>, C4<0>;
+v0000021d3d76a260_0 .net "a", 0 0, L_0000021d3d773100;  1 drivers
+v0000021d3d76abc0_0 .net "b", 0 0, L_0000021d3d7722a0;  1 drivers
+v0000021d3d76ac60_0 .net "compS1", 0 0, L_0000021d3d7691e0;  1 drivers
+S_0000021d3d7cc850 .scope module, "CT0" "compTudo" 2 38, 2 17 0, S_0000021d3d76b230;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "compS0";
+    .port_info 1 /INPUT 1 "a";
+    .port_info 2 /INPUT 1 "b";
+    .port_info 3 /INPUT 1 "c";
+    .port_info 4 /INPUT 1 "d";
+L_0000021d3d768d80 .functor AND 1, L_0000021d3d772840, L_0000021d3d772ca0, C4<1>, C4<1>;
+L_0000021d3d768ca0 .functor AND 1, L_0000021d3d768d80, L_0000021d3d7716c0, C4<1>, C4<1>;
+L_0000021d3d768df0 .functor AND 1, L_0000021d3d768d80, L_0000021d3d771bc0, C4<1>, C4<1>;
+v0000021d3d76a440_0 .net "a", 0 0, L_0000021d3d772840;  1 drivers
+v0000021d3d76ad00_0 .net "and0", 0 0, L_0000021d3d768d80;  1 drivers
+v0000021d3d76a3a0_0 .net "and1", 0 0, L_0000021d3d768ca0;  1 drivers
+v0000021d3d76a620_0 .net "b", 0 0, L_0000021d3d772ca0;  1 drivers
+v0000021d3d76a580_0 .net "c", 0 0, L_0000021d3d7716c0;  1 drivers
+v0000021d3d769f40_0 .net "compS0", 0 0, L_0000021d3d768df0;  alias, 1 drivers
+v0000021d3d76ada0_0 .net "d", 0 0, L_0000021d3d771bc0;  1 drivers
+    .scope S_0000021d3d76b230;
+T_0 ;
+    %vpi_call 2 43 "$display", "Guia_0803 - Arthur Goncalves de Moraes - 816479" {0 0 0};
+    %vpi_call 2 44 "$display", "Test comp" {0 0 0};
+    %vpi_call 2 45 "$display", "soma: " {0 0 0};
+    %vpi_call 2 48 "$monitor", "%4b e %4b = %b", v0000021d3d76ae40_0, v0000021d3d769fe0_0, v0000021d3d76a1c0_0 {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021d3d76ae40_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021d3d769fe0_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000021d3d76ae40_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021d3d769fe0_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021d3d76ae40_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0000021d3d769fe0_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000021d3d76ae40_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0000021d3d769fe0_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0000021d3d76ae40_0, 0, 4;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v0000021d3d769fe0_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0000021d3d76ae40_0, 0, 4;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0000021d3d769fe0_0, 0, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0803.v";

@@ -1,0 +1,198 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1539-g2693dd32b)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\system.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\Users\gdemo\OneDrive\READET~1\MATERIAL\2_SEME~1\AC1\PROGRA~1\ICARUS~1\lib\ivl\va_math.vpi";
+S_0000021e5d992e80 .scope module, "test_fullSub" "test_fullSub" 2 32;
+ .timescale 0 0;
+v0000021e5d9f4780_0 .var "a", 3 0;
+v0000021e5d9f4460_0 .var "b", 3 0;
+v0000021e5d9f3e20_0 .net "carry", 4 0, L_0000021e5d9f5900;  1 drivers
+v0000021e5d9f3f60_0 .net "s", 4 0, L_0000021e5d9f4500;  1 drivers
+L_0000021e5d9f5360 .part v0000021e5d9f4780_0, 0, 1;
+L_0000021e5d9f50e0 .part v0000021e5d9f4460_0, 0, 1;
+L_0000021e5d9f5400 .part v0000021e5d9f4780_0, 1, 1;
+L_0000021e5d9f5a40 .part v0000021e5d9f4460_0, 1, 1;
+L_0000021e5d9f4000 .part L_0000021e5d9f5900, 0, 1;
+L_0000021e5d9f45a0 .part v0000021e5d9f4780_0, 2, 1;
+L_0000021e5d9f48c0 .part v0000021e5d9f4460_0, 2, 1;
+L_0000021e5d9f5860 .part L_0000021e5d9f5900, 1, 1;
+L_0000021e5d9f4aa0 .part v0000021e5d9f4780_0, 3, 1;
+L_0000021e5d9f5ae0 .part v0000021e5d9f4460_0, 3, 1;
+L_0000021e5d9f5180 .part L_0000021e5d9f5900, 2, 1;
+LS_0000021e5d9f5900_0_0 .concat8 [ 1 1 1 1], L_0000021e5d991580, L_0000021e5d991e40, L_0000021e5d9922a0, L_0000021e5d991c80;
+LS_0000021e5d9f5900_0_4 .concat8 [ 1 0 0 0], L_0000021e5da3e520;
+L_0000021e5d9f5900 .concat8 [ 4 1 0 0], LS_0000021e5d9f5900_0_0, LS_0000021e5d9f5900_0_4;
+LS_0000021e5d9f4500_0_0 .concat8 [ 1 1 1 1], L_0000021e5d9916d0, L_0000021e5d991a50, L_0000021e5d9919e0, L_0000021e5d991510;
+LS_0000021e5d9f4500_0_4 .concat8 [ 1 0 0 0], L_0000021e5da3e050;
+L_0000021e5d9f4500 .concat8 [ 4 1 0 0], LS_0000021e5d9f4500_0_0, LS_0000021e5d9f4500_0_4;
+L_0000021e5d9f3ec0 .part L_0000021e5d9f5900, 3, 1;
+S_0000021e5dafcff0 .scope module, "FA0" "fullSub" 2 40, 2 9 0, S_0000021e5d992e80;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s1";
+    .port_info 1 /OUTPUT 1 "s0";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "carryIn";
+L_0000021e5d991ac0 .functor NOT 1, L_0000021e5d9f5360, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991890 .functor NOT 1, L_0000021e5d991900, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991900 .functor XOR 1, L_0000021e5d9f5360, L_0000021e5d9f50e0, C4<0>, C4<0>;
+L_0000021e5d991f90 .functor AND 1, L_0000021e5d991ac0, L_0000021e5d9f50e0, C4<1>, C4<1>;
+L_0000021e5d9f5c08 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991660 .functor AND 1, L_0000021e5d991890, L_0000021e5d9f5c08, C4<1>, C4<1>;
+L_0000021e5d9916d0 .functor XOR 1, L_0000021e5d991900, L_0000021e5d9f5c08, C4<0>, C4<0>;
+L_0000021e5d991580 .functor OR 1, L_0000021e5d991660, L_0000021e5d991f90, C4<0>, C4<0>;
+v0000021e5d98fb40_0 .net "a", 0 0, L_0000021e5d9f5360;  1 drivers
+v0000021e5d990180_0 .net "and1Wire", 0 0, L_0000021e5d991f90;  1 drivers
+v0000021e5d990d60_0 .net "and2Wire", 0 0, L_0000021e5d991660;  1 drivers
+v0000021e5d98f640_0 .net "b", 0 0, L_0000021e5d9f50e0;  1 drivers
+v0000021e5d991260_0 .net "carryIn", 0 0, L_0000021e5d9f5c08;  1 drivers
+v0000021e5d98f6e0_0 .net "not1", 0 0, L_0000021e5d991ac0;  1 drivers
+v0000021e5d990900_0 .net "not2", 0 0, L_0000021e5d991890;  1 drivers
+v0000021e5d990720_0 .net "s0", 0 0, L_0000021e5d9916d0;  1 drivers
+v0000021e5d990360_0 .net "s1", 0 0, L_0000021e5d991580;  1 drivers
+v0000021e5d990220_0 .net "xor1Wire", 0 0, L_0000021e5d991900;  1 drivers
+S_0000021e5d994460 .scope module, "FA1" "fullSub" 2 41, 2 9 0, S_0000021e5d992e80;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s1";
+    .port_info 1 /OUTPUT 1 "s0";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "carryIn";
+L_0000021e5d991cf0 .functor NOT 1, L_0000021e5d9f5400, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991970 .functor NOT 1, L_0000021e5d992000, C4<0>, C4<0>, C4<0>;
+L_0000021e5d992000 .functor XOR 1, L_0000021e5d9f5400, L_0000021e5d9f5a40, C4<0>, C4<0>;
+L_0000021e5d992380 .functor AND 1, L_0000021e5d991cf0, L_0000021e5d9f5a40, C4<1>, C4<1>;
+L_0000021e5d992230 .functor AND 1, L_0000021e5d991970, L_0000021e5d9f4000, C4<1>, C4<1>;
+L_0000021e5d991a50 .functor XOR 1, L_0000021e5d992000, L_0000021e5d9f4000, C4<0>, C4<0>;
+L_0000021e5d991e40 .functor OR 1, L_0000021e5d992230, L_0000021e5d992380, C4<0>, C4<0>;
+v0000021e5d98ffa0_0 .net "a", 0 0, L_0000021e5d9f5400;  1 drivers
+v0000021e5d9909a0_0 .net "and1Wire", 0 0, L_0000021e5d992380;  1 drivers
+v0000021e5d990ae0_0 .net "and2Wire", 0 0, L_0000021e5d992230;  1 drivers
+v0000021e5d990e00_0 .net "b", 0 0, L_0000021e5d9f5a40;  1 drivers
+v0000021e5d98faa0_0 .net "carryIn", 0 0, L_0000021e5d9f4000;  1 drivers
+v0000021e5d990540_0 .net "not1", 0 0, L_0000021e5d991cf0;  1 drivers
+v0000021e5d990fe0_0 .net "not2", 0 0, L_0000021e5d991970;  1 drivers
+v0000021e5d98f820_0 .net "s0", 0 0, L_0000021e5d991a50;  1 drivers
+v0000021e5d990a40_0 .net "s1", 0 0, L_0000021e5d991e40;  1 drivers
+v0000021e5d98fdc0_0 .net "xor1Wire", 0 0, L_0000021e5d992000;  1 drivers
+S_0000021e5dafd180 .scope module, "FA2" "fullSub" 2 42, 2 9 0, S_0000021e5d992e80;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s1";
+    .port_info 1 /OUTPUT 1 "s0";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "carryIn";
+L_0000021e5d991740 .functor NOT 1, L_0000021e5d9f45a0, C4<0>, C4<0>, C4<0>;
+L_0000021e5d9917b0 .functor NOT 1, L_0000021e5d991b30, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991b30 .functor XOR 1, L_0000021e5d9f45a0, L_0000021e5d9f48c0, C4<0>, C4<0>;
+L_0000021e5d991820 .functor AND 1, L_0000021e5d991740, L_0000021e5d9f48c0, C4<1>, C4<1>;
+L_0000021e5d992070 .functor AND 1, L_0000021e5d9917b0, L_0000021e5d9f5860, C4<1>, C4<1>;
+L_0000021e5d9919e0 .functor XOR 1, L_0000021e5d991b30, L_0000021e5d9f5860, C4<0>, C4<0>;
+L_0000021e5d9922a0 .functor OR 1, L_0000021e5d992070, L_0000021e5d991820, C4<0>, C4<0>;
+v0000021e5d990400_0 .net "a", 0 0, L_0000021e5d9f45a0;  1 drivers
+v0000021e5d98f780_0 .net "and1Wire", 0 0, L_0000021e5d991820;  1 drivers
+v0000021e5d98fbe0_0 .net "and2Wire", 0 0, L_0000021e5d992070;  1 drivers
+v0000021e5d98fc80_0 .net "b", 0 0, L_0000021e5d9f48c0;  1 drivers
+v0000021e5d990f40_0 .net "carryIn", 0 0, L_0000021e5d9f5860;  1 drivers
+v0000021e5d990ea0_0 .net "not1", 0 0, L_0000021e5d991740;  1 drivers
+v0000021e5d9905e0_0 .net "not2", 0 0, L_0000021e5d9917b0;  1 drivers
+v0000021e5d98fd20_0 .net "s0", 0 0, L_0000021e5d9919e0;  1 drivers
+v0000021e5d990860_0 .net "s1", 0 0, L_0000021e5d9922a0;  1 drivers
+v0000021e5d9900e0_0 .net "xor1Wire", 0 0, L_0000021e5d991b30;  1 drivers
+S_0000021e5d9f28c0 .scope module, "FA3" "fullSub" 2 43, 2 9 0, S_0000021e5d992e80;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s1";
+    .port_info 1 /OUTPUT 1 "s0";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "carryIn";
+L_0000021e5d992150 .functor NOT 1, L_0000021e5d9f4aa0, C4<0>, C4<0>, C4<0>;
+L_0000021e5d9920e0 .functor NOT 1, L_0000021e5d991ba0, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991ba0 .functor XOR 1, L_0000021e5d9f4aa0, L_0000021e5d9f5ae0, C4<0>, C4<0>;
+L_0000021e5d9923f0 .functor AND 1, L_0000021e5d992150, L_0000021e5d9f5ae0, C4<1>, C4<1>;
+L_0000021e5d991c10 .functor AND 1, L_0000021e5d9920e0, L_0000021e5d9f5180, C4<1>, C4<1>;
+L_0000021e5d991510 .functor XOR 1, L_0000021e5d991ba0, L_0000021e5d9f5180, C4<0>, C4<0>;
+L_0000021e5d991c80 .functor OR 1, L_0000021e5d991c10, L_0000021e5d9923f0, C4<0>, C4<0>;
+v0000021e5d990c20_0 .net "a", 0 0, L_0000021e5d9f4aa0;  1 drivers
+v0000021e5d991300_0 .net "and1Wire", 0 0, L_0000021e5d9923f0;  1 drivers
+v0000021e5d990680_0 .net "and2Wire", 0 0, L_0000021e5d991c10;  1 drivers
+v0000021e5d9907c0_0 .net "b", 0 0, L_0000021e5d9f5ae0;  1 drivers
+v0000021e5d990b80_0 .net "carryIn", 0 0, L_0000021e5d9f5180;  1 drivers
+v0000021e5d990cc0_0 .net "not1", 0 0, L_0000021e5d992150;  1 drivers
+v0000021e5d98bcd0_0 .net "not2", 0 0, L_0000021e5d9920e0;  1 drivers
+v0000021e5d98b9b0_0 .net "s0", 0 0, L_0000021e5d991510;  1 drivers
+v0000021e5d98beb0_0 .net "s1", 0 0, L_0000021e5d991c80;  1 drivers
+v0000021e5d98bf50_0 .net "xor1Wire", 0 0, L_0000021e5d991ba0;  1 drivers
+S_0000021e5d9f2a50 .scope module, "FA4" "fullSub" 2 44, 2 9 0, S_0000021e5d992e80;
+ .timescale 0 0;
+    .port_info 0 /OUTPUT 1 "s1";
+    .port_info 1 /OUTPUT 1 "s0";
+    .port_info 2 /INPUT 1 "a";
+    .port_info 3 /INPUT 1 "b";
+    .port_info 4 /INPUT 1 "carryIn";
+L_0000021e5d9f5c50 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991d60 .functor NOT 1, L_0000021e5d9f5c50, C4<0>, C4<0>, C4<0>;
+L_0000021e5d991f20 .functor NOT 1, L_0000021e5da3e360, C4<0>, C4<0>, C4<0>;
+L_0000021e5d9f5c98 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+L_0000021e5da3e360 .functor XOR 1, L_0000021e5d9f5c50, L_0000021e5d9f5c98, C4<0>, C4<0>;
+L_0000021e5da3de90 .functor AND 1, L_0000021e5d991d60, L_0000021e5d9f5c98, C4<1>, C4<1>;
+L_0000021e5da3ea60 .functor AND 1, L_0000021e5d991f20, L_0000021e5d9f3ec0, C4<1>, C4<1>;
+L_0000021e5da3e050 .functor XOR 1, L_0000021e5da3e360, L_0000021e5d9f3ec0, C4<0>, C4<0>;
+L_0000021e5da3e520 .functor OR 1, L_0000021e5da3ea60, L_0000021e5da3de90, C4<0>, C4<0>;
+v0000021e5d9f4820_0 .net "a", 0 0, L_0000021e5d9f5c50;  1 drivers
+v0000021e5d9f41e0_0 .net "and1Wire", 0 0, L_0000021e5da3de90;  1 drivers
+v0000021e5d9f3d80_0 .net "and2Wire", 0 0, L_0000021e5da3ea60;  1 drivers
+v0000021e5d9f4a00_0 .net "b", 0 0, L_0000021e5d9f5c98;  1 drivers
+v0000021e5d9f3c40_0 .net "carryIn", 0 0, L_0000021e5d9f3ec0;  1 drivers
+v0000021e5d9f4640_0 .net "not1", 0 0, L_0000021e5d991d60;  1 drivers
+v0000021e5d9f3ce0_0 .net "not2", 0 0, L_0000021e5d991f20;  1 drivers
+v0000021e5d9f46e0_0 .net "s0", 0 0, L_0000021e5da3e050;  1 drivers
+v0000021e5d9f4d20_0 .net "s1", 0 0, L_0000021e5da3e520;  1 drivers
+v0000021e5d9f59a0_0 .net "xor1Wire", 0 0, L_0000021e5da3e360;  1 drivers
+    .scope S_0000021e5d992e80;
+T_0 ;
+    %vpi_call 2 49 "$display", "Guia_0802 - Arthur Goncalves de Moraes - 816479" {0 0 0};
+    %vpi_call 2 50 "$display", "Test ALU's full sub" {0 0 0};
+    %vpi_call 2 51 "$display", "soma: " {0 0 0};
+    %vpi_call 2 54 "$monitor", "%4b - %4b = %5b", v0000021e5d9f4780_0, v0000021e5d9f4460_0, v0000021e5d9f3f60_0 {0 0 0};
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021e5d9f4780_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021e5d9f4460_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000021e5d9f4780_0, 0, 4;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021e5d9f4460_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 0, 0, 4;
+    %store/vec4 v0000021e5d9f4780_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0000021e5d9f4460_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 1, 0, 4;
+    %store/vec4 v0000021e5d9f4780_0, 0, 4;
+    %pushi/vec4 3, 0, 4;
+    %store/vec4 v0000021e5d9f4460_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 5, 0, 4;
+    %store/vec4 v0000021e5d9f4780_0, 0, 4;
+    %pushi/vec4 13, 0, 4;
+    %store/vec4 v0000021e5d9f4460_0, 0, 4;
+    %delay 1, 0;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0000021e5d9f4780_0, 0, 4;
+    %pushi/vec4 8, 0, 4;
+    %store/vec4 v0000021e5d9f4460_0, 0, 4;
+    %end;
+    .thread T_0;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "Guia_0802.v";
