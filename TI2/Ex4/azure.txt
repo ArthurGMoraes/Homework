@@ -1,0 +1,5 @@
+adm
+Pucminas!
+
+ex4puc.postgres.database.azure.com
+adm@ex4puc
