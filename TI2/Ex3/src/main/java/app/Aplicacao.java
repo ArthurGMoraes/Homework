@@ -1,29 +1,29 @@
 package app;
 
 import static spark.Spark.*;
-import service.CarroService;
+import service.DiscussaoService;
 
 
 public class Aplicacao {
 	
-	private static CarroService carroService = new CarroService();
+	private static DiscussaoService discussaoService = new DiscussaoService();
 	
     public static void main(String[] args) {
         port(6789);
         
         staticFiles.location("/public");
         
-        post("/carro/insert", (request, response) -> carroService.insert(request, response));
+        post("/discussao/insert", (request, response) -> discussaoService.insert(request, response));
 
-        get("/carrp/:id", (request, response) -> carroService.get(request, response));
+        get("/carrp/:id", (request, response) -> discussaoService.get(request, response));
         
-        get("/carro/list/:orderby", (request, response) -> carroService.getAll(request, response));
+        get("/discussao/list/:orderby", (request, response) -> discussaoService.getAll(request, response));
 
-        get("/carro/update/:id", (request, response) -> carroService.getToUpdate(request, response));
+        get("/discussao/update/:id", (request, response) -> discussaoService.getToUpdate(request, response));
         
-        post("/carro/update/:id", (request, response) -> carroService.update(request, response));
+        post("/discussao/update/:id", (request, response) -> discussaoService.update(request, response));
            
-        get("/carro/delete/:id", (request, response) -> carroService.delete(request, response));
+        get("/discussao/delete/:id", (request, response) -> discussaoService.delete(request, response));
 
              
     }

@@ -1,6 +1,6 @@
 package dao;
 
-import model.Carro;
+import model.Discussao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -11,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class CarroDAO extends DAO {	
-	public CarroDAO() {
+public class DiscussaoDAO extends DAO {	
+	public DiscussaoDAO() {
 		super();
 		conectar();
 	}
@@ -23,10 +23,10 @@ public class CarroDAO extends DAO {
 	}
 	
 	
-	public boolean insert(Carro carro) {
+	public boolean insert(Discussao carro) {
 		boolean status = false;
 		try {
-			String sql = "INSERT INTO Carro (marca, modelo, motor, ano) "
+			String sql = "INSERT INTO Discussao (marca, modelo, motor, ano) "
 		               + "VALUES (" + carro.getMarca() + ", "
 		               + carro.getModelo() + ", " + carro.getMotor() + "," + carro.getAno() + ");";
 			PreparedStatement st = conexao.prepareStatement(sql);
@@ -40,15 +40,15 @@ public class CarroDAO extends DAO {
 	}
 
 	
-	public Carro get(int id) {
-		Carro carro = null;
+	public Discussao get(int id) {
+		Discussao carro = null;
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			String sql = "SELECT * FROM carro WHERE id="+id;
 			ResultSet rs = st.executeQuery(sql);	
 	        if(rs.next()){            
-	        	 carro = new Carro(rs.getInt("id"), rs.getString("marca"),  rs.getString("modelo"),  
+	        	 carro = new Discussao(rs.getInt("id"), rs.getString("marca"),  rs.getString("modelo"),  
 		        			rs.getString("motor"), rs.getInt("ano"));
 	        }
 	        st.close();
@@ -59,47 +59,47 @@ public class CarroDAO extends DAO {
 	}
 	
 	
-	public List<Carro> get() {
+	public List<Discussao> get() {
 		return get("");
 	}
 
 	
-	public List<Carro> getOrderByID() {
+	public List<Discussao> getOrderByID() {
 		return get("id");		
 	}
 	
 	
-	public List<Carro> getOrderByMarca() {
+	public List<Discussao> getOrderByMarca() {
 		return get("marca");		
 	}
 	
 	
-	public List<Carro> getOrderByModelo() {
+	public List<Discussao> getOrderByModelo() {
 		return get("modelo");		
 	}
 	
 	
-	private List<Carro> get(String orderBy) {
-		List<Carro> carros = new ArrayList<Carro>();
+	private List<Discussao> get(String orderBy) {
+		List<Discussao> discussoes = new ArrayList<Discussao>();
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
 			String sql = "SELECT * FROM carro" + ((orderBy.trim().length() == 0) ? "" : (" ORDER BY " + orderBy));
 			ResultSet rs = st.executeQuery(sql);	           
 	        while(rs.next()) {	            	
-	        	Carro p = new Carro(rs.getInt("id"), rs.getString("marca"),  rs.getString("modelo"),  
+	        	Discussao p = new Discussao(rs.getInt("id"), rs.getString("marca"),  rs.getString("modelo"),  
 	        			rs.getString("motor"), rs.getInt("ano"));
-	            carros.add(p);
+	            discussoes.add(p);
 	        }
 	        st.close();
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return carros;
+		return discussoes;
 	}
 	
 	
-	public boolean update(Carro carro) {
+	public boolean update(Discussao carro) {
 		boolean status = false;
 		try {  
 			String sql = "UPDATE carro SET marca = '" + carro.getMarca() + "', "

@@ -45,13 +45,13 @@ public class DAO {
 		return status;
 	}
 	
-	public boolean createCarro(Carro carro) {
+	public boolean createDiscussao(Discussao discussao) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("INSERT INTO carro (id, marca, modelo, motor, ano) "
-					       + "VALUES ("+carro.getId()+ ", '" + carro.getMarca() + "', '"  
-					       + carro.getModelo() + "', '" + carro.getMotor() + "', '" + carro.getAno() + "');");
+			st.executeUpdate("INSERT INTO discussao (id, marca, modelo, motor, ano) "
+					       + "VALUES ("+discussao.getId()+ ", '" + discussao.getMarca() + "', '"  
+					       + discussao.getModelo() + "', '" + discussao.getMotor() + "', '" + discussao.getAno() + "');");
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -60,12 +60,12 @@ public class DAO {
 		return status;
 	}
 	
-	public boolean updateCarro (Carro carro) {
+	public boolean updateDiscussao (Discussao discussao) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			String sql = "UPDATE Carro SET Marca = '" + carro.getMarca() + "', Modelo = '"  
-				       + carro.getModelo() + "', Motor = '" + carro.getMotor() + "', Ano = '" + carro.getAno() + "'" + " WHERE Id = " + carro.getId();
+			String sql = "UPDATE Discussao SET Marca = '" + discussao.getMarca() + "', Modelo = '"  
+				       + discussao.getModelo() + "', Motor = '" + discussao.getMotor() + "', Ano = '" + discussao.getAno() + "'" + " WHERE Id = " + discussao.getId();
 			st.executeUpdate(sql);
 			st.close();
 			status = true;
@@ -75,11 +75,11 @@ public class DAO {
 		return status;
 	}
 	
-	public boolean excluirCarro(int id) {
+	public boolean excluirDiscussao(int id) {
 		boolean status = false;
 		try {  
 			Statement st = conexao.createStatement();
-			st.executeUpdate("DELETE FROM carro WHERE id = " + id);
+			st.executeUpdate("DELETE FROM discussao WHERE id = " + id);
 			st.close();
 			status = true;
 		} catch (SQLException u) {  
@@ -89,19 +89,19 @@ public class DAO {
 	}
 	
 	
-	public Carro[] getCarros() {
-		Carro[] carros = null;
+	public Discussao[] getDiscussaos() {
+		Discussao[] discussaos = null;
 		
 		try {
 			Statement st = conexao.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
-			ResultSet rs = st.executeQuery("SELECT * FROM Carro");		
+			ResultSet rs = st.executeQuery("SELECT * FROM Discussao");		
 	         if(rs.next()){
 	             rs.last();
-	             carros = new Carro[rs.getRow()];
+	             discussaos = new Discussao[rs.getRow()];
 	             rs.beforeFirst();
 
 	             for(int i = 0; rs.next(); i++) {
-	                carros[i] = new Carro(rs.getInt("id"), rs.getString("marca"), 
+	                discussaos[i] = new Discussao(rs.getInt("id"), rs.getString("marca"), 
 	                		                  rs.getString("modelo"), rs.getString("motor"), rs.getInt("ano"));
 	             }
 	          }
@@ -109,14 +109,14 @@ public class DAO {
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		}
-		return carros;
+		return discussaos;
 	}
 	
 	public int getLastId() {
 	    int lastId = 0;
 	    try {
 	        Statement st = conexao.createStatement();
-	        ResultSet rs = st.executeQuery("SELECT MAX(id) AS max_id FROM carro");
+	        ResultSet rs = st.executeQuery("SELECT MAX(id) AS max_id FROM discussao");
 	        if (rs.next()) {
 	            lastId = rs.getInt("max_id");
 	        }
@@ -127,21 +127,21 @@ public class DAO {
 	    return lastId;
 	}
 	
-	public Carro getCarroById(int id) {
-	    Carro carro = null;
+	public Discussao getDiscussaoById(int id) {
+	    Discussao discussao = null;
 	    
 	    try {
 	        Statement st = conexao.createStatement();
-	        ResultSet rs = st.executeQuery("SELECT * FROM Carro WHERE id = " + id);		
+	        ResultSet rs = st.executeQuery("SELECT * FROM Discussao WHERE id = " + id);		
 	        if (rs.next()) {
-	            carro = new Carro(rs.getInt("id"), rs.getString("marca"), 
+	            discussao = new Discussao(rs.getInt("id"), rs.getString("marca"), 
 	                              rs.getString("modelo"), rs.getString("motor"), rs.getInt("ano"));
 	        }
 	        st.close();
 	    } catch (Exception e) {
 	        System.err.println(e.getMessage());
 	    }
-	    return carro;
+	    return discussao;
 	}
 }
 

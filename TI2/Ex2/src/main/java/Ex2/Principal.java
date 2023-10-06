@@ -67,20 +67,20 @@ public class Principal {
 		System.out.println("Ano: ");
 		int ano = scanner.nextInt();
 		
-		Carro carro = new Carro(id, marca, modelo, motor, ano);
-		if(dao.createCarro(carro) == true) {
-			System.out.println("Insercao com sucesso -> " + carro.toString());
+		Discussao discussao = new Discussao(id, marca, modelo, motor, ano);
+		if(dao.createDiscussao(discussao) == true) {
+			System.out.println("Insercao com sucesso -> " + discussao.toString());
 		}
 	}
 	
 	public static void read() {
 		dao.conectar();
 		
-		//Mostrar carros
-		Carro[] carros = dao.getCarros();
-		System.out.println("=== Mostrar carros === ");		
-		for(int i = 0; i < carros.length; i++) {
-			System.out.println(carros[i].toString());
+		//Mostrar discussaos
+		Discussao[] discussaos = dao.getDiscussaos();
+		System.out.println("=== Mostrar discussaos === ");		
+		for(int i = 0; i < discussaos.length; i++) {
+			System.out.println(discussaos[i].toString());
 		}
 		
 		scanner.nextLine();
@@ -89,38 +89,38 @@ public class Principal {
 	public static void update() {
 	    dao.conectar();
 	    
-	    // Update ano do carro por Id
-	    System.out.println("Id do carro: ");
+	    // Update ano do discussao por Id
+	    System.out.println("Id do discussao: ");
 	    int carId = scanner.nextInt();
 	    scanner.nextLine(); 
 	    
-	    Carro carroToUpdate = dao.getCarroById(carId);
-	    if (carroToUpdate != null) {
+	    Discussao discussaoToUpdate = dao.getDiscussaoById(carId);
+	    if (discussaoToUpdate != null) {
 	        System.out.println("Novo ano: ");
 	        int newAno = scanner.nextInt();
 	        
-	        carroToUpdate.setAno(newAno);
+	        discussaoToUpdate.setAno(newAno);
 	        
-	        if (dao.updateCarro(carroToUpdate)) {
-	            System.out.println("Ano atualizado: " + carroToUpdate.toString());
+	        if (dao.updateDiscussao(discussaoToUpdate)) {
+	            System.out.println("Ano atualizado: " + discussaoToUpdate.toString());
 	        }
 	    } else {
-	        System.out.println("Carro com ID " + carId + " nao existe.");
+	        System.out.println("Discussao com ID " + carId + " nao existe.");
 	    }
 	}
 	
 	public static void delete() {
 	    dao.conectar();
 
-	    // Delete carro by Id
-	    System.out.println("Id do carro a ser excluido: ");
+	    // Delete discussao by Id
+	    System.out.println("Id do discussao a ser excluido: ");
 	    int carId = scanner.nextInt();
 	    scanner.nextLine();
 
-	    if (dao.excluirCarro(carId)) {
-	        System.out.println("Carro com ID " + carId + " excluido com sucesso.");
+	    if (dao.excluirDiscussao(carId)) {
+	        System.out.println("Discussao com ID " + carId + " excluido com sucesso.");
 	    } else {
-	        System.out.println("Carro com ID " + carId + " nao existe.");
+	        System.out.println("Discussao com ID " + carId + " nao existe.");
 	    }
 	}
 }
