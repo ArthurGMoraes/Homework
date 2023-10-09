@@ -22,7 +22,7 @@ module f ( output s, input a, input b, input c );
 // ------------------------- parte principal
  initial
  begin : main
- $display("R01 - Arthur Goncalves de Moraes - 816479");
+ $display("R0102 - Arthur Goncalves de Moraes - 816479");
  $display("Test module");
  $display(" x y z r");
  // projetar testes do modulo
