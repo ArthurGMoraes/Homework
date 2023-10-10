@@ -1,6 +1,6 @@
 class q05{
     //public static int comp = 0;
-    public static int[] ids = new int[500];
+    public static int[] ids = new int[463];
     public static Arq arq = new Arq();
     public static MyIO myIo = new MyIO();
 
@@ -12,13 +12,13 @@ class q05{
 
     public static void ordenar(){
         for (int i = 0; i < ids.length - 1; i++) {
-        int menor = i;
-        for (int j = (i + 1); j < ids.length; j++){
-            if (ids[menor] > ids[j]){
-               menor = j;
+            int menor = i;
+            for (int j = (i + 1); j < ids.length; j++){
+                if (ids[menor] > ids[j]){
+                 menor = j;
+                }   
             }
-        }
-        swap(menor, i);
+            swap(menor, i);
         }
     }
 
@@ -60,6 +60,7 @@ class q05{
         String nome = "";
         int i = 0;
         int j = 0;
+        int teste = 0;
         double inicio, fim;
 
         
@@ -67,17 +68,24 @@ class q05{
             id = myIo.readLine();
             if (!id.equalsIgnoreCase("FIM")){
                 ids[i] = Integer.parseInt(id);
+                myIo.println(ids[i]);
                 i++;
             }
         } while (!id.equalsIgnoreCase("FIM"));
 
+        myIo.println("");
+
         ordenar();
 
-        inicio = System.currentTimeMillis();
-        for (j = 0; j < ids.length; j++){
-            int teste = ids[j];
-            ler(teste);
+        for (int k = 0; k < ids.length; k++){
+            myIo.println(ids[k]);
         }
+
+        /*inicio = System.currentTimeMillis();
+        for (j = 0; j < ids.length; j++){
+            teste = ids[j];
+            ler(teste);
+        }*/
         fim = System.currentTimeMillis();
         
         //String tempo = (fim-inicio)/1000 + "\t";
