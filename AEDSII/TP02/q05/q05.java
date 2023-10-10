@@ -1,6 +1,7 @@
 class q05{
     //public static int comp = 0;
-    public static int[] ids = new int[463];
+    public static int[] ids = new int[500];
+    public static String[] nomes = new String[4000];
     public static Arq arq = new Arq();
     public static MyIO myIo = new MyIO();
 
@@ -10,13 +11,40 @@ class q05{
         ids[j] = temp;
     }
 
-    public static void ordenar(){
-        for (int i = 0; i < ids.length - 1; i++) {
+    public static void lerNomes(){
+        arq.openRead("/tmp/players.csv");
+        int i = 0;
+        String temp;
+        while(arq.hasNext() == true){
+            temp = arq.readLine();
+            String[] parts = temp.split(",");
+            nomes[i] = parts[1];
+            i++;
+        }
+        arq.close();
+    }
+
+    public static int compStr(int prim, int sec){
+        int i = 0;
+        int result = 0;
+        String a = nomes[prim + 1];
+        String b = nomes[sec + 1];
+
+        //myIo.println(a + b);
+
+        if(a != null && b != null){
+            result = a.compareToIgnoreCase(b); 
+        }
+        return result;
+    } 
+
+    public static void ordenar(int k){
+        for (int i = 0; i < k - 1 ; i++) {
             int menor = i;
-            for (int j = (i + 1); j < ids.length; j++){
-                if (ids[menor] > ids[j]){
-                 menor = j;
-                }   
+            for (int j = (i + 1); j < k; j++){
+                if (compStr(ids[menor], ids[j]) > 0){
+                     menor = j;
+                }  
             }
             swap(menor, i);
         }
@@ -33,7 +61,7 @@ class q05{
             i++;
         }
         str = arq.readLine();
-        myIo.println(str + " " + num);
+        //myIo.println(str + " " + num);
         str += " ";
         String[] parts = str.split(",");
         for (int k = 0; k < parts.length; k++) {
@@ -68,24 +96,27 @@ class q05{
             id = myIo.readLine();
             if (!id.equalsIgnoreCase("FIM")){
                 ids[i] = Integer.parseInt(id);
-                myIo.println(ids[i]);
                 i++;
             }
         } while (!id.equalsIgnoreCase("FIM"));
+        lerNomes();
+        ordenar(i);
 
-        myIo.println("");
-
-        ordenar();
-
-        for (int k = 0; k < ids.length; k++){
-            myIo.println(ids[k]);
-        }
-
-        /*inicio = System.currentTimeMillis();
-        for (j = 0; j < ids.length; j++){
-            teste = ids[j];
-            ler(teste);
+        /*for (int k = 0; k < ids.length; k++){
+            if(ids[k]!=0){
+                myIo.println(ids[k]);
+            }
+            
         }*/
+
+        inicio = System.currentTimeMillis();
+        for (j = 0; j < i; j++){
+            teste = ids[j];
+            if(teste != 0){
+              ler(teste);
+            }
+
+        }
         fim = System.currentTimeMillis();
         
         //String tempo = (fim-inicio)/1000 + "\t";
