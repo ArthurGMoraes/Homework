@@ -142,7 +142,7 @@ class q09{
         str += " ";
         String[] parts = str.split(",");
         for (int k = 0; k < parts.length; k++) {
-            if (parts[k].isEmpty()) {
+            if (parts[k].isEmpty() || parts[k].equals(" ")) {
                 comp++;
                 parts[k] = "nao informado";
             }

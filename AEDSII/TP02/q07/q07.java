@@ -97,7 +97,7 @@ class q07{
         str += " ";
         String[] parts = str.split(",");
         for (int k = 0; k < parts.length; k++) {
-            if (parts[k].isEmpty()) {
+            if (parts[k].isEmpty() || parts[k].equals(" ")) {
                 comp++;
                 parts[k] = "nao informado";
             }
@@ -144,7 +144,7 @@ class q07{
         }*/
 
         
-        for (j = 0; j < i; j++){
+        for (j = 0; j < i+1; j++){
             teste = ids[j];
             if(teste != 0){    // array preenchido com 0s
               ler(teste);
