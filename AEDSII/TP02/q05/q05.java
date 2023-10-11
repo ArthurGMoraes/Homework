@@ -1,5 +1,6 @@
 class q05{
-    //public static int comp = 0;
+    public static int comp = 0;
+    public static int trocas = 0;
     public static int[] ids = new int[500];
     public static String[] nomes = new String[4000];
     public static Arq arq = new Arq();
@@ -7,15 +8,16 @@ class q05{
 
     public static void swap(int i, int j) {
         int temp = ids[i];
-        ids[i] = ids[j];
-        ids[j] = temp;
+        ids[i] = ids[j]; trocas++;
+        ids[j] = temp; trocas++;
     }
 
     public static void lerNomes(){
-        arq.openRead("/tmp/players.csv");
+        arq.openRead("players.csv");
         int i = 0;
         String temp;
         while(arq.hasNext() == true){
+            comp++;
             temp = arq.readLine();
             String[] parts = temp.split(",");
             nomes[i] = parts[1];
@@ -33,6 +35,7 @@ class q05{
         //myIo.println(a + b);
 
         if(a != null && b != null){
+            comp++;
             result = a.compareToIgnoreCase(b); 
         }
         return result;
@@ -43,7 +46,8 @@ class q05{
             int menor = i;
             for (int j = (i + 1); j < k; j++){
                 if (compStr(ids[menor], ids[j]) > 0){
-                     menor = j;
+                    comp++;
+                    menor = j;
                 }  
             }
             swap(menor, i);
@@ -53,10 +57,11 @@ class q05{
     
 
     public static void ler(int num){
-        arq.openRead("/tmp/players.csv");
+        arq.openRead("players.csv");
         int i = 0;
         String str = "";
         while(i < num + 1){
+            comp++;
             arq.readLine();
             i++;
         }
@@ -66,6 +71,7 @@ class q05{
         String[] parts = str.split(",");
         for (int k = 0; k < parts.length; k++) {
             if (parts[k].isEmpty()) {
+                comp++;
                 parts[k] = "nao informado";
             }
         } 
@@ -91,7 +97,7 @@ class q05{
         int teste = 0;
         double inicio, fim;
 
-        
+        inicio = System.currentTimeMillis();
         do{
             id = myIo.readLine();
             if (!id.equalsIgnoreCase("FIM")){
@@ -109,18 +115,19 @@ class q05{
             
         }*/
 
-        inicio = System.currentTimeMillis();
+        
         for (j = 0; j < i; j++){
             teste = ids[j];
-            if(teste != 0){
+            if(teste != 0){    // array preenchido com 0s
               ler(teste);
+              comp++;
             }
 
         }
         fim = System.currentTimeMillis();
         
-        //String tempo = (fim-inicio)/1000 + "\t";
-        //String conteudo = "816479\t" + tempo + comp;
-        //arq.openWriteClose("matrícula_sequencial.txt", conteudo);
+        String tempo = (fim-inicio)/1000 + "";
+        String conteudo = "816479\t" + comp + "\t" + trocas + "\t" + tempo;
+        arq.openWriteClose("matrícula_selecao.txt", conteudo);
     }
 }
