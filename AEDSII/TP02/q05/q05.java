@@ -36,7 +36,7 @@ class q05{
 
         if(a != null && b != null){
             comp++;
-            result = a.compareToIgnoreCase(b); 
+            result = a.compareTo(b); 
         }
         return result;
     } 

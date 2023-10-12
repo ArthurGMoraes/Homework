@@ -10,8 +10,8 @@ class Jogador{
     private String cidadeNascimento;
     private String estadoNascimento;
 
-     public Jogador (){
-        this.id = 0;
+     public Jogador (int id){
+        this.id = id;
     }
 
     public Jogador (int id, String nome, int altura, int peso, String universidade, int anoNascimento, String cidadeNascimento, String estadoNascimento){
@@ -29,23 +29,13 @@ class Jogador{
         System.out.println("[" + id + " ## " + nome + " ## " + altura + " ## " + peso + " ## " + anoNascimento + " ## " + universidade + " ## " + cidadeNascimento + " ## " + estadoNascimento.trim() + "]");
     }
 
-    
-
-    public static void main(String[] args){
+    public void ler(){
         MyIO myIo = new MyIO();
         Arq arq = new Arq();
-        String id = "";
         int i = 0;
         String str = "";
-
         arq.openRead("/tmp/players.csv");
-
-        while (!id.equals("FIM")){
-            arq.openRead("/tmp/players.csv");
-            id = myIo.readString();
-            i = 0;
-            if (!id.equals("FIM")){
-                while(i < Integer.parseInt(id) +1){
+        while(i < this.id + 1){
                     arq.readLine();
                     i++;
                 }
@@ -57,19 +47,35 @@ class Jogador{
                         parts[k] = "nao informado";
                     }
                 }
-                //System.out.println(str);
-                //System.out.println(parts.length);
+                arq.close();
+                setInfos(parts[1], Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), parts[4], Integer.parseInt(parts[5]), parts[6], parts[7]);
+    }
 
-                /*for (String part : parts) {
-                    System.out.print(part + " ");
-                }
-                 System.out.println("");*/
+    public void setInfos(String nome, int altura, int peso, String universidade, int anoNascimento, String cidadeNascimento, String estadoNascimento){
+        this.nome = nome;
+        this.altura = altura;
+        this.peso = peso;
+        this.universidade = universidade;
+        this.anoNascimento = anoNascimento;
+        this.cidadeNascimento = cidadeNascimento;
+        this.estadoNascimento = estadoNascimento;
+    }
 
-                Jogador jogador = new Jogador(Integer.parseInt(parts[0]), parts[1], Integer.parseInt(parts[2]), Integer.parseInt(parts[3]), parts[4], Integer.parseInt(parts[5]), parts[6], parts[7]);
+    
+
+    public static void main(String[] args){
+        MyIO myIo = new MyIO();
+        Arq arq = new Arq();
+        String id = "";
+        int i = 0;
+
+        while (!id.equals("FIM")){
+            id = myIo.readString();
+            if (!id.equals("FIM")){
+                Jogador jogador = new Jogador(Integer.parseInt(id));
+                jogador.ler();
                 jogador.imprimir();
             }
-            arq.close();
         }
-        
     }
 }
