@@ -9,12 +9,12 @@ class q09{
 
     public static void swap(int i, int j) {
         int temp = ids[i];
-        ids[i] = ids[j];
-        ids[j] = temp;
+        ids[i] = ids[j]; trocas++;
+        ids[j] = temp; trocas++;
     }
 
     public static void lerNomes(){
-        arq.openRead("players.csv");
+        arq.openRead("/tmp/players.csv");
         int i = 0;
         String temp;
         while(arq.hasNext() == true){
@@ -28,7 +28,7 @@ class q09{
     }
 
     public static void lerTamanho(){
-        arq.openRead("players.csv");
+        arq.openRead("/tmp/players.csv");
         int i = 0;
         String temp;
         arq.readLine();  // pular primeira linha
@@ -36,7 +36,7 @@ class q09{
             comp++;
             temp = arq.readLine();
             String[] parts = temp.split(",");
-            tamanhos[2] = Integer.parseInt(parts[5]);
+            tamanhos[i] = Integer.parseInt(parts[2]);
             i++;
         }
         arq.close();
@@ -57,7 +57,7 @@ class q09{
             if(a>b){
                 result = 1;
             } else if (a == b){
-                result = c.compareToIgnoreCase(d);
+                result = c.compareTo(d);
             }
         }
         return result;
@@ -69,7 +69,7 @@ class q09{
         //Alterar o vetor ignorando a posicao zero
         int[] tmp = new int[k+1];
         for(int i = 0; i < k; i++){
-            tmp[i+1] = ids[i];
+            tmp[i+1] = ids[i]; trocas++;
         }
         ids = tmp;
 
@@ -89,13 +89,14 @@ class q09{
         tmp = ids;
         ids = new int[k];
         for(int i = 0; i < k; i++){
-            ids[i] = tmp[i+1];
+            ids[i] = tmp[i+1]; trocas++;
         }
     }
 
 
     public static void construir(int tamHeap){
         for(int i = tamHeap; i > 1 && compTamanhos(ids[i], ids[i/2]) > 0; i /= 2){
+            //myIo.println("ok");
             swap(i, i/2);
         }
     }
@@ -105,7 +106,7 @@ class q09{
         int i = 1;
         while(i <= (tamHeap/2)){
             int filho = getMaiorFilho(i, tamHeap);
-            if(compTamanhos(ids[i], ids[filho]) > 0){
+            if(compTamanhos(ids[i], ids[filho]) < 0){
                 swap(i, filho);
                 i = filho;
             }else{
@@ -129,7 +130,7 @@ class q09{
     
 
     public static void ler(int num){
-        arq.openRead("players.csv");
+        arq.openRead("/tmp/players.csv");
         int i = 0;
         String str = "";
         while(i < num + 1){
@@ -180,13 +181,6 @@ class q09{
         lerTamanho();
         lerNomes();
         ordenar(i);
-
-        /*for (int k = 0; k < ids.length; k++){
-            if(ids[k]!=0){
-                myIo.println(ids[k]);
-            }
-            
-        }*/
 
         
         for (j = 0; j < i; j++){
