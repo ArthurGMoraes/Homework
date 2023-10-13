@@ -14,7 +14,7 @@ class q09{
     }
 
     public static void lerNomes(){
-        arq.openRead("/tmp/players.csv");
+        arq.openRead("players.csv");
         int i = 0;
         String temp;
         while(arq.hasNext() == true){
@@ -28,7 +28,7 @@ class q09{
     }
 
     public static void lerTamanho(){
-        arq.openRead("/tmp/players.csv");
+        arq.openRead("players.csv");
         int i = 0;
         String temp;
         arq.readLine();  // pular primeira linha
@@ -69,7 +69,7 @@ class q09{
         //Alterar o vetor ignorando a posicao zero
         int[] tmp = new int[k+1];
         for(int i = 0; i < k; i++){
-            tmp[i+1] = ids[i]; trocas++;
+            tmp[i+1] = ids[i];
         }
         ids = tmp;
 
@@ -89,7 +89,7 @@ class q09{
         tmp = ids;
         ids = new int[k];
         for(int i = 0; i < k; i++){
-            ids[i] = tmp[i+1]; trocas++;
+            ids[i] = tmp[i+1];
         }
     }
 
@@ -130,7 +130,7 @@ class q09{
     
 
     public static void ler(int num){
-        arq.openRead("/tmp/players.csv");
+        arq.openRead("players.csv");
         int i = 0;
         String str = "";
         while(i < num + 1){

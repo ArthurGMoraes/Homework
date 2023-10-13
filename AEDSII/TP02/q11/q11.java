@@ -87,7 +87,7 @@ class q11{
       for(int i = 1; i < count.length; count[i] += count[i-1], i++);
 
       //Ordenando
-      for(int i = k-1; i >= 0; ordenado[count[tamanhos[i]]-1] = tamanhos[i], ordenado2[count[tamanhos[i]]-1] = ids[i], count[tamanhos[i]]--, i--);
+      for(int i = k-1; i >= 0; ordenado[count[tamanhos[i]]-1] = tamanhos[i], ordenado2[count[tamanhos[i]]-1] = ids[i], count[tamanhos[i]]--, i--, trocas += 2);
 
       //Copiando para o array original
       for(int i = 0; i < k; tamanhos[i] = ordenado[i], ids[i] = ordenado2[i], i++);
@@ -179,6 +179,6 @@ class q11{
         
         String tempo = (fim-inicio)/1000 + "";
         String conteudo = "816479\t" + comp + "\t" + trocas + "\t" + tempo;
-        arq.openWriteClose("matrícula_heapsort.txt", conteudo);
+        arq.openWriteClose("matrícula_countingsort.txt", conteudo);
     }
 }
