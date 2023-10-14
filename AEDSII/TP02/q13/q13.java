@@ -1,8 +1,8 @@
-class q09{
+class q13{
     public static int comp = 0;
     public static int trocas = 0;
     public static int[] ids = new int[500];
-    public static int[] tamanhos = new int[4000];
+    public static String[] unis = new String[4000];
     public static String[] nomes = new String[4000];
     public static Arq arq = new Arq();
     public static MyIO myIo = new MyIO();
@@ -27,122 +27,117 @@ class q09{
         arq.close();
     }
 
-    public static void lerTamanho(){
+    public static void lerUnis(){
         arq.openRead("/tmp/players.csv");
         int i = 0;
         String temp;
-        arq.readLine();  // pular primeira linha
         while(arq.hasNext() == true){
             comp++;
             temp = arq.readLine();
             String[] parts = temp.split(",");
-            tamanhos[i] = Integer.parseInt(parts[2]);
+            unis[i] = parts[4];
+            //myIo.println(unis[i]);
             i++;
         }
         arq.close();
     }
 
-    public static int compTamanhos(int prim, int sec){
+    public static int compUnis(int prim, int sec){
+        if (prim < 0 || prim >= unis.length || sec < 0 || sec >= unis.length) {
+        return 0; // Handle out of bounds indices
+    }
         int i = 0;
         int result = -1;
-        int a = tamanhos[prim];
-        int b = tamanhos[sec];
+        String a = unis[prim + 1];
+        String b = unis[sec + 1];
         String c = nomes[prim + 1];;
         String d = nomes[sec + 1];;
 
         //myIo.println(a + " " + b);
 
-        if(a != 0 && b != 0){
-            comp++;
-            if(a>b){
-                result = 1;
-            } else if (a == b){
-                result = c.compareTo(d);
-            }
+        
+        if (a.compareTo(b) > 0){
+            result = 1;
+        } else if (a.compareTo(b) == 0){
+            //result = 0;
+            result = c.compareTo(d);
         }
+        
         return result;
     } 
 
 
 
-    public static void ordenar(int k) {
-        //Alterar o vetor ignorando a posicao zero
-        int[] tmp = new int[k+1];
-        for(int i = 0; i < k; i++){
-            tmp[i+1] = ids[i];
-        }
-        ids = tmp;
-
-        //Contrucao do heap
-        for(int tamHeap = 2; tamHeap <= k; tamHeap++){
-            construir(tamHeap);
-        }
-
-        //Ordenacao propriamente dita
-        int tamHeap = k;
-        while(tamHeap > 1){
-            swap(1, tamHeap--);
-            reconstruir(tamHeap);
-        }
-
-        //Alterar o vetor para voltar a posicao zero
-        tmp = ids;
-        ids = new int[k];
-        for(int i = 0; i < k; i++){
-            ids[i] = tmp[i+1];
-        }
+     public static void ordenar(int k) {
+        mergesort(0, k-1);
     }
 
-
-    public static void construir(int tamHeap){
-        for(int i = tamHeap; i > 1 && compTamanhos(ids[i], ids[i/2]) > 0; i /= 2){
-            //myIo.println("ok");
-            swap(i, i/2);
+    private static void mergesort(int esq, int dir) {
+        if (esq < dir){
+            int meio = (esq + dir) / 2;
+            mergesort(esq, meio);
+            mergesort(meio + 1, dir);
+            intercalar(esq, meio, dir);
         }
-    }
+   }
 
+    public static void intercalar(int esq, int meio, int dir){
+        int n1, n2, i, j, k;
 
-    public static void reconstruir(int tamHeap){
-        int i = 1;
-        while(i <= (tamHeap/2)){
-            int filho = getMaiorFilho(i, tamHeap);
-            if(compTamanhos(ids[i], ids[filho]) < 0){
-                swap(i, filho);
-                i = filho;
-            }else{
-                i = tamHeap;
+        //Definir tamanho dos dois subarrays
+        n1 = meio-esq+1;
+        n2 = dir - meio;
+
+        int[] a1 = new int[n1+2];
+        int[] a2 = new int[n2+2];
+
+        //Inicializar primeiro subarray
+        for(i = 0; i < n1; i++){
+            a1[i] = ids[esq+i];
+           //myIo.print(a1[i] + " ");
+        }
+        //myIo.println(" ");
+        //Inicializar segundo subarray
+        for(j = 0; j < n2; j++){
+            a2[j] = ids[meio+j+1];
+           //myIo.print(a2[j] + " ");
+        }
+
+        //Sentinela no final dos dois arrays
+        a1[i+1] = a2[j+1] = 0x7FFFFFFF;
+
+        //Intercalacao propriamente dita
+      for(i = j = 0, k = esq; k <= dir; k++){
+        //ids[k] = (compUnis(a1[i], a2[j]) <= 0) ? a1[i++] : a2[j++];
+        if(compUnis(a1[i], a2[j]) <= 0){
+            if(a1[i] != 0){
+                ids[k] = a1[i++];
+            }
+        } else {
+            if(a2[j] != 0 || ids){
+                ids[k] = a2[j++];
             }
         }
+      }
     }
-
-    public static int getMaiorFilho(int i, int tamHeap){
-        int filho;
-        if (2*i == tamHeap || compTamanhos(ids[2*i], ids[2*i+1]) > 0){
-            filho = 2*i;
-        } else {
-            filho = 2*i + 1;
-        }
-        return filho;
-    }
-
-    
-
     
 
     public static void ler(int num){
         arq.openRead("/tmp/players.csv");
         int i = 0;
         String str = "";
+        //myIo.println(num);
         while(i < num + 1){
             comp++;
             arq.readLine();
             i++;
         }
         str = arq.readLine();
-        //myIo.println(str + " " + num);
+        //myIo.println(str + " " + i);
         str += " ";
         String[] parts = str.split(",");
         for (int k = 0; k < parts.length; k++) {
+            //myIo.println(num + " " + parts[k]);
             if (parts[k].isEmpty() || parts[k].equals(" ")) {
                 comp++;
                 parts[k] = "nao informado";
@@ -178,8 +173,8 @@ class q09{
                 i++;
             }
         } while (!id.equalsIgnoreCase("FIM"));
-        lerTamanho();
         lerNomes();
+        lerUnis();
         ordenar(i);
 
         
@@ -195,6 +190,6 @@ class q09{
         
         String tempo = (fim-inicio)/1000 + "";
         String conteudo = "816479\t" + comp + "\t" + trocas + "\t" + tempo;
-        arq.openWriteClose("matrícula_heapsort.txt", conteudo);
+        //arq.openWriteClose("matrícula_mergesort.txt", conteudo);
     }
 }
