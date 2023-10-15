@@ -15,7 +15,7 @@ class q11{
     }
 
     public static void lerNomes(){
-        arq.openRead("players.csv");
+        arq.openRead("/tmp/players.csv");
         int i = 0;
         String temp;
         while(arq.hasNext() == true){
@@ -29,7 +29,7 @@ class q11{
     }
 
     public static void lerTamanho(){
-        arq.openRead("players.csv");
+        arq.openRead("/tmp/players.csv");
         int i = 0;
         String temp;
         arq.readLine();  // pular primeira linha
@@ -109,7 +109,7 @@ class q11{
     
 
     public static void ler(int num){
-        arq.openRead("players.csv");
+        arq.openRead("/tmp/players.csv");
         int i = 0;
         String str = "";
         while(i < num + 1){

@@ -43,7 +43,7 @@ class q13{
     }
 
     public static int compUnis(int prim, int sec){
-        if (prim < 0 || prim >= unis.length || sec < 0 || sec >= unis.length) {
+        if (prim >= unis.length ||sec >= unis.length) {
         return 0; // Handle out of bounds indices
     }
         int i = 0;
@@ -78,6 +78,7 @@ class q13{
             mergesort(esq, meio);
             mergesort(meio + 1, dir);
             intercalar(esq, meio, dir);
+            //MyIO.println(" ");
         }
    }
 
@@ -88,37 +89,51 @@ class q13{
         n1 = meio-esq+1;
         n2 = dir - meio;
 
-        int[] a1 = new int[n1+2];
-        int[] a2 = new int[n2+2];
+        int[] a1 = new int[n1+1];
+        int[] a2 = new int[n2+1];
 
         //Inicializar primeiro subarray
         for(i = 0; i < n1; i++){
             a1[i] = ids[esq+i];
-           //myIo.print(a1[i] + " ");
+            //MyIO.print(a1[i] + " ");
         }
-        //myIo.println(" ");
-        //Inicializar segundo subarray
+        //MyIO.println(" ");
+        //Inicializar segundo subids
         for(j = 0; j < n2; j++){
             a2[j] = ids[meio+j+1];
-           //myIo.print(a2[j] + " ");
+            //MyIO.print(a2[j] + " ");
         }
 
-        //Sentinela no final dos dois arrays
-        a1[i+1] = a2[j+1] = 0x7FFFFFFF;
+         //MyIO.println(" ");
+
+        //Sentinela no final dos dois idss
+        a1[i] = a2[j] = 0x7FFFFFFF;
+
+        int teste1 = i;
+        int teste2 = j;
 
         //Intercalacao propriamente dita
-      for(i = j = 0, k = esq; k <= dir; k++){
-        //ids[k] = (compUnis(a1[i], a2[j]) <= 0) ? a1[i++] : a2[j++];
-        if(compUnis(a1[i], a2[j]) <= 0){
-            if(a1[i] != 0){
-                ids[k] = a1[i++];
+        for(i = j = 0, k = esq; k <= dir; k++){
+            //MyIO.println(a1[i] + " " + a2[j] + " "+  i+ " " + j);
+            //ids[k] = (compUnis(a1[i], a2[j]) <= 0) ? a1[i++] : a2[j++];
+            //ids[k] = (a1[i] < a2[j])? a1[i++] : a2[j++];
+
+            if (compUnis(a1[i], a2[j]) <= 0){
+                if (i < teste1){
+                    ids[k] = a1[i];
+                    i++;
+                }
+            } else{
+                if (j < teste2){
+                    ids[k] = a2[j];
+                    j++;
+                }
             }
-        } else {
-            if(a2[j] != 0 || ids){
-                ids[k] = a2[j++];
+
+            if (i == teste1 && j == teste2){
+                k = dir+1;
             }
         }
-      }
     }
     
 
@@ -177,10 +192,14 @@ class q13{
         lerUnis();
         ordenar(i);
 
+        /*for (j = 0; j < i; j++){
+            MyIO.println(ids[j]);
+        }*/
+
         
         for (j = 0; j < i; j++){
             teste = ids[j];
-            if(teste != 0){    // array preenchido com 0s
+            if(teste != 0 && teste <= 3921){    // array preenchido com 0s
               ler(teste);
               comp++;
             }
