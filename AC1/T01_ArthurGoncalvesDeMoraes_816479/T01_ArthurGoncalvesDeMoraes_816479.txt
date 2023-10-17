@@ -1,0 +1,162 @@
+PONTIFÍCIA UNIVERSIDADE CATÓLICA DE MINAS GERAIS
+Instituto de Ciências Exatas e de Informática
+
+Resumo dos Dispositivos Lógicos Programáveis: Definições e Diferenciações∗
+Summary of Programmable Logic Devices: Definitions and Differentiations
+Arthur Gonçalves de Moraes1
+
+Resumo
+Este artigo oferece um resumo dos principais dispositivos lógicos programáveis (PLDs) e
+suas distinções. Começando pela definição e caracterização de ASIC, ASSP, SPLD, CPLD,
+SoC e FPGA, o artigo proporciona uma visão das categorias de dispositivos. Além disso,
+destaca as diferenças entre PROM, PLA e PAL, esclarecendo seus usos e características. O
+artigo também apresenta as diferenças entre CPLDs e FPGAs, analisando suas arquiteturas
+e aplicações únicas, bem como suas limitações.
+Palavras-chave: Dispositivos. PLDs.
+
+∗Artigo apresentado como exercício da disciplina "Arquitetura de Computadores"da Pontifícia Universidade Cató-
+lica de Minas Gerais.
+1Aluno do Programa de Graduação em Ciência da Computação, Brasil – agmoraes@sga.pucminas.br.
+
+
+Abstract
+This article offers a summary of the main programmable logic devices (PLDs) and their dis-
+tinctions. Starting with the definition and characterization of ASIC, ASSP, SPLD, CPLD,
+SoC and FPGA, the article provides a overview of the device categories. Furthermore, it
+highlights the differences between PROM, PLA and PAL, clarifying their uses and charac-
+teristics. The article also presents the differences between CPLDs and FPGAs, analyzing
+their unique architectures and applications, as well as their limitations.
+Keywords: Devices. PLDs.
+
+
+1 INTRODUÇÃO
+PLDs, ou Dispositivos Lógicos Programáveis, são componentes eletrônicos essenciais
+no domínio da eletrônica digital. Eles desempenham um papel fundamental na criação de cir-
+cuitos digitais sob medida, possibilitando que engenheiros e projetistas configurem a funciona-
+lidade lógica de forma personalizada. Sua notável versatilidade e capacidade de reprograma-
+ção os tornam um componente valioso em diversas aplicações, abrangendo desde sistemas de
+controle industrial até eletrônica de consumo, desempenhando um papel crucial na inovação e
+flexibilidade do projeto eletrônico
+
+
+2 DEFINIÇÃO E CARACTERIZAÇÃO
+Será abordado nessa seção as caracteristicas de diferentes dispositivos lógicos, de acordo
+com (CODÁ, ), (FREITAS et al., 2005), (OLIVEIRA et al., ).
+
+2.1 ASIC (Application-Specific Integrated Circuit)
+Um ASIC é um circuito integrado projetado para realizar uma função específica ou um
+conjunto de funções customizadas para uma aplicação particular. ASICs são altamente especi-
+alizados e otimizados para desempenhar uma tarefa específica, resultando em alto desempenho
+e eficiência. Eles são frequentemente usados em aplicações que exigem alta velocidade e efici-
+ência energética, como eletrônicos de consumo, telecomunicações e indústria automobilística.
+
+2.2 ASSP (Application-Specific Standard Product)
+Um ASSP é um circuito integrado pré-fabricado projetado para executar uma função es-
+pecífica, mas não tão altamente personalizado quanto um ASIC. Os ASSPs são usados quando
+uma funcionalidade específica é necessária em uma variedade de produtos, mas sem a neces-
+sidade de personalização extrema. Eles são uma opção intermediária entre ASICs e circuitos
+integrados padrão.
+
+2.3 SPLD (Simple Programmable Logic Device)
+SPLD refere-se a dispositivos lógicos programáveis simples, como PAL (Programmable
+Array Logic) e GAL (Generic Array Logic), que podem ser programados para realizar funções
+lógicas específicas. SPLDs são utilizados quando uma função lógica específica precisa ser
+implementada, mas não justifica o uso de um dispositivo mais complexo, como um CPLD ou
+FPGA. Eles são frequentemente usados em sistemas embarcados e eletrônicos de consumo.
+
+2.4 CPLD (Complex Programmable Logic Device)
+Um CPLD é um dispositivo lógico programável mais complexo que contém várias ma-
+trizes lógicas e flip-flops, permitindo implementar funções lógicas mais elaboradas. CPLDs são
+usados para implementar funções lógicas complexas, como controle de dispositivos, roteamento
+de sinais e outras tarefas que requerem flexibilidade, mas não a complexidade de um FPGA.
+
+2.5 SOC (System-on-a-Chip)
+Um SOC é um circuito integrado que integra vários componentes de um sistema com-
+pleto em um único chip, como processadores, memória, controladores de periféricos e muito
+mais. SOCs são comuns em dispositivos eletrônicos modernos, como smartphones, tablets e sis-
+temas embarcados. Eles oferecem uma integração significativa, economia de espaço e energia,
+mas são projetados para aplicações específicas.
+
+2.6 FPGA (Field-Programmable Gate Array)
+Um FPGA é um dispositivo lógico programável que permite a reconfiguração de circui-
+tos lógicos após a fabricação. Os usuários podem programar a lógica do FPGA para executar
+funções específicas. FPGAs são altamente flexíveis e são usados em prototipagem rápida, de-
+senvolvimento de hardware personalizado, processamento de sinal e aplicações onde a capaci-
+dade de reconfiguração é valiosa.
+
+
+3 DIFERENCIAÇÃO DE DISPOSTIVOS
+Quadro 1 - Diferenças entre PROM, PLA e PAL
+________________________________________________________________________________________________________
+| Diferenças entre PROM, PLA e PAL                                                                     |
+|---------|--------------------------------------------------------------------------------------------|
+|  PROM   |  "Programmable Read-Only Memory"(Memória somente de leitura programável). É um tipo        |	
+|         |  de memória que pode ser programada uma vez e usada para armazenar dados ou instruções     |
+|         |  que não podem ser alteradas posteriormente. Geralmente usado em eletrônica e computadores |
+|         |  para armazenar informações permanentes.                                                   |
+|---------|--------------------------------------------------------------------------------------------|
+|  PLA    |  "Programmable Logic Array" (Matriz lógica programável). É um dispositivo eletrônico que   |	
+|         |  permite a configuração de portas lógicas e flip-flops programáveis para realizar funções  |
+|         |  lógicas personalizadas. É frequentemente usado em projetos de circuitos digitais.         |                                                        
+|---------|--------------------------------------------------------------------------------------------|
+|  PAL    |  "Programmable Array Logic" (Lógica de matriz programável). Similar a um PLA, é um disposi-|	
+|         |  tivo lógico programável que permite a criação de funções lógicas personalizadas, mas      |
+|         |  geralmente tem uma estrutura mais simples do que um PLA. Também é usado em projetos de    |
+|         |  circuitos digitais.                                                                       |
+|_________|____________________________________________________________________________________________|
+
+Quadro 2 - Diferenças entre CPLD e FPGA
+_________________________________________________________________________________
+| Característica |            CPLD             |             FPGA               |
+|----------------|-----------------------------|--------------------------------|
+|  Significado   | Dispositivo lógico complexo | Field Programmable Gate Array	|
+|                | programável     	       |                                |
+|----------------|--------------------------------------------------------------|
+|  Complexidade  | Baixa a média               | Alta	                        |
+|                |        	               |                                |
+|----------------|--------------------------------------------------------------|
+|  Capacidade de | Menos lógica                | Mais lógica	                |
+|  Lógica        |           	               |                                |
+|----------------|--------------------------------------------------------------|
+| Recursos de E/S| Limitados                   | Abundates	                |
+|                |                     	       |                                |
+|----------------|--------------------------------------------------------------|
+|  Arquitetura   | Baseado em macrocélulas     | Baseado em blocos lógicos	|
+|                |                   	       |                                |
+|----------------|--------------------------------------------------------------|
+|  Flexibilidade | Menos flexível              | Mais flexível          	|
+|                |                     	       |                                |
+|----------------|--------------------------------------------------------------|
+|  Desempenho    | Menos potente 	       | Mais potente	                |
+|                |              	       |                                |
+|----------------|--------------------------------------------------------------|
+|  Consumo de    | Baixo                       |Variável, muitas vezes mais alto|
+|  Energia       | 		     	       |                                |
+|----------------|--------------------------------------------------------------|
+|Aplicação típica| Aplicações simples a médias | Aplicações complexas e de alto |
+|                |		   	       | desempenho                     |
+|----------------|--------------------------------------------------------------|
+|  Configuração  | Geralmente uma única        | Pode ser reconfigurado 	|
+|                | configuração    	       | dinamicamente                  |
+|----------------|--------------------------------------------------------------|
+|  Custo         | Geralmente mais barato      | Geralmente mais caro		|
+|                | 		     	       |                                |
+|----------------|--------------------------------------------------------------|
+|  Tempo de      | Mais rápido		       | Mais demorado			|
+| Desenvolvimento| 		   	       |                                |
+|----------------|--------------------------------------------------------------|
+|Tamanho físico  | Menor		       | Geralmente maior 		|
+|                | 		   	       |                                |
+|_______________________________________________________________________________|
+
+REFERÊNCIAS
+CODÁ, Luiza Maria Romeiro. Dispositivos lógicos programáveis. EESC - USP.
+
+FREITAS, Tiago Tobias; PASQUALINOTO, Thiago Luiz; LEÂO, Juliano Carlos. O cpld (dis-
+positivo complexo de lógica programação aplicado em automação industrial. INOVASENAI,
+2005.
+
+OLIVEIRA, Caio Augusto de; AGUIAR, Jéssica Azevedo de; FONTANINI, Mateus Gal-
+vão Said. Dispositivos lógicos programáveis. UNESP.
+
+
