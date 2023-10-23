@@ -66,6 +66,6 @@ class q03{
         
         String tempo = (fim-inicio)/1000 + "\t";
         String conteudo = "816479\t" + tempo + comp;
-        arq.openWriteClose("matrícula_sequencial.txt", conteudo);
+        arq.openWriteClose("816479_sequencial.txt", conteudo);
     }
 }

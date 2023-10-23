@@ -128,6 +128,6 @@ class q05{
         
         String tempo = (fim-inicio)/1000 + "";
         String conteudo = "816479\t" + comp + "\t" + trocas + "\t" + tempo;
-        arq.openWriteClose("matrícula_selecao.txt", conteudo);
+        arq.openWriteClose("816479_selecao.txt", conteudo);
     }
 }

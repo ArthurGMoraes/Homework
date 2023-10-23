@@ -96,10 +96,12 @@ class q11{
 	public static int getMaior(int k) {
 	   int maior = tamanhos[0];
        int j = 0;
+       int p = 0;
 
 		for (int i = 0; i < k; i++) {
-         if(maior < tamanhos[i]){
+         if(compTamanhos(maior, tamanhos[i], p, i) < 0){
             maior = tamanhos[i];
+            p = i;
          }
 		}
 	   return maior;	
@@ -179,6 +181,6 @@ class q11{
         
         String tempo = (fim-inicio)/1000 + "";
         String conteudo = "816479\t" + comp + "\t" + trocas + "\t" + tempo;
-        arq.openWriteClose("matrícula_countingsort.txt", conteudo);
+        arq.openWriteClose("816479_countingsort.txt", conteudo);
     }
 }

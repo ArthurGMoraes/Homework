@@ -1,6 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+int comp = 0;
+int mov = 0;
 
 int compNome(int id1, int id2)
 {
@@ -92,15 +96,18 @@ void ordenar(int *array, int n, int i)
 {
     if (i < (n - 1))
     {
+        comp++;
         int menor = i;
         for (int j = (i + 1); j < n; j++)
         {
+            comp++;
             if (compNome(array[menor], array[j]) > 0)
             {
+                comp++;
                 menor = j;
             }
         }
-        swap(&array[menor], &array[i]);
+        swap(&array[menor], &array[i]); mov++;
         i++;
         ordenar(array, n, i);
     }
@@ -109,6 +116,7 @@ void ordenar(int *array, int n, int i)
 
 void imprimir(int *ids, int k)
 {
+    char *tmp = malloc(10);
     char *str = malloc(120);
     for (int i = 0; i < k; i++)
     {
@@ -133,17 +141,15 @@ void imprimir(int *ids, int k)
         while (j < 8)
         {
             //printf("%s\n", info);
-            if (info == NULL || info == "")
+            if (info == NULL || info == "" || info == " ")
             {
                 info = "nao informado";
             }
-            //printf("%s\n", info);
+            //printf("%s %d\n", info, j);
 
             if (j == 0){
                 printf("[%s ## ", info);
-            }
-
-            if (j == 1)
+            } else if (j == 1)
             {
                 printf("%s ## ", info);
             }
@@ -157,11 +163,17 @@ void imprimir(int *ids, int k)
             }
             else if (j == 4)
             {
-                printf("%s ## ", info);
-            }
-            else if (j == 5)
-            {
-                printf("%s ## ", info);
+                tmp = info;
+                info =  strtok(NULL, ",");
+                if (info == NULL || info =="")
+                {
+                    info = "nao informado";
+                    printf("%s ## %s ## ", tmp, info );
+                } else {
+                    printf("%s ## %s ## ", info, tmp );
+                }
+                
+                j++;
             }
             else if (j == 6)
             {
@@ -189,6 +201,8 @@ int main(void)
     int lastId = -1;
     int id = 0;
     int i = 0;
+    clock_t inicio, fim;
+    double total;
 
     while (id != lastId)
     {
@@ -202,7 +216,7 @@ int main(void)
     }
 
     // printf("antes");
-
+    inicio = clock();
     ordenar(ids, i, 0);
 
     //printf("teste");
@@ -212,4 +226,9 @@ int main(void)
     }*/
 
     imprimir(ids, i);
+    fim = clock();
+    FILE* arq = fopen("816479_selecaoRecursiva.txt", "w");
+    total = ((fim - inicio) / (double)CLOCKS_PER_SEC);    
+    fprintf(arq, "816479\t%d\t%d\t%lf", comp, mov, total);
+    fclose(arq);
 }

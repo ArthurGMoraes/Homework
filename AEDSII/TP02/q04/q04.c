@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
+
+int comp = 0;
 
 int compNome(int id1, int id2){
     //printf("comp");
@@ -102,9 +105,9 @@ int compNome2(int id1, char* nome){
 
 
         if(strcmp(teste1, nome) > 0){
-            result = 1;
+            result = 1; comp++;
         } else if (strcmp(teste1, nome) == 0){
-            result = 0;
+            result = 0; comp++;
         }
 
         //printf("%s %s\n", teste1, nome);
@@ -120,10 +123,10 @@ void swap(int *i, int *j) {
 
 void ordenar(int *array, int n){
     for (int i = 0; i < (n - 1); i++) {
-      int menor = i;
+      int menor = i; comp++;
       for (int j = (i + 1); j < n; j++){
          if (compNome(array[menor], array[j]) > 0){
-            menor = j;
+            menor = j; 
          }
       }
       swap(&array[menor], &array[i]);
@@ -164,6 +167,8 @@ int main (void){
     int lastId = -1;
     int i = 0;
     int j = 0;
+    clock_t inicio, fim;
+    double total;
 
    while (id != lastId){
         lastId = id;
@@ -174,6 +179,7 @@ int main (void){
         }
     }
 
+    inicio = clock();
    ordenar(ids, i);
 
    /*for(j = 0; j < i; j++){
@@ -200,4 +206,10 @@ int main (void){
             printf("%s", resp);
         }
     } while (strcmp(nome, "FIM\0")!=0); 
+    fim = clock();
+    FILE* arq = fopen("816479_binaria.txt", "w");
+    total = ((fim - inicio) / (double)CLOCKS_PER_SEC);    
+    fprintf(arq, "816479\t%lf\t%d", total, comp);
+    fclose(arq);
+    
 }

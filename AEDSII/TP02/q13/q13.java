@@ -62,6 +62,18 @@ class q13{
             //result = 0;
             result = c.compareTo(d);
         }
+
+        if(unis[prim + 1].isEmpty() || unis[prim + 1].equals(" ")){
+            result = 1;
+        }
+
+        if(unis[sec + 1].isEmpty() || unis[sec + 1].equals(" ")){
+            result = 0;
+        }
+
+        if((unis[sec + 1].isEmpty() || unis[sec + 1].equals(" ")) && (unis[prim + 1].isEmpty() || unis[prim + 1].equals(" "))){
+            result = c.compareTo(d);
+        }
         
         return result;
     } 
@@ -94,13 +106,13 @@ class q13{
 
         //Inicializar primeiro subarray
         for(i = 0; i < n1; i++){
-            a1[i] = ids[esq+i];
+            a1[i] = ids[esq+i]; comp++;
             //MyIO.print(a1[i] + " ");
         }
         //MyIO.println(" ");
         //Inicializar segundo subids
         for(j = 0; j < n2; j++){
-            a2[j] = ids[meio+j+1];
+            a2[j] = ids[meio+j+1]; comp++;
             //MyIO.print(a2[j] + " ");
         }
 
@@ -119,19 +131,20 @@ class q13{
             //ids[k] = (a1[i] < a2[j])? a1[i++] : a2[j++];
 
             if (compUnis(a1[i], a2[j]) <= 0){
+                comp++;
                 if (i < teste1){
-                    ids[k] = a1[i];
+                    ids[k] = a1[i]; comp++; trocas++;
                     i++;
                 }
             } else{
                 if (j < teste2){
-                    ids[k] = a2[j];
+                    ids[k] = a2[j]; comp++; trocas++;
                     j++;
                 }
             }
 
             if (i == teste1 && j == teste2){
-                k = dir+1;
+                k = dir+1; comp++;
             }
         }
     }
@@ -209,6 +222,6 @@ class q13{
         
         String tempo = (fim-inicio)/1000 + "";
         String conteudo = "816479\t" + comp + "\t" + trocas + "\t" + tempo;
-        //arq.openWriteClose("matrícula_mergesort.txt", conteudo);
+        arq.openWriteClose("816479_mergesort.txt", conteudo);
     }
 }
