@@ -61,6 +61,7 @@ class q06{
             this.anoNascimento = anoNascimento;
             this.cidadeNascimento = cidadeNascimento;
             this.estadoNascimento = estadoNascimento;
+            prox = null;
         }
     }
 
