@@ -22,17 +22,6 @@ Jogador* newJogador(int ids){
     return c;
 }
 
-typedef struct Lista{
-    struct Jogador* inicio;
-    struct Jogador* fim;
-} Lista;
-
-Lista* newLista(){
-    Lista *c = (Lista*) malloc(sizeof(Lista));
-    c -> inicio = NULL;
-    return c;
-}
-
 void ler(Jogador *c){
     FILE *arq = fopen("players.csv", "r");
     char *str = malloc(120);
@@ -53,11 +42,11 @@ void ler(Jogador *c){
    
     while (j < 8)
     {
-        printf("%s\n", info);
+        //printf("%s\n", info);
         if (info == NULL || info == ""){
             info = "nao informado";
         }
-        printf("%s\n", info);
+        //printf("%s\n", info);
 
         if(j == 1){
             c -> nome = info;
@@ -79,10 +68,6 @@ void ler(Jogador *c){
         info = strtok(NULL, ",");
         j++;
     }
-               
-    //printf("%s", str);
-
-
 
     fclose(arq);
 }
@@ -92,11 +77,48 @@ void imprimir(Jogador *c){
 }
 
 
+typedef struct Lista{
+    struct Jogador* inicio;
+    struct Jogador* fim;
+    int n;
+} Lista;
+
+Lista* newLista(){
+    Lista *l = (Lista*) malloc(sizeof(Lista));
+    l -> inicio = NULL;
+    l -> fim = NULL;
+    return l;
+}
+
+void inserirInicio (Jogador *c, Lista *l){
+    if (l -> inicio == NULL){
+        l -> inicio = l-> fim = c;
+        l -> n = l -> n + 1;
+    } else {
+        c -> prox = l -> inicio;
+        l -> inicio = c;
+         l -> n = l -> n + 1;
+    }
+}
+
+void inserirFim (Jogador *c, Lista *l){
+    if (l -> inicio == NULL){
+        l -> inicio = l-> fim = c;
+        l -> n = l -> n + 1;
+    } else {
+        l -> fim -> prox = c;
+        l -> fim = c;
+        l -> n = l -> n + 1;
+    }
+}
+
+
 
 int main (void){
     int id = 0;
     int lastId = -1;
     int i = 0;
+    Lista *l = newLista();
 
    while (id != lastId){
         lastId = id;
@@ -105,7 +127,10 @@ int main (void){
             //printf("%d\n", id);
             Jogador *jogador = newJogador(id);
             ler(jogador);
-            imprimir(jogador);
+            inserirFim(jogador, l);
         }
+    }
+    for (Jogador *i = l -> inicio; i != NULL; i = i -> prox){
+        imprimir(i);
     }
 }

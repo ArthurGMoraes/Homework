@@ -36,7 +36,7 @@ class q06{
             Arq arq = new Arq();
             int i = 0;
             String str = "";
-            arq.openRead("/tmp/players.csv");
+            arq.openRead("players.csv");
             while(i < this.id + 1){
                 arq.readLine();
                 i++;
@@ -105,6 +105,7 @@ class q06{
     public static void main(String[] args){
         MyIO myIo = new MyIO();
         Arq arq = new Arq();
+        Scanner sc = new Scanner(System.in);
         String id = "";
         String action = "";
         int i = 0;
@@ -124,10 +125,15 @@ class q06{
         
         quant = myIo.readInt();
         for(i = 0; i < quant; i++){
-            //lista.imprimir();
+           
             Jogador jogador = null;
+            
             action = myIo.readString();
-            //myIo.println(action);
+            
+           // myIo.println(action);
+            
+            //pilha.imprimir();
+            
             if (action.equals("I")){
                 id2 = myIo.readInt();
                 jogador = new Jogador(id2);
