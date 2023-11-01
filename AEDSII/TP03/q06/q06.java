@@ -36,7 +36,7 @@ class q06{
             Arq arq = new Arq();
             int i = 0;
             String str = "";
-            arq.openRead("players.csv");
+            arq.openRead("/tmp/players.csv");
             while(i < this.id + 1){
                 arq.readLine();
                 i++;
