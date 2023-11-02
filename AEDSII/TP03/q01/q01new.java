@@ -1,6 +1,6 @@
 import java.util.*;
 
-class q01{
+class q01new{
     public static class Jogador{
         private int id;
         private String nome;
@@ -10,7 +10,6 @@ class q01{
         private int anoNascimento;
         private String cidadeNascimento;
         private String estadoNascimento;
-        private Jogador prox;
 
         public Jogador (int id){
             this.id = id;
@@ -36,7 +35,7 @@ class q01{
             Arq arq = new Arq();
             int i = 0;
             String str = "";
-            arq.openRead("players.csv");
+            arq.openRead("/tmp/players.csv");
             while(i < this.id + 1){
                 arq.readLine();
                 i++;
@@ -64,99 +63,73 @@ class q01{
         }
     }
 
-    public static class Lista{
-        private Jogador inicio;
-        private int n;
+    public static Jogador[] l = new Jogador[250];
+    public static int n = 0;
 
-        public Lista(){
-            inicio = null;
-            n = 0;
-        }
-
-        public void inserirInicio(Jogador jogador){
-            if (inicio == null){
-                inicio = jogador;
-                n++;
-            } else {
-                jogador.prox = inicio;
-                inicio = jogador;
-                n++;
-            }
-        }
-
-        public void inserir(Jogador jogador, int posicao){
-            Jogador j = inicio;
-            if(inicio == null){
-                inicio = jogador;
-                n++;
-            } else if (posicao <= n){
-                for (int i = 0; i < posicao-1; i++){
-                    j = j.prox;
+        public static void inserirInicio(Jogador c){
+            if (n < 250){
+                for (int i = n; i > 0; i--) {
+                        l[i] = l[i - 1];
                 }
-                Jogador tmp = j.prox;
-                //System.out.println(tmp.nome);
-                jogador.prox = tmp;
-                j.prox = jogador;
+                l[0] = c;
                 n++;
             }
         }
 
-        public void inserirFim(Jogador jogador){
-            if(inicio == null){
-                inicio = jogador;
-                n++;
-            } else {
-                Jogador i;
-                for (i = inicio; i.prox != null; i = i.prox);
-                i.prox = jogador;
-                n++;
-            }
-        }
-
-        public Jogador removerInicio(){
-            Jogador removido = null;
-            if (inicio != null){
-                removido = inicio;
-                inicio = inicio.prox;
-                n--;
-            }
-            return removido;
-        }
-
-        public Jogador remover(int pos){
-            Jogador removido = null;
-            Jogador j = inicio;
-            if (inicio != null){
-                for (int i = 0; i < pos - 1; i++){
-                    j = j.prox;
+        public static void inserir(Jogador c, int pos){
+            if (n < 250 && pos >= 0 && pos <= n){
+                for (int i = n; i > pos; i--){
+                    l[i] = l[i - 1];
                 }
-                Jogador tmp = j.prox.prox;
-                removido = j.prox;
-                j.prox = tmp;
-                n--;
+                l[pos] = c;
+                n++;
             }
-            return removido;
         }
 
-        public Jogador removerFim(){
-            Jogador removido = null;
-            Jogador i;
-            if (inicio != null){
-                for (i = inicio; i.prox.prox != null; i = i.prox);
-                removido = i.prox;
-                i.prox = null;
-                n--;
+        public static void inserirFim(Jogador c){
+            if (n < 250){
+                l[n] = c;
+                n++;
             }
-            return removido;
         }
 
-        public void imprimir(){
-            int j = 0;
-            for(Jogador i = inicio; i != null; i = i.prox, j++){
-                System.out.println("[" + j + "]" + " ## " + i.nome + " ## " + i.altura + " ## " + i.peso + " ## " + i.anoNascimento + " ## " + i.universidade + " ## " + i.cidadeNascimento + " ## " + i.estadoNascimento.trim() + " ##");
+        public static Jogador removerInicio(){
+            Jogador resp = null;
+            if (n != 0){
+                resp = l[0];
+                n--;
+                for(int i = 0; i < n; i++){
+                    l[i] = l[i+1];
+                }
+            }
+            return resp;
+        }
+
+        public static Jogador remover(int pos){
+            Jogador resp = null;
+            if (n != 0 && pos >= 0 && pos < 250){
+                resp = l[pos];
+                n--;
+                for(int i = pos; i < n; i++){
+                    l[i] = l[i+1];
+                }
+            }
+            return resp;
+        }
+
+        public static Jogador removerFim(){
+            if (n != 0){
+                return l[--n];
+            }
+            return null;
+        }
+
+        public static void imprimir(){
+            for(int i = 0; i < n; i++){
+                System.out.println("[" + i + "]" + " ## " + l[i].nome + " ## " + l[i].altura + " ## " + l[i].peso + " ## " + l[i].anoNascimento + " ## " + l[i].universidade + " ## " + l[i].cidadeNascimento + " ## " + l[i].estadoNascimento.trim() + " ##");
             }
         }
-    }
+    
 
     
 
@@ -169,14 +142,14 @@ class q01{
         int id2 = 0;
         int quant = 0;
         int pos = 0;
-        Lista lista = new Lista();
+    
 
         while (!id.equals("FIM")){
             id = myIo.readString();
             if (!id.equals("FIM")){
                 Jogador jogador = new Jogador(Integer.parseInt(id));
                 jogador.ler();
-                lista.inserirFim(jogador);
+                inserirFim(jogador);
             }
         }
         
@@ -197,20 +170,20 @@ class q01{
                 jogador.ler();
             }
             if(action.equals("II")){
-                lista.inserirInicio(jogador);
+                inserirInicio(jogador);
             } else if(action.equals("I*")){
-                lista.inserir(jogador, pos);
+                inserir(jogador, pos);
             } else if (action.equals("IF")){
-                lista.inserirFim(jogador);
+                inserirFim(jogador);
             } else if (action.equals("RI")){
-                myIo.println("(R) "+lista.removerInicio().nome);
+                myIo.println("(R) "+removerInicio().nome);
             } else if (action.equals("R*")){
                 pos = myIo.readInt();
-                myIo.println("(R) "+lista.remover(pos).nome);
+                myIo.println("(R) "+remover(pos).nome);
             } else if (action.equals("RF")){
-                myIo.println("(R) "+lista.removerFim().nome);
+                myIo.println("(R) "+removerFim().nome);
             }
         }
-        lista.imprimir();
+        imprimir();
     }
 }
