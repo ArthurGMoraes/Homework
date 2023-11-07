@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#define MAX    250
+#define MAX    5
 
 
 typedef struct Jogador
@@ -92,62 +92,10 @@ void ler(Jogador *c)
     fclose(arq);
 }
 
-int media()
-{
-    for (int i = 0; i < n; i++){
-        
-    }
-}
+
 
 Jogador *l[MAX];
 int n = 0;
-
-void inserirInicio(Jogador *c)
-{
-    int i;
-    if (n >= MAX)
-    {
-        exit(1);
-    }
-
-    for (i = n; i > 0; i--)
-    {
-        l[i] = l[i - 1];
-    }
-
-    l[0] = c;
-    n++;
-}
-
-void inserir(Jogador *c, int pos)
-{
-    int i;
-
-    if (n >= MAX || pos < 0 || pos > n)
-    {
-        exit(1);
-    }
-
-    for (i = n; i > pos; i--)
-    {
-        l[i] = l[i - 1];
-    }
-
-    l[pos] = c;
-    n++;
-}
-
-void inserirFim(Jogador *c)
-{
-
-    if (n >= MAX)
-    {
-        exit(1);
-    }
-
-    l[n] = c;
-    n++;
-}
 
 Jogador *removerInicio()
 {
@@ -169,33 +117,45 @@ Jogador *removerInicio()
    return resp;
 }
 
-Jogador *removerFim()
-{
-    if (n == 0) {
-      exit(1);
-   }
-
-   return l[--n];
+void printMedia(){
+    double media = 0;
+    if (n > 0){
+        //printf("entrou\n");
+        for(int i = 0; i < n; i++){
+            //printf("%d\n", l[i]->altura);
+            media = media + l[i]->altura;
+        } 
+        media = media/n; 
+        if ((media - (int) media) >= 0.5){
+            media = (double)((int) media + 1);
+        }   
+    }
+    printf("%d\n", (int)media);
 }
 
-Jogador *remover(int pos)
+void inserirFim(Jogador *c)
 {
-    int i;
-    Jogador* resp;
 
-   if (n == 0 || pos < 0 || pos >= n) {
-      exit(1);
-   }
+    if (n >= MAX)
+    {
+        removerInicio();
+    }
 
-   resp = l[pos];
-   n--;
-
-   for(i = pos; i < n; i++){
-      l[i] = l[i+1];
-   }
-
-   return resp;
+    l[n] = c;
+    n++;
+    printMedia();
 }
+
+void imprimir(Jogador *c, int i)
+{
+    printf("[%d] ## %s ## %d ## %d ## %d ## %s ## %s ## %s ##\n", i, c->nome,
+           c->altura, c->peso, c->anoNascimento, c->universidade,
+           c->cidadeNascimento, c->estadoNascimento);
+}
+
+
+
+
 
 int main(void)
 {
@@ -226,29 +186,13 @@ int main(void)
       for (i = 0; i < quant; i++) {
         scanf("%s", action);
         //printf("%s\n", action);
-        if (strcmp("II", action) == 0) {
-          scanf("%d", &id);
-          Jogador *j = newJogador(id);
-          ler(j);
-          inserirInicio(j);
-        } else if (strcmp("I*", action) == 0) {
-          scanf("%d", &pos);
-          scanf("%d", &id);
-          Jogador *j = newJogador(id);
-          ler(j);
-          inserir(j,pos);
-        } else if (strcmp("IF", action) == 0) {
+        if (strcmp("I", action) == 0) {
           scanf("%d", &id);
           Jogador *j = newJogador(id);
           ler(j);
           inserirFim(j);
-        } else if (strcmp("RI", action) == 0) {
+        } else if (strcmp("R", action) == 0) {
           printf("(R) %s\n", removerInicio()->nome);
-        } else if (strcmp("RF", action) == 0) {
-          printf("(R) %s\n", removerFim()->nome);
-        }else if (strcmp("R*", action) == 0) {
-          scanf("%d", &pos);
-          printf("(R) %s\n", remover(pos)->nome);
         }
       }
     }
@@ -257,4 +201,5 @@ int main(void)
     {
         imprimir(l[i], i);
     }
+    
 }
