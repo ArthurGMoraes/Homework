@@ -40,9 +40,8 @@ class q02{
 
         for(int i = 0; i < quantidade; i++){
            teste = sc.readLine();
-           array = teste.split(teste, 50); // nao consegui pensar em uma formade saparar as strings da linha, alem disso acho que o a ordenacao funciona
+           array = teste.split(" "); // nao consegui pensar em uma formade saparar as strings da linha, alem disso acho que o a ordenacao funciona
            ordenar(array);
         }
-        
     }
 }
