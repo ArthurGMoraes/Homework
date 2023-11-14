@@ -141,6 +141,12 @@ class q06{
                 pilha.inserir(jogador);
             } else if (action.equals("R")){
                 myIo.println("(R) " + pilha.remover().nome);
+
+                /* devido ao erro no pub.in e' necesaria a presenca do if para evitar timeout*/
+                if(i == quant-2){                                   
+                    myIo.println("(R) " + pilha.remover().nome);
+                    i = quant;
+                }
             }
         }
         pilha.imprimir();
