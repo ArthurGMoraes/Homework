@@ -1,13 +1,28 @@
 import java.util.*;
 
-class q01{
+class q02{
     public static int comp = 0;
+
     public static class No{
-        private String nome;
+        private int altura;
         private No dir;
         private No esq;
+        private No2 topo;
 
-        public No(String nome){
+        public No(int altura){
+            this.altura = altura;
+            dir = null;
+            esq = null;
+            topo = null;
+        }
+    }
+
+    public static class No2{
+        private String nome;
+        private No2 dir;
+        private No2 esq;
+
+        public No2(String nome){
             this.nome = nome;
             dir = null;
             esq = null;
@@ -29,7 +44,7 @@ class q01{
             if(raiz == null){
                 raiz = no;
                 comp++;
-            } else if (tmp.nome.compareTo(no.nome) > 0){
+            } else if (tmp.altura > no.altura){
                 comp++;
                 if(tmp.esq == null){
                     tmp.esq = no;
@@ -37,7 +52,7 @@ class q01{
                 } else {
                     inserirNo(tmp.esq, no);
                 }
-            } else if (tmp.nome.compareTo(no.nome) < 0){
+            } else if (tmp.altura < no.altura){
                 comp++;
                 if(tmp.dir == null){
                     comp++;
@@ -48,33 +63,85 @@ class q01{
             }
         }
 
-        public void buscar(String nome){
+        public void caminharPre(String nome){
             MyIO.print("raiz ");
-            buscar (raiz, nome);
+            caminharPre(raiz, "esq ", nome);
         }
 
-        public void buscar(No tmp, String nome){
+        public void caminharPre(No i, String pos, String nome) {
+            String achou = "";
+		    if (i != null) {
+                MyIO.print(pos);
+                achou = buscar(i.topo, nome);
+			    caminharPre(i.esq, "esq ", nome); // Elementos da esquerda.
+			    caminharPre(i.dir, "dir ", nome); // Elementos da direita.
+		    } else {
+                MyIO.print(achou);
+            }
+            
+	    }
+
+        public void buscar(String nome){
+            caminharPre(nome);
+        }
+
+        public String buscar(No2 tmp, String nome){
+            String result = "";
             if (tmp.nome.compareTo(nome) > 0){
                 comp++;
                 if(tmp.esq == null){
                     comp++;
-                    MyIO.println("esq NAO");
+                    MyIO.print("ESQ ");
+                    result =  "NAO";
                 } else {
-                    MyIO.print("esq ");
-                    buscar(tmp.esq, nome);
+                    MyIO.print("ESQ ");
+                    result = buscar(tmp.esq, nome);
                 }
             } else if (tmp.nome.compareTo(nome) < 0){
                 comp++;
                 if(tmp.dir == null){
                     comp++;
-                    MyIO.println("dir NAO");
+                    MyIO.print("DIR ");
+                    result ="NAO";
+
                 } else {
-                    MyIO.print("dir ");
-                    buscar(tmp.dir, nome);
+                    MyIO.print("DIR ");
+                    result = buscar(tmp.dir, nome);
                 }
             } else if (tmp.nome.equals(nome)){
                 comp++;
-                MyIO.println("SIM");
+                result = "SIM";
+            }
+            return result;
+        }   
+
+        public void inserirNome(No buscar, No2 no){
+            inserirNome(raiz, buscar, no);
+        }
+
+        public void inserirNome(No tmp, No buscar, No2 no){
+            if(buscar.altura > tmp.altura){
+                inserirNome(tmp.dir, buscar, no);
+            } else if (buscar.altura < tmp.altura){
+                inserirNome(tmp.esq, buscar, no);
+            } else if (buscar.altura == tmp.altura){
+                inserirNome(tmp, tmp.topo, no);
+            }
+        }
+
+        public void inserirNome(No tmp, No2 tmp2, No2 no){
+            if(tmp.topo == null){
+                tmp.topo = no;
+                comp++;
+            } else if(tmp2 == null){
+                tmp2 = no;
+                comp++;
+            } else if (tmp2.nome.compareTo(no.nome) > 0){
+                comp++;
+                inserirNome(tmp, tmp2.esq, no);
+            } else if (tmp2.nome.compareTo(no.nome) < 0){
+                comp++;
+                inserirNome(tmp,tmp2.dir, no);
             }
         }
     }
@@ -84,7 +151,7 @@ class q01{
             Arq arq = new Arq();
             int i = 0;
             String str = "";
-            arq.openRead("/tmp/players.csv");
+            arq.openRead("players.csv");
             while(i < id + 1){
                 arq.readLine();
                 i++;
@@ -111,8 +178,10 @@ class q01{
             entrada = MyIO.readString();
             if(!entrada.equals("FIM")){
                 str = ler(Integer.parseInt(entrada));
-                No no = new No(str);
+                No no = new No(Integer.parseInt(entrada));
                 arv.inserirNo(no);
+                No2 no2 = new No2(str);
+                arv.inserirNome(no, no2);
             } 
         }
         do{
@@ -127,6 +196,6 @@ class q01{
 
         String tempo = (fim-inicio)/1000 + "\t";
         String conteudo = "816479\t" + tempo + comp;
-        Arq.openWriteClose("816479_arvoreBinaria.txt", conteudo);
+        //Arq.openWriteClose("816479_arvoreBinaria.txt", conteudo);
     }
 }
