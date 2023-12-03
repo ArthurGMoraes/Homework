@@ -105,23 +105,23 @@ No* balancear(No* no) {
 		return no;
 	}
 
-No* inserirRec(char* x, No** i) {
-    if (*i == NULL) {
+No* inserirRec(char* x, No* i) {
+    if (i == NULL) {
         comp++;
-        *i = newNo(x);
-    } else if (strcmp(x, (*i)->nome) < 0) {   
+        i = newNo(x);
+    } else if (strcmp(x, (i)->nome) < 0) {   
         comp++; 
-        inserirRec(x, &((*i)->esq));
-    } else if (strcmp(x, (*i)->nome) > 0) {
+        inserirRec(x, ((i)->esq));
+    } else if (strcmp(x, (i)->nome) > 0) {
         comp++;
-        inserirRec(x, &((*i)->dir));
+        inserirRec(x, ((i)->dir));
     }
-    *i = balancear(*i);
-    return *i;
+    i = balancear(i);
+    return i;
 }
 
 void inserir(char* x) {
-   raiz = inserirRec(x, &raiz);
+   raiz = inserirRec(x, raiz);
 }
 
 bool pesquisarRec(char* x, No* i) {
@@ -150,7 +150,7 @@ bool pesquisar(char* x) {
 }
 
 char* getNome(int x){
-    FILE *arq = fopen("/tmp/players.csv", "r");
+    FILE *arq = fopen("players.csv", "r");
     char *str = malloc(120);
     int j = 0;
     char *output;
@@ -168,7 +168,6 @@ char* getNome(int x){
         str[strlen(str) - 1] = '\0';
     }
 
-   
 
     char *info = strtok(str, ",");
     info = strtok(NULL, ",");
