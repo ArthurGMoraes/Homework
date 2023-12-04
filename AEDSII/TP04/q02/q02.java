@@ -79,6 +79,7 @@ class q02{
                 MyIO.print(achou);
             }
             
+            
 	    }
 
         public void buscar(String nome){
@@ -86,8 +87,11 @@ class q02{
         }
 
         public String buscar(No2 tmp, String nome){
-            String result = "";
-            if (tmp.nome.compareTo(nome) > 0){
+           String result = "";
+            if (tmp == null){
+                MyIO.println("NULL");
+                result = "NAO";
+            } else if (tmp.nome.compareTo(nome) > 0){
                 comp++;
                 if(tmp.esq == null){
                     comp++;
@@ -115,38 +119,46 @@ class q02{
             return result;
         }   
 
-        public void inserirNome(No buscar, No2 no){
+        public void inserirNome(int buscar, No2 no){
             inserirNome(raiz, buscar, no);
         }
 
-        public void inserirNome(No tmp, No buscar, No2 no){
-            if(buscar.altura > tmp.altura){
+        public void inserirNome(No tmp, int buscar, No2 no){
+            if(buscar > tmp.altura){
                 inserirNome(tmp.dir, buscar, no);
-            } else if (buscar.altura < tmp.altura){
+            } else if (buscar < tmp.altura){
                 inserirNome(tmp.esq, buscar, no);
-            } else if (buscar.altura == tmp.altura){
-                inserirNome(tmp, tmp.topo, no);
+            } else if (buscar == tmp.altura){
+                inserirNome(tmp.topo, no);
             }
         }
 
-        public void inserirNome(No tmp, No2 tmp2, No2 no){
-            if(tmp.topo == null){
-                tmp.topo = no;
-                comp++;
-            } else if(tmp2 == null){
+        public void inserirNome(No2 tmp2, No2 no){
+            if(tmp2 == null){
                 tmp2 = no;
                 comp++;
             } else if (tmp2.nome.compareTo(no.nome) > 0){
                 comp++;
-                inserirNome(tmp, tmp2.esq, no);
+                comp++;
+                if(tmp2.esq != null){
+                    inserirNome(tmp2.esq, no);
+                } else {
+                    tmp2.esq = no;
+                }
+                
             } else if (tmp2.nome.compareTo(no.nome) < 0){
                 comp++;
-                inserirNome(tmp,tmp2.dir, no);
+                comp++;
+                if(tmp2.esq != null){
+                    inserirNome(tmp2.dir, no);
+                } else {
+                    tmp2.dir = no;
+                }
             }
         }
     }
 
-    public static String ler(int id){
+    public static String lerNome(int id){
             MyIO myIo = new MyIO();
             Arq arq = new Arq();
             int i = 0;
@@ -166,22 +178,54 @@ class q02{
             return str;
     }
 
+    public static int lerAltura(int id){
+            MyIO myIo = new MyIO();
+            Arq arq = new Arq();
+            int i = 0;
+            String str = "";
+            arq.openRead("players.csv");
+            while(i < id + 1){
+                arq.readLine();
+                i++;
+            }
+            str = arq.readLine();
+            String[] parts = str.split(",");
+            arq.close();
+            
+            str = parts[2];
+            MyIO.println(str);
+            return Integer.parseInt(str);
+    }
+
     public static void main(String[] args){
         String entrada = "";
         Arvore arv = new Arvore();
         String str = "";
         double inicio, fim;
+        arv.inserirNo(new No(7));
+        arv.inserirNo(new No(3));
+        arv.inserirNo(new No(11));
+        arv.inserirNo(new No(1));
+        arv.inserirNo(new No(5));
+        arv.inserirNo(new No(9));
+        arv.inserirNo(new No(13));
+        arv.inserirNo(new No(0));
+        arv.inserirNo(new No(2));
+        arv.inserirNo(new No(4));
+        arv.inserirNo(new No(6));
+        arv.inserirNo(new No(8));
+        arv.inserirNo(new No(10));
+        arv.inserirNo(new No(12));
+        arv.inserirNo(new No(14));
 
         inicio = System.currentTimeMillis();
 
         while (!entrada.equals("FIM")){
             entrada = MyIO.readString();
             if(!entrada.equals("FIM")){
-                str = ler(Integer.parseInt(entrada));
-                No no = new No(Integer.parseInt(entrada));
-                arv.inserirNo(no);
+                str = lerNome(Integer.parseInt(entrada));
                 No2 no2 = new No2(str);
-                arv.inserirNome(no, no2);
+                arv.inserirNome(lerAltura(Integer.parseInt(entrada))%15, no2);
             } 
         }
         do{
@@ -189,6 +233,7 @@ class q02{
             if(!entrada.equals("FIM")){
                 MyIO.print(entrada + " ");
                 arv.buscar(entrada);
+                MyIO.println(" ");
             }
         } while (!entrada.equals("FIM"));
 
@@ -196,6 +241,6 @@ class q02{
 
         String tempo = (fim-inicio)/1000 + "\t";
         String conteudo = "816479\t" + tempo + comp;
-        //Arq.openWriteClose("816479_arvoreBinaria.txt", conteudo);
+        Arq.openWriteClose("816479_arvoreArvore.txt", conteudo);
     }
 }
