@@ -1,6 +1,6 @@
 import java.util.*;
 
-class q07{
+class q08{
     public static int comp = 0;
     
     public static class TabelaHash{
@@ -8,33 +8,30 @@ class q07{
         int tamanho,areaHash,tamReserva,reserva;
 
         public TabelaHash(){
-            tamanho = 30;
-            areaHash = 21;
-            tamReserva = 9;
-            reserva = 0;
-            tabela = new String[30];
+            tamanho = 25;
+            tabela = new String[25];
 
-            for (int i = 0; i < 21; i++){
+            for (int i = 0; i < 25; i++){
                 tabela[i] = null;
             }
         }
 
         public int hash(int altura){
-            return altura%21;
+            return altura%25;
+        }
+
+        public int rehash(int altura){
+            return (altura+1)%25;
         }
 
         public void inserir(String nome, int altura){
-            if (nome != null) {
+            int pos = hash(altura);
+            if (tabela[pos] == null) {
                 comp++;
-                int pos = hash(altura);
-                if (tabela[pos] == null) {
-                    comp++;
-                    tabela[pos] = nome;
-                } else if (reserva < tamReserva) {
-                    comp++;
-                    tabela[areaHash + reserva] = nome;
-                    reserva++;
-                }
+                tabela[pos] = nome;
+            } else if (tabela[rehash(altura)] == null) {
+                comp++;
+                tabela[rehash(altura)] = nome;
             }
         }
 
@@ -47,13 +44,12 @@ class q07{
             } else if (tabela[pos].equals(nome)) {
                 comp++;
                 resp = true;
-            } else {
-                for (int i = 0; i < reserva; i++) {
-                    if (tabela[areaHash + i].equals(nome)) {
-                        resp = true;
-                        i = reserva;
-                    }
-                }
+            } else if (tabela[rehash(altura)] == null) {
+                comp++;
+                resp = false;
+            } else if (tabela[rehash(altura)].equals(nome)){
+                comp++;
+                resp = true;
             }
             return resp;
         }
@@ -121,6 +117,6 @@ class q07{
 
         String tempo = (fim-inicio)/1000 + "\t";
         String conteudo = "816479\t" + tempo + comp;
-        Arq.openWriteClose("816479_hashReserva.txt", conteudo);
+        Arq.openWriteClose("816479_hashRehash.txt", conteudo);
     }
 }
