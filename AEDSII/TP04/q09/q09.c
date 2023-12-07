@@ -151,17 +151,15 @@ int main (void){
         }
     }
 
-    fgets(nome, 25, stdin);
-    nome[strcspn(nome, "\n")] = '\0'; // Remove trailing newline
+    scanf("%[^\n]%*c", nome);
     strcpy(nome, " ");
 
     while (strcmp(nome, "FIM") != 0) {
-        fgets(nome, 25, stdin);
-            nome[strcspn(nome, "\n")] = '\0'; // Remove trailing newline
-            if(strcmp(nome, "FIM") != 0){
-                printf("%s ", nome );
-                printf("%s\n",(pesquisar(nome, getAltura(nome)) > 0)?"SIM":"NAO");
-            }
+        scanf("%[^\n]%*c", nome);
+        if(strcmp(nome, "FIM") != 0){
+            printf("%s ", nome );
+            printf("%s\n",(pesquisar(nome, getAltura(nome)) > 0)?"SIM":"NAO");
+        }
     } 
 
 
