@@ -1,0 +1,4 @@
+https://dl.acm.org/doi/10.1145/362384.362685  ler artigo
+https://github.com/wladbrandao/DBSystems/blob/master/relational/slides/sld01.pdf ler slide
+https://www.youtube.com/watch?v=vmElmxU1Ha0 assistir video
+ler cap 1 livro elmasi
