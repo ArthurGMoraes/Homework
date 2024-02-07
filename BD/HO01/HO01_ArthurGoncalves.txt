@@ -1,3 +1,5 @@
+Arthur Gonçalves de Moraes - 816479
+
 1) um SBD é a junção de um ou mais banco de dados organizados, com uma estrurura que indica a forma como esses dados são armazenados e um software que permite a manipulação desses dados pelo usuário ou aplcações.
 
 2) um SBD é composto por um banco de dados, uma modelo de dados e um sistema gerenciador de banco de dados.
@@ -32,4 +34,28 @@
 
 9) Em aplicações monousuário, de baixa complexidade, com requisitos rigorosos como aplicações de tempo real, de alta especificação e quando não há investimento em software, hradware e treinamento (custo proibitivo).
 
-10)
+10) Um modelo de dados é caracterizado pelos conceitos que descrevem o BD e as operações utilizadas na sua manipulação.
+
+11) Quanto ao seu nível de abstração, temos:
+ 	- Conceitual: alto nível de abtração, representa a estrutura como o usuário a percebe	
+	- Representativo: nível de abstração ibtermediário, modelo de implementação
+	- Físico: baixo nível de abstração, detalha aspectos do armazenamento físico
+
+12) Um esquema de BD é um esboço do banco de dados elaborado durante o projeto do sistema e é feito por meio de diagramas que seguem convenções. 
+
+13) A instância de um BD é o conjunto de dados armazenado em determinado momento.
+
+14) A Arquitetura de Três Esquemas permite a vizualização do SBD em diferentes níveis , facilitando que mudanças sejam feitas por garantir que o a alteração do na estrutura é independente da aplicação.
+
+15) Externo, conceitual e interno.
+
+16) O mapeamento é a relação de transformação das requisições em resultado entre níveis. 
+
+17) A Independência de Dados em Sistemas de Banco de Dados é crucial, permitindo alterações no esquema lógico e físico sem afetar aplicações e usuários externos. Isso promove a flexibilidade, evolução e manutenção eficiente dos bancos de dados.
+
+18) É uma linguagem de alto nível, não procedural e declarativa, podendo recuperar muitos registros com uma única instrução.
+
+19) VDL, DDL, SDL e DML.
+
+
+
