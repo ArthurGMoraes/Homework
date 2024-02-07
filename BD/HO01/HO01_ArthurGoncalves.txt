@@ -1,0 +1,35 @@
+1) um SBD é a junção de um ou mais banco de dados organizados, com uma estrurura que indica a forma como esses dados são armazenados e um software que permite a manipulação desses dados pelo usuário ou aplcações.
+
+2) um SBD é composto por um banco de dados, uma modelo de dados e um sistema gerenciador de banco de dados.
+
+3) Os usuários e aplicações submetem consultas para interagir com o sistema.
+
+4) Um BD é um conjunto de dados organizados. Como exemplo posso citar um banco de dados de filmes - https://www.databasestar.com/sample-database-movies/ .
+
+5) Um banco de dados é caracterizado por possuir um propósito expecífico, ser uma representação do mundo real, coerência da lógica de coleção (padrão) e prover o compartilhamento dos dados.
+
+6) -Criação de um modelo - representar entidades e eventos reais
+   -Implementação: - Especificar o minimundo
+                   - Pontuar as restrições de operação (análise de requisitos)
+                   - Projeto conceitual
+                   - Projeto lógico
+                   - Projeto físico
+   -Revisão
+
+7) Um SGBD é um software que permite que os usuários e aplicações gerenciem banco de dados, definindo suas espcificações, manipulando e armazenando dados e promovendo o acesso à multiplos usuários.
+
+8) Controle de redundância:
+   -Flexibilidade 
+   -Interfaces Múltiplas 
+   -Economia de escala 
+   -Garantia de padrões 
+   -Restrições de acesso 
+   -Backup e recuperação 
+   -Disponibilidade elevada 
+   -Restrições de integridade 
+   -Tempo de desenvolvimento 
+   -Relacionamentos complexos
+
+9) Em aplicações monousuário, de baixa complexidade, com requisitos rigorosos como aplicações de tempo real, de alta especificação e quando não há investimento em software, hradware e treinamento (custo proibitivo).
+
+10)
