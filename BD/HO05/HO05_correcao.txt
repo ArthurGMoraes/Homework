@@ -1,0 +1,69 @@
+1) A = π first_name, last_name (actor)
+   B = π first_name, last_name (director)
+   A ∩ B
+
+2) A = π first_name, last_name (actor)
+   B = π first_name, last_name (director)
+   A - B
+
+3) A = π first_name, last_name (actor)
+   B = π first_name, last_name (director)
+   A U B
+
+4) A = π id (movies)
+   B = π movie_id (movie_directors)
+   C = ρ idmov ← movies.id (B - A)
+   D = (C) idmov ⨝ movies.id(movies)
+   π movies.name (D)
+
+5) A = γ actor_id; count(movie_id)->TOTAL ( roles )
+   B = σ TOTAL >= 2 (A)
+   C = π actor_id (B)
+   D = π id (actors)
+   E = ρ idactor <- actors.id(D - C)
+   F = (E) ⨝ idactor = actors.id (actors)
+   π first_name, last_name (F)
+
+6) A = γ movie_id; count(actor_id)->TOTAL ( roles )
+   B = σ TOTAL >= 2 (A)
+   C = π movie_id (B)
+   D = π id (movies)
+   E = ρ idmov <- movies.id(D - C)
+   F = (E) ⨝ idmov = movies.id (movies)
+   G = (F) ⨝ idmov = movies_genres.movie_id (movies_genres)
+   H = γ movies_genres.genre, movies.year; COUNT(*) -> TOTAL(G)
+   π movies_genres.genre, movies.year, TOTAL (H)
+  
+  
+  
+     
+
+
+
+
+
+
+
+
+MINHAS RESPS
+1) π first_name, last_name((ρ idDiretor←id (directors)) ⨝ actors)
+
+
+2) πfirst_name, last_name((ρ idDiretor←id (directors))⟖ actors)      * right outer join
+
+
+3) πfirst_name, last_name(directors) ∪ πfirst_name, last_name(actors)
+
+
+4) π name (movies⨝id = movie_id (σdirector_id = null (movies_directors)))
+
+
+5) a = γ actor_id; count(actor_id)->quantidade ( roles )
+   π first_name, last_name (actors ⨝ id = actor_id σquantidade ≥ 2 (a))
+
+
+6) ????? 
+    a = γ movie_id ; count(movie_id)->qtdAtores ( roles )
+    b = γ movie_id,qtdAtores ; avg(qtdAtores)->media (a) 
+    c = movies ⟕ id = movie_id (b)
+    π name ( σmedia < 2 (c))
