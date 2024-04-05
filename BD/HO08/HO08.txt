@@ -21,6 +21,17 @@
    JOIN movies_directors ON id = movie_id
    WHERE movies_directors.director_id IS NULL
 
+XXXXXXXXXXXXXXXX
+
+SELECT movies.name
+FRom   movies
+       INNER JOIN
+       ( SELECT movies.id
+         FROM movies
+         EXCEPT
+         SELECT movies_director.movie_id
+         FROM movies_directors ) as B ON movies.id = B.id
+
 5) SELECT actors.first_name, actors.last_name, COUNT(actors.id) as tamanho
    FROM actors JOIN roles ON roles.actor_id = actors.id
    GROUP BY actors.first_name, actors.last_name, actors.id
