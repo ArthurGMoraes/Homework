@@ -8,8 +8,6 @@ class Principal {
     new File("dados/livros.db").delete();
     new File("dados/livros.hash_d.db").delete();
     new File("dados/livros.hash_c.db").delete();
-    new File("dados/livros.hashDelete_d.db").delete();
-    new File("dados/livros.hashDelete_c.db").delete();
 
     Arquivo<Livro> arqLivros;
     Livro l1 = new Livro(-1, "9788563560278", "Odisseia", 15.99F);
@@ -28,13 +26,18 @@ class Principal {
 
       arqLivros.delete(id1);
 
-      id3 = arqLivros.create(l1);
+      id3 = arqLivros.create(l3);
+
+      arqLivros.delete(id3);
+
+      id4 = arqLivros.create(l1);
 
 
 
       System.out.println("\nLivro 1:\n" + arqLivros.read(1));
       System.out.println("\nLivro 2:\n" + arqLivros.read(2));
       System.out.println("\nLivro 3:\n" + arqLivros.read(3));
+      System.out.println("\nLivro 4:\n" + arqLivros.read(4));
       
 
       arqLivros.close();

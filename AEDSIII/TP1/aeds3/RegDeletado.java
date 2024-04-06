@@ -50,16 +50,33 @@ public class RegDeletado{
             return false;
         }
 
-        public long conferir(int t){
-            System.out.println("TAM A ENSERIR " + t);
-            long pos = -1;
+        public int getMaior(){
+            int maior = 0;
             for (Obj i = inicio; i != null; i = i.prox){
-                System.out.println("TAM ESPACO" + i.tam);
-                if (i.tam >= t){
-                    pos = i.endereco;
+                if (i.tam > maior ){
+                    maior = i.tam;
                 }
             }
-            System.out.println(pos);
+            return maior;
+        }
+
+        public long conferir(int t){
+            //System.out.println("TAM A ENSERIR " + t);
+            long pos = -1;
+            int melhor = getMaior();
+            for (Obj i = inicio; i != null; i = i.prox){
+                //System.out.println("TAM ESPACO" + i.tam + " TAM MELHOR " + melhor);
+                if (t >= i.tam * 0.7 && t <= i.tam){
+                    if (i == inicio){
+                        pos = i.endereco;
+                    }
+                    if (i.tam < melhor){
+                        pos = i.endereco;
+                        melhor = i.tam;
+                    }
+                }
+            }
+            //System.out.println(pos);
             return pos;
         }
 

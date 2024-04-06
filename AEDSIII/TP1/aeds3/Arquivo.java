@@ -49,9 +49,9 @@ public class Arquivo<T extends Registro> {
         byte[] ba = obj.toByteArray();
         short tam = (short) ba.length;
         long pos = indiceDeletado.conferir(tam);
-        System.out.println("EMPTY ");
+        //System.out.println("EMPTY ");
       if(pos>0){
-        System.out.println("IF POS");
+        // System.out.println("IF POS");
         arquivo.seek(pos);
         arquivo.writeByte(' '); // lápide
         arquivo.writeShort(tam);
@@ -60,7 +60,7 @@ public class Arquivo<T extends Registro> {
         return obj.getID();
       }
     }
-      System.out.println("DIRETO");
+      // System.out.println("DIRETO");
       arquivo.seek(arquivo.length());
       long endereco = arquivo.getFilePointer();
       byte[] ba = obj.toByteArray();
@@ -102,7 +102,7 @@ public class Arquivo<T extends Registro> {
       arquivo.seek(endereco);
       arquivo.writeByte('*');
       int tam = arquivo.readShort();
-      System.out.println(endereco + " " + tam + " DELETE");
+      // System.out.println(endereco + " " + tam + " DELETE");
       indiceDeletado.inserir(endereco, tam);
       indiceDireto.delete(id);
       
