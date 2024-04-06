@@ -1,3 +1,11 @@
+TP1 AEDSIII
+Nesse exercício implementamos um registro em memória secundaria para tipos genéricos. Esse registro utiliza uma tabela hash extensiva como índice direto, e tem a capacidade de reaproveitar espaços de registros marcados como apagados (byte lápide) para a criação ou alteração de outros registros.
+
+
+
+
+
+
 -O que você considerou como perda aceitável para o reuso de espaços vazios, isto é, quais são os critérios para a gestão dos espaços vazios?
 Até 30% de perda
 
