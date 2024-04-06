@@ -1,6 +1,16 @@
 package aeds3;
 
 import java.util.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.RandomAccessFile;
+import java.util.ArrayList;
+import java.io.FileNotFoundException;
+
+import java.lang.reflect.Constructor;
 
 
 
@@ -18,26 +28,35 @@ public class RegDeletado{
     }
         
         public Obj inicio;
-        private int n;
+        private short quantidade;
+        public String nomeArquivo;
+        RandomAccessFile arquivo;
 
-        public RegDeletado(){
+        public RegDeletado(String nd) throws FileNotFoundException, IOException{
             inicio = null;
-            n = 0;
+            nomeArquivo = nd;
+            quantidade = 0;
+        
+                fromByteArray();
+            
+            
         }
 
-        public void inserir(long pos, int tam){
+        public void inserir(long pos, int tam)throws FileNotFoundException, IOException{
             Obj registro = new Obj(pos, tam);
            
 
             if(inicio == null){
                 inicio = registro;
-                n++;
-            } else {
+                quantidade++;
+            } else if(quantidade < 300) {
                 Obj i;
                 for (i = inicio; i.prox != null; i = i.prox);
                 i.prox = registro;
-                n++;
+                quantidade++;
             }
+                toByteArray();
+        
 
             //System.out.println(inicio.endereco + " INI " + inicio.tam);
         }
@@ -91,10 +110,43 @@ public class RegDeletado{
                 Obj tmp = j.prox.prox;
                 removido = j.prox;
                 j.prox = tmp;
-                n--;
+                quantidade--;
             }
             return removido;
         }
+
+      public void toByteArray() throws FileNotFoundException, IOException {
+        
+            arquivo = new RandomAccessFile("dados/" + nomeArquivo, "rw");
+            arquivo.writeShort(quantidade);
+            for (Obj i = inicio; i != null; i = i.prox) {
+                arquivo.writeLong(i.endereco);
+                arquivo.writeShort(i.tam);
+            }
+        
+    }
+
+    public void fromByteArray() throws FileNotFoundException, IOException {
+      
+            arquivo = new RandomAccessFile("dados/" + nomeArquivo, "rw");
+            if(arquivo.read() != -1){
+                arquivo.seek(0);
+            short quantidade2 = arquivo.readShort();
+            if (quantidade2 > 0){
+            int i = 0;
+            int tamanho = 0;
+            long endereco = 0;
+            while (i < quantidade2) {
+                endereco = arquivo.readLong();
+                tamanho = arquivo.readShort();
+                inserir(endereco, tamanho);
+                i++;
+            }
+            }
+            }
+    }
+
+
 
 
 }

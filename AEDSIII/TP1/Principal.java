@@ -8,6 +8,7 @@ class Principal {
     new File("dados/livros.db").delete();
     new File("dados/livros.hash_d.db").delete();
     new File("dados/livros.hash_c.db").delete();
+    new File("dados/livros.lista_d.db").delete();
 
     Arquivo<Livro> arqLivros;
     Livro l1 = new Livro(-1, "9788563560278", "Odisseia", 15.99F);

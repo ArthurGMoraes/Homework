@@ -34,7 +34,7 @@ public class Arquivo<T extends Registro> {
         "dados/" + na + ".hash_d.db",
         "dados/" + na + ".hash_c.db");
 
-        indiceDeletado = new RegDeletado();
+        indiceDeletado = new RegDeletado(na + ".lista_d.db");
   }
 
   public int create(T obj) throws Exception {
