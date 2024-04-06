@@ -23,4 +23,4 @@ Sim
 Não
 
 -O trabalho é original e não a cópia de um trabalho de um colega?
-Sim
+Como base do trabalho foi utilizado o código disponibilizado pelo professor, fazendo somente as devidas alterações para cumprir os requisitos do exercício
