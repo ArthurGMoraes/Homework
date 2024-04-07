@@ -1,11 +1,12 @@
 TP1 AEDSIII
-Nesse exercícios foi implementado um registro em memória secundaria para tipos genéricos. Esse registro utiliza uma tabela hash extensiva como índice direto, e tem a capacidade de reaproveitar espaços de registros marcados como apagados (byte lápide) para a criação ou alteração de outros registros. A estrutura utilizada para armazenar a posição dos registros deletados foi uma lista, implementada como lista encadeada (RegDeletado), que possui os variáveis 'endereco' (endereço no arquivo principal) e 'tam' (tamanho do registro) e as funções:
+Nesse exercício foi implementado um registro em memória secundaria para tipos genéricos. Esse registro utiliza uma tabela hash extensiva como índice direto, e tem a capacidade de reaproveitar espaços de registros marcados como apagados (byte lápide) para a criação ou alteração de outros registros. A estrutura utilizada para armazenar a posição dos registros deletados foi uma lista com tamanho máximo 300 (valor escolhido para não gerar uma pesquisa sequencial muito grande), implementada como lista encadeada (RegDeletado), que possui os variáveis 'endereco' (endereço no arquivo principal) e 'tam' (tamanho do registro) e as funções:
 -inserir: insere um registro no fim lista
 -excluir: remove um registro pelo valor 'endereco'
 -conferir: confere há um espaço disponível e adequado para inserir um registro e retorna seu endereço
 -lerArq: carrega a lista para memoria primária
 -escreverArq: carrega a lista para um arquivo
 
+Durante a execução da tarefa tive mais dificuldade quanto a implementação do indice com os campos deletados na parte de arquivos, porém após entender um pouco mais consegui criar meus próprios métodos para descarregar o lista em memória e no arquivo. Esses métodos não seguem o padrao utilizado na hash (toByteArray() e fromByteArray) e por isso creio que não sejam uma opção muito boa, já que alteram o arquivo registro por registro ao invés de por blocos. Também fiquei em duvida sobre qual estrutura de dados utilizar e acabei escolhendo uma lista encadeada por ser mais familiar com sua implentação, apesar de achar que uma árvore B+ seja mais eficiente.
 
 -O que você considerou como perda aceitável para o reuso de espaços vazios, isto é, quais são os critérios para a gestão dos espaços vazios?
 Até 30% de perda
