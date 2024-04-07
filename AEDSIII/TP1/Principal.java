@@ -1,5 +1,7 @@
 import java.io.*;
+import java.io.File;
 import aeds3.Arquivo;
+
 
 class Principal {
 
@@ -21,17 +23,21 @@ class Principal {
     try {
       arqLivros = new Arquivo<>("livros", Livro.class.getConstructor());
 
-      id1 = arqLivros.create(l2);
+      id1 = arqLivros.create(l1);
       
       id2 = arqLivros.create(l2);
-
-      arqLivros.delete(id1);
 
       id3 = arqLivros.create(l3);
 
       arqLivros.delete(id3);
 
-      id4 = arqLivros.create(l1);
+      id4 = arqLivros.create(l4);
+      arqLivros.delete(id2);
+
+      id5 = arqLivros.create(l5);
+
+      arqLivros.delete(id5);
+
 
 
 
@@ -39,6 +45,7 @@ class Principal {
       System.out.println("\nLivro 2:\n" + arqLivros.read(2));
       System.out.println("\nLivro 3:\n" + arqLivros.read(3));
       System.out.println("\nLivro 4:\n" + arqLivros.read(4));
+      System.out.println("\nLivro 5:\n" + arqLivros.read(5));
       
 
       arqLivros.close();

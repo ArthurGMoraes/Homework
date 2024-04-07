@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
 import java.io.FileNotFoundException;
-
+import java.io.File;
 import java.lang.reflect.Constructor;
 
 
@@ -32,7 +32,7 @@ public class RegDeletado{
         public String nomeArquivo;
         RandomAccessFile arquivo;
 
-        public RegDeletado(String nd) throws FileNotFoundException, IOException{
+        public RegDeletado(String nd) throws Exception{
             inicio = null;
             nomeArquivo = nd;
             quantidade = 0;
@@ -42,7 +42,7 @@ public class RegDeletado{
             
         }
 
-        public void inserir(long pos, int tam)throws FileNotFoundException, IOException{
+        public void inserir(long pos, int tam)throws Exception{
             Obj registro = new Obj(pos, tam);
            
 
@@ -55,7 +55,6 @@ public class RegDeletado{
                 i.prox = registro;
                 quantidade++;
             }
-                toByteArray();
         
 
             //System.out.println(inicio.endereco + " INI " + inicio.tam);
@@ -100,34 +99,46 @@ public class RegDeletado{
         }
 
 
-        public Obj remover(int pos){
+        public Obj remover(long pos) throws Exception{
             Obj removido = null;
+            Obj i = inicio;
             Obj j = inicio;
+            Obj tmp;
             if (inicio != null){
-                for (int i = 0; i < pos - 1; i++){
-                    j = j.prox;
+                if (inicio.endereco == pos){
+                    removido = inicio;
+                    inicio=inicio.prox;
+                    quantidade--;
+                    //System.out.println(inicio.endereco + " " + inicio.prox + "RE INI");
+                }else {
+                    while (i.endereco != pos ){
+                        j = i;
+                        i = i.prox;
+                    }
+                    tmp = i.prox;
+                    removido = i;
+                    j.prox = tmp;
+                    quantidade--;
+                    //System.out.println(i.endereco + " " + j.endereco + " " + inicio.endereco + "RE");
                 }
-                Obj tmp = j.prox.prox;
-                removido = j.prox;
-                j.prox = tmp;
-                quantidade--;
-            }
+                
+            }   
             return removido;
         }
 
-      public void toByteArray() throws FileNotFoundException, IOException {
-        
+      public void toByteArray() throws Exception {
+            //System.out.print("dados/" + nomeArquivo);
             arquivo = new RandomAccessFile("dados/" + nomeArquivo, "rw");
             arquivo.writeShort(quantidade);
             for (Obj i = inicio; i != null; i = i.prox) {
+                // System.out.print(i.endereco + " " + i);
                 arquivo.writeLong(i.endereco);
                 arquivo.writeShort(i.tam);
             }
-        
+        //System.out.println("");
     }
 
-    public void fromByteArray() throws FileNotFoundException, IOException {
-      
+    public void fromByteArray() throws Exception {
             arquivo = new RandomAccessFile("dados/" + nomeArquivo, "rw");
             if(arquivo.read() != -1){
                 arquivo.seek(0);

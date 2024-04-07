@@ -51,7 +51,9 @@ public class Arquivo<T extends Registro> {
         long pos = indiceDeletado.conferir(tam);
         //System.out.println("EMPTY ");
       if(pos>0){
-        // System.out.println("IF POS");
+        //System.out.println(pos);
+        indiceDeletado.remover(pos);
+        indiceDeletado.toByteArray();
         arquivo.seek(pos);
         arquivo.writeByte(' '); // lápide
         arquivo.writeShort(tam);
@@ -104,6 +106,7 @@ public class Arquivo<T extends Registro> {
       int tam = arquivo.readShort();
       // System.out.println(endereco + " " + tam + " DELETE");
       indiceDeletado.inserir(endereco, tam);
+      indiceDeletado.toByteArray();
       indiceDireto.delete(id);
       
     
