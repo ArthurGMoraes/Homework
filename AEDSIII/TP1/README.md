@@ -31,7 +31,7 @@ Sim
 - O trabalho está funcionando corretamente?
 Sim
 
--O trabalho está completo?
+- O trabalho está completo?
 Sim
 
 - O trabalho é original e não a cópia de um trabalho de um colega?
