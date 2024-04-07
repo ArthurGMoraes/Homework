@@ -60,6 +60,12 @@ public class RegDeletado{
             //System.out.println(inicio.endereco + " INI " + inicio.tam);
         }
 
+        public boolean isEmpty(){
+            if (inicio == null)
+                return true;
+            return false;
+        }
+
         public int getMaior(){
             int maior = 0;
             for (Obj i = inicio; i != null; i = i.prox){
