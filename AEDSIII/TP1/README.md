@@ -1,4 +1,4 @@
-TP1 AEDSIII
+TP1 AEDSIII  
 Arthur Gonçalves de Moraes - 816479
 
 Nesse exercício foi implementado um registro em memória secundaria para tipos genéricos. Esse registro utiliza uma tabela hash extensiva como índice direto, e tem a capacidade de reaproveitar espaços de registros marcados como apagados (byte lápide) para a criação ou alteração de outros registros. A estrutura utilizada para armazenar a posição dos registros deletados foi uma lista com tamanho máximo 300 (valor escolhido para não gerar uma pesquisa sequencial muito grande), implementada como lista encadeada (RegDeletado), que possui os variáveis 'endereco' (endereço no arquivo principal) e 'tam' (tamanho do registro) e as funções:  
