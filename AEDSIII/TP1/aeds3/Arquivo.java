@@ -104,7 +104,7 @@ public class Arquivo<T extends Registro> {
       arquivo.seek(endereco);
       arquivo.writeByte('*');
       int tam = arquivo.readShort();
-      // System.out.println(endereco + " " + tam + " DELETE");
+      System.out.println(endereco + " " + tam + " DELETE");
       indiceDeletado.inserir(endereco, tam);
       indiceDeletado.escreverArq();
       indiceDireto.delete(id);
@@ -121,6 +121,7 @@ public class Arquivo<T extends Registro> {
     byte[] ba, ba2;
     ParIDEndereco pie = indiceDireto.read(novoObj.getID());
     long endereco = pie != null ? pie.getEndereco() : -1;
+     int id = pie.getId();
 
     if (endereco != -1) {
       arquivo.seek(endereco + 1); // pula o campo lápide
@@ -130,13 +131,23 @@ public class Arquivo<T extends Registro> {
       obj.fromByteArray(ba);
       ba2 = novoObj.toByteArray();
       tam2 = (short) ba2.length;
+      long enderecoDELETADO = indiceDeletado.conferir(tam2);
       if (tam2 <= tam) {
         arquivo.seek(endereco + 1 + 2);
         arquivo.write(ba2);
       } else {
+        System.out.println(tam + " " +tam2 + " " + enderecoDELETADO);
         arquivo.seek(endereco);
         arquivo.writeByte('*');
-        arquivo.seek(arquivo.length());
+        if(enderecoDELETADO>0){
+          arquivo.seek(enderecoDELETADO);
+        } else {
+          arquivo.seek(arquivo.length());
+        }
+        indiceDeletado.remover(enderecoDELETADO);
+        indiceDeletado.inserir(endereco,tam);
+        indiceDeletado.escreverArq();
+        
         long endereco2 = arquivo.getFilePointer();
         arquivo.writeByte(' ');
         arquivo.writeShort(tam2);
@@ -151,6 +162,7 @@ public class Arquivo<T extends Registro> {
   public void close() throws Exception {
     arquivo.close();
     indiceDireto.close();
+    indiceDeletado.close();
   }
 
  

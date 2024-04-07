@@ -20,16 +20,16 @@ Sim
 Sim
 
 -A operação de alteração busca o espaço vazio mais adequado para o registro quando ele cresce de tamanho antes de acrescentá-lo ao fim do arquivo?
-Nao
+Sim
 
 -As operações de alteração (quando for o caso) e de exclusão estão gerenciando os espaços vazios para que possam ser reaproveitados?
-Exclusão sim, alteração não
+Sim
 
 -O trabalho está funcionando corretamente?
 Sim
 
 -O trabalho está completo?
-Não
+Sim
 
 -O trabalho é original e não a cópia de um trabalho de um colega?
 Como base do trabalho foi utilizado o código disponibilizado pelo professor, fazendo somente as devidas alterações para cumprir os requisitos do exercício

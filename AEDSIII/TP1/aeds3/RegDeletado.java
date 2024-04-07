@@ -77,11 +77,11 @@ public class RegDeletado{
         }
 
         public long conferir(int t){
-            //System.out.println("TAM A ENSERIR " + t);
+            System.out.println("TAM A ENSERIR " + t);
             long pos = -1;
             int melhor = getMaior();
             for (Obj i = inicio; i != null; i = i.prox){
-                //System.out.println("TAM ESPACO" + i.tam + " TAM MELHOR " + melhor);
+                System.out.println("TAM ESPACO" + i.tam + " TAM MELHOR " + melhor);
                 if (t >= i.tam * 0.7 && t <= i.tam){
                     if (i == inicio){
                         pos = i.endereco;
@@ -154,6 +154,11 @@ public class RegDeletado{
             }
             }
     }
+
+    public void close() throws Exception {
+        arquivo.close();
+    }
+
 
 
 

@@ -29,14 +29,18 @@ class Principal {
 
       id3 = arqLivros.create(l3);
 
-      arqLivros.delete(id3);
-
       id4 = arqLivros.create(l4);
-      arqLivros.delete(id2);
+      //arqLivros.delete(id2);
 
       id5 = arqLivros.create(l5);
 
-      arqLivros.delete(id5);
+      //arqLivros.delete(id5);
+
+      arqLivros.delete(id3);
+
+      l1.setTitulo("Ensino Híbrido");
+
+      arqLivros.update(l1);
 
 
 
