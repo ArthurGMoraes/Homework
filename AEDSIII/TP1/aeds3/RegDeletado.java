@@ -37,7 +37,7 @@ public class RegDeletado{
             nomeArquivo = nd;
             quantidade = 0;
         
-                fromByteArray();
+                lerArq();
             
             
         }
@@ -58,14 +58,6 @@ public class RegDeletado{
         
 
             //System.out.println(inicio.endereco + " INI " + inicio.tam);
-        }
-
-        public boolean isEmpty(){
-            if (inicio == null){
-                return true;
-            }
-                
-            return false;
         }
 
         public int getMaior(){
@@ -126,7 +118,7 @@ public class RegDeletado{
             return removido;
         }
 
-      public void toByteArray() throws Exception {
+      public void escreverArq() throws Exception {
             //System.out.print("dados/" + nomeArquivo);
             arquivo = new RandomAccessFile("dados/" + nomeArquivo, "rw");
             arquivo.writeShort(quantidade);
@@ -138,7 +130,7 @@ public class RegDeletado{
         //System.out.println("");
     }
 
-    public void fromByteArray() throws Exception {
+    public void lerArq() throws Exception {
             arquivo = new RandomAccessFile("dados/" + nomeArquivo, "rw");
             if(arquivo.read() != -1){
                 arquivo.seek(0);

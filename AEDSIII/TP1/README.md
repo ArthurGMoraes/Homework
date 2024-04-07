@@ -1,9 +1,10 @@
 TP1 AEDSIII
-Nesse exercício implementamos um registro em memória secundaria para tipos genéricos. Esse registro utiliza uma tabela hash extensiva como índice direto, e tem a capacidade de reaproveitar espaços de registros marcados como apagados (byte lápide) para a criação ou alteração de outros registros.
-
-
-
-
+Nesse exercícios foi implementado um registro em memória secundaria para tipos genéricos. Esse registro utiliza uma tabela hash extensiva como índice direto, e tem a capacidade de reaproveitar espaços de registros marcados como apagados (byte lápide) para a criação ou alteração de outros registros. A estrutura utilizada para armazenar a posição dos registros deletados foi uma lista, implementada como lista encadeada (RegDeletado), que possui os variáveis 'endereco' (endereço no arquivo principal) e 'tam' (tamanho do registro) e as funções:
+-inserir: insere um registro no fim lista
+-excluir: remove um registro pelo valor 'endereco'
+-conferir: confere há um espaço disponível e adequado para inserir um registro e retorna seu endereço
+-lerArq: carrega a lista para memoria primária
+-escreverArq: carrega a lista para um arquivo
 
 
 -O que você considerou como perda aceitável para o reuso de espaços vazios, isto é, quais são os critérios para a gestão dos espaços vazios?
