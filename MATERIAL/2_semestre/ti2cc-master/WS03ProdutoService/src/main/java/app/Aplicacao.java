@@ -1,12 +1,12 @@
 package app;
 
 import static spark.Spark.*;
-import service.DiscussaoService;
+import service.ProdutoService;
 
 
 public class Aplicacao {
 	
-	private static DiscussaoService produtoService = new DiscussaoService();
+	private static ProdutoService produtoService = new ProdutoService();
 	
     public static void main(String[] args) {
         port(6789);

@@ -1,13 +1,13 @@
 package Ex2;
 
-public class Discussao {
+public class Carro {
 	private int id;
 	private String marca;
 	private String modelo;
 	private String motor;
 	private int ano;
 	
-	public Discussao() {
+	public Carro() {
 		this.id = -1;
 		this.marca = "";
 		this.modelo = "";
@@ -15,7 +15,7 @@ public class Discussao {
 		this.ano = -1;
 	}
 	
-	public Discussao(int id, String marca, String modelo, String motor, int ano) {
+	public Carro(int id, String marca, String modelo, String motor, int ano) {
 		this.id = id;
 		this.marca = marca;
 		this.modelo = modelo;
@@ -65,6 +65,6 @@ public class Discussao {
 
 	@Override
 	public String toString() {
-		return "Discussao [Id=" + id + ", Marca=" + marca + ", Modelo=" + modelo + ", Motor=" + motor + ", Ano=" + ano + "]";
+		return "Carro [Id=" + id + ", Marca=" + marca + ", Modelo=" + modelo + ", Motor=" + motor + ", Ano=" + ano + "]";
 	}	
 }

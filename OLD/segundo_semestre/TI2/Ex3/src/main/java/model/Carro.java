@@ -2,7 +2,7 @@ package model;
 
 import java.io.Serializable;
 
-public class Discussao implements Serializable {
+public class Carro implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int id;
 	private String marca;
@@ -10,7 +10,7 @@ public class Discussao implements Serializable {
 	private String motor;
 	private int ano;
 	
-	public Discussao() {
+	public Carro() {
 		id = -1;
 		marca = "nao definido";
 		modelo = "nao definido";
@@ -18,7 +18,7 @@ public class Discussao implements Serializable {
 		ano = -1;
 	}
 
-	public Discussao(int id, String marca, String modelo, String motor, int ano) {
+	public Carro(int id, String marca, String modelo, String motor, int ano) {
 		setId(id);
 		setMarca(marca);
 		setModelo(modelo);
@@ -85,6 +85,6 @@ public class Discussao implements Serializable {
 	
 	@Override
 	public boolean equals(Object obj) {
-		return (this.getId() == ((Discussao) obj).getId());
+		return (this.getId() == ((Carro) obj).getId());
 	}	
 }

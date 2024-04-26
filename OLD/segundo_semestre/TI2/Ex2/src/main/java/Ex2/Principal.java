@@ -67,8 +67,8 @@ public class Principal {
 		System.out.println("Ano: ");
 		int ano = scanner.nextInt();
 		
-		Discussao discussao = new Discussao(id, marca, modelo, motor, ano);
-		if(dao.createDiscussao(discussao) == true) {
+		Carro discussao = new Carro(id, marca, modelo, motor, ano);
+		if(dao.createCarro(discussao) == true) {
 			System.out.println("Insercao com sucesso -> " + discussao.toString());
 		}
 	}
@@ -77,7 +77,7 @@ public class Principal {
 		dao.conectar();
 		
 		//Mostrar discussaos
-		Discussao[] discussaos = dao.getDiscussaos();
+		Carro[] discussaos = dao.getCarros();
 		System.out.println("=== Mostrar discussaos === ");		
 		for(int i = 0; i < discussaos.length; i++) {
 			System.out.println(discussaos[i].toString());
@@ -94,18 +94,18 @@ public class Principal {
 	    int carId = scanner.nextInt();
 	    scanner.nextLine(); 
 	    
-	    Discussao discussaoToUpdate = dao.getDiscussaoById(carId);
+	    Carro discussaoToUpdate = dao.getCarroById(carId);
 	    if (discussaoToUpdate != null) {
 	        System.out.println("Novo ano: ");
 	        int newAno = scanner.nextInt();
 	        
 	        discussaoToUpdate.setAno(newAno);
 	        
-	        if (dao.updateDiscussao(discussaoToUpdate)) {
+	        if (dao.updateCarro(discussaoToUpdate)) {
 	            System.out.println("Ano atualizado: " + discussaoToUpdate.toString());
 	        }
 	    } else {
-	        System.out.println("Discussao com ID " + carId + " nao existe.");
+	        System.out.println("Carro com ID " + carId + " nao existe.");
 	    }
 	}
 	
@@ -117,10 +117,10 @@ public class Principal {
 	    int carId = scanner.nextInt();
 	    scanner.nextLine();
 
-	    if (dao.excluirDiscussao(carId)) {
-	        System.out.println("Discussao com ID " + carId + " excluido com sucesso.");
+	    if (dao.excluirCarro(carId)) {
+	        System.out.println("Carro com ID " + carId + " excluido com sucesso.");
 	    } else {
-	        System.out.println("Discussao com ID " + carId + " nao existe.");
+	        System.out.println("Carro com ID " + carId + " nao existe.");
 	    }
 	}
 }

@@ -5,15 +5,15 @@ import java.time.LocalDate;
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.List;
-import dao.DiscussaoDAO;
-import model.Discussao;
+import dao.ProdutoDAO;
+import model.Produto;
 import spark.Request;
 import spark.Response;
 
 
-public class DiscussaoService {
+public class ProdutoService {
 
-	private DiscussaoDAO produtoDAO = new DiscussaoDAO();
+	private ProdutoDAO produtoDAO = new ProdutoDAO();
 	private String form;
 	private final int FORM_INSERT = 1;
 	private final int FORM_DETAIL = 2;
@@ -23,22 +23,22 @@ public class DiscussaoService {
 	private final int FORM_ORDERBY_PRECO = 3;
 	
 	
-	public DiscussaoService() {
+	public ProdutoService() {
 		makeForm();
 	}
 
 	
 	public void makeForm() {
-		makeForm(FORM_INSERT, new Discussao(), FORM_ORDERBY_DESCRICAO);
+		makeForm(FORM_INSERT, new Produto(), FORM_ORDERBY_DESCRICAO);
 	}
 
 	
 	public void makeForm(int orderBy) {
-		makeForm(FORM_INSERT, new Discussao(), orderBy);
+		makeForm(FORM_INSERT, new Produto(), orderBy);
 	}
 
 	
-	public void makeForm(int tipo, Discussao produto, int orderBy) {
+	public void makeForm(int tipo, Produto produto, int orderBy) {
 		String nomeArquivo = "form.html";
 		form = "";
 		try{
@@ -49,14 +49,14 @@ public class DiscussaoService {
 		    entrada.close();
 		}  catch (Exception e) { System.out.println(e.getMessage()); }
 		
-		String umDiscussao = "";
+		String umProduto = "";
 		if(tipo != FORM_INSERT) {
-			umDiscussao += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;<a href=\"/produto/list/1\">Novo Discussao</a></b></font></td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t</table>";
-			umDiscussao += "\t<br>";			
+			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;<a href=\"/produto/list/1\">Novo Produto</a></b></font></td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t</table>";
+			umProduto += "\t<br>";			
 		}
 		
 		if(tipo == FORM_INSERT || tipo == FORM_UPDATE) {
@@ -64,61 +64,61 @@ public class DiscussaoService {
 			String name, descricao, buttonLabel;
 			if (tipo == FORM_INSERT){
 				action += "insert";
-				name = "Inserir Discussao";
+				name = "Inserir Produto";
 				descricao = "leite, pão, ...";
 				buttonLabel = "Inserir";
 			} else {
 				action += "update/" + produto.getID();
-				name = "Atualizar Discussao (ID " + produto.getID() + ")";
+				name = "Atualizar Produto (ID " + produto.getID() + ")";
 				descricao = produto.getDescricao();
 				buttonLabel = "Atualizar";
 			}
-			umDiscussao += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"form-add\">";
-			umDiscussao += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;" + name + "</b></font></td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td>&nbsp;Descrição: <input class=\"input--register\" type=\"text\" name=\"descricao\" value=\""+ descricao +"\"></td>";
-			umDiscussao += "\t\t\t<td>Preco: <input class=\"input--register\" type=\"text\" name=\"preco\" value=\""+ produto.getPreco() +"\"></td>";
-			umDiscussao += "\t\t\t<td>Quantidade: <input class=\"input--register\" type=\"text\" name=\"quantidade\" value=\""+ produto.getQuantidade() +"\"></td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td>&nbsp;Data de fabricação: <input class=\"input--register\" type=\"text\" name=\"dataFabricacao\" value=\""+ produto.getDataFabricacao().toString() + "\"></td>";
-			umDiscussao += "\t\t\t<td>Data de validade: <input class=\"input--register\" type=\"text\" name=\"dataValidade\" value=\""+ produto.getDataValidade().toString() + "\"></td>";
-			umDiscussao += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t</table>";
-			umDiscussao += "\t</form>";		
+			umProduto += "\t<form class=\"form--register\" action=\"" + action + "\" method=\"post\" id=\"form-add\">";
+			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;" + name + "</b></font></td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td>&nbsp;Descrição: <input class=\"input--register\" type=\"text\" name=\"descricao\" value=\""+ descricao +"\"></td>";
+			umProduto += "\t\t\t<td>Preco: <input class=\"input--register\" type=\"text\" name=\"preco\" value=\""+ produto.getPreco() +"\"></td>";
+			umProduto += "\t\t\t<td>Quantidade: <input class=\"input--register\" type=\"text\" name=\"quantidade\" value=\""+ produto.getQuantidade() +"\"></td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: <input class=\"input--register\" type=\"text\" name=\"dataFabricacao\" value=\""+ produto.getDataFabricacao().toString() + "\"></td>";
+			umProduto += "\t\t\t<td>Data de validade: <input class=\"input--register\" type=\"text\" name=\"dataValidade\" value=\""+ produto.getDataValidade().toString() + "\"></td>";
+			umProduto += "\t\t\t<td align=\"center\"><input type=\"submit\" value=\""+ buttonLabel +"\" class=\"input--main__style input--button\"></td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t</table>";
+			umProduto += "\t</form>";		
 		} else if (tipo == FORM_DETAIL){
-			umDiscussao += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Discussao (ID " + produto.getID() + ")</b></font></td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td>&nbsp;Descrição: "+ produto.getDescricao() +"</td>";
-			umDiscussao += "\t\t\t<td>Preco: "+ produto.getPreco() +"</td>";
-			umDiscussao += "\t\t\t<td>Quantidade: "+ produto.getQuantidade() +"</td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t\t<tr>";
-			umDiscussao += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getDataFabricacao().toString() + "</td>";
-			umDiscussao += "\t\t\t<td>Data de validade: "+ produto.getDataValidade().toString() + "</td>";
-			umDiscussao += "\t\t\t<td>&nbsp;</td>";
-			umDiscussao += "\t\t</tr>";
-			umDiscussao += "\t</table>";		
+			umProduto += "\t<table width=\"80%\" bgcolor=\"#f3f3f3\" align=\"center\">";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Detalhar Produto (ID " + produto.getID() + ")</b></font></td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td colspan=\"3\" align=\"left\">&nbsp;</td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td>&nbsp;Descrição: "+ produto.getDescricao() +"</td>";
+			umProduto += "\t\t\t<td>Preco: "+ produto.getPreco() +"</td>";
+			umProduto += "\t\t\t<td>Quantidade: "+ produto.getQuantidade() +"</td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t\t<tr>";
+			umProduto += "\t\t\t<td>&nbsp;Data de fabricação: "+ produto.getDataFabricacao().toString() + "</td>";
+			umProduto += "\t\t\t<td>Data de validade: "+ produto.getDataValidade().toString() + "</td>";
+			umProduto += "\t\t\t<td>&nbsp;</td>";
+			umProduto += "\t\t</tr>";
+			umProduto += "\t</table>";		
 		} else {
 			System.out.println("ERRO! Tipo não identificado " + tipo);
 		}
-		form = form.replaceFirst("<UM-PRODUTO>", umDiscussao);
+		form = form.replaceFirst("<UM-PRODUTO>", umProduto);
 		
 		String list = new String("<table width=\"80%\" align=\"center\" bgcolor=\"#f3f3f3\">");
-		list += "\n<tr><td colspan=\"6\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Relação de Discussaos</b></font></td></tr>\n" +
+		list += "\n<tr><td colspan=\"6\" align=\"left\"><font size=\"+2\"><b>&nbsp;&nbsp;&nbsp;Relação de Produtos</b></font></td></tr>\n" +
 				"\n<tr><td colspan=\"6\">&nbsp;</td></tr>\n" +
     			"\n<tr>\n" + 
         		"\t<td><a href=\"/produto/list/" + FORM_ORDERBY_ID + "\"><b>ID</b></a></td>\n" +
@@ -129,7 +129,7 @@ public class DiscussaoService {
         		"\t<td width=\"100\" align=\"center\"><b>Excluir</b></td>\n" +
         		"</tr>\n";
 		
-		List<Discussao> produtos;
+		List<Produto> produtos;
 		if (orderBy == FORM_ORDERBY_ID) {                 	produtos = produtoDAO.getOrderByID();
 		} else if (orderBy == FORM_ORDERBY_DESCRICAO) {		produtos = produtoDAO.getOrderByDescricao();
 		} else if (orderBy == FORM_ORDERBY_PRECO) {			produtos = produtoDAO.getOrderByPreco();
@@ -138,7 +138,7 @@ public class DiscussaoService {
 
 		int i = 0;
 		String bgcolor = "";
-		for (Discussao p : produtos) {
+		for (Produto p : produtos) {
 			bgcolor = (i++ % 2 == 0) ? "#fff5dd" : "#dddddd";
 			list += "\n<tr bgcolor=\""+ bgcolor +"\">\n" + 
             		  "\t<td>" + p.getID() + "</td>\n" +
@@ -146,7 +146,7 @@ public class DiscussaoService {
             		  "\t<td>" + p.getPreco() + "</td>\n" +
             		  "\t<td align=\"center\" valign=\"middle\"><a href=\"/produto/" + p.getID() + "\"><img src=\"/image/detail.png\" width=\"20\" height=\"20\"/></a></td>\n" +
             		  "\t<td align=\"center\" valign=\"middle\"><a href=\"/produto/update/" + p.getID() + "\"><img src=\"/image/update.png\" width=\"20\" height=\"20\"/></a></td>\n" +
-            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:confirmarDeleteDiscussao('" + p.getID() + "', '" + p.getDescricao() + "', '" + p.getPreco() + "');\"><img src=\"/image/delete.png\" width=\"20\" height=\"20\"/></a></td>\n" +
+            		  "\t<td align=\"center\" valign=\"middle\"><a href=\"javascript:confirmarDeleteProduto('" + p.getID() + "', '" + p.getDescricao() + "', '" + p.getPreco() + "');\"><img src=\"/image/delete.png\" width=\"20\" height=\"20\"/></a></td>\n" +
             		  "</tr>\n";
 		}
 		list += "</table>";		
@@ -163,13 +163,13 @@ public class DiscussaoService {
 		
 		String resp = "";
 		
-		Discussao produto = new Discussao(-1, descricao, preco, quantidade, dataFabricacao, dataValidade);
+		Produto produto = new Produto(-1, descricao, preco, quantidade, dataFabricacao, dataValidade);
 		
 		if(produtoDAO.insert(produto) == true) {
-            resp = "Discussao (" + descricao + ") inserido!";
+            resp = "Produto (" + descricao + ") inserido!";
             response.status(201); // 201 Created
 		} else {
-			resp = "Discussao (" + descricao + ") não inserido!";
+			resp = "Produto (" + descricao + ") não inserido!";
 			response.status(404); // 404 Not found
 		}
 			
@@ -180,14 +180,14 @@ public class DiscussaoService {
 	
 	public Object get(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));		
-		Discussao produto = (Discussao) produtoDAO.get(id);
+		Produto produto = (Produto) produtoDAO.get(id);
 		
 		if (produto != null) {
 			response.status(200); // success
 			makeForm(FORM_DETAIL, produto, FORM_ORDERBY_DESCRICAO);
         } else {
             response.status(404); // 404 Not found
-            String resp = "Discussao " + id + " não encontrado.";
+            String resp = "Produto " + id + " não encontrado.";
     		makeForm();
     		form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");     
         }
@@ -198,14 +198,14 @@ public class DiscussaoService {
 	
 	public Object getToUpdate(Request request, Response response) {
 		int id = Integer.parseInt(request.params(":id"));		
-		Discussao produto = (Discussao) produtoDAO.get(id);
+		Produto produto = (Produto) produtoDAO.get(id);
 		
 		if (produto != null) {
 			response.status(200); // success
 			makeForm(FORM_UPDATE, produto, FORM_ORDERBY_DESCRICAO);
         } else {
             response.status(404); // 404 Not found
-            String resp = "Discussao " + id + " não encontrado.";
+            String resp = "Produto " + id + " não encontrado.";
     		makeForm();
     		form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");     
         }
@@ -224,7 +224,7 @@ public class DiscussaoService {
 	
 	public Object update(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
-		Discussao produto = produtoDAO.get(id);
+		Produto produto = produtoDAO.get(id);
         String resp = "";       
 
         if (produto != null) {
@@ -235,10 +235,10 @@ public class DiscussaoService {
         	produto.setDataValidade(LocalDate.parse(request.queryParams("dataValidade")));
         	produtoDAO.update(produto);
         	response.status(200); // success
-            resp = "Discussao (ID " + produto.getID() + ") atualizado!";
+            resp = "Produto (ID " + produto.getID() + ") atualizado!";
         } else {
             response.status(404); // 404 Not found
-            resp = "Discussao (ID \" + produto.getId() + \") não encontrado!";
+            resp = "Produto (ID \" + produto.getId() + \") não encontrado!";
         }
 		makeForm();
 		return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
@@ -247,16 +247,16 @@ public class DiscussaoService {
 	
 	public Object delete(Request request, Response response) {
         int id = Integer.parseInt(request.params(":id"));
-        Discussao produto = produtoDAO.get(id);
+        Produto produto = produtoDAO.get(id);
         String resp = "";       
 
         if (produto != null) {
             produtoDAO.delete(id);
             response.status(200); // success
-            resp = "Discussao (" + id + ") excluído!";
+            resp = "Produto (" + id + ") excluído!";
         } else {
             response.status(404); // 404 Not found
-            resp = "Discussao (" + id + ") não encontrado!";
+            resp = "Produto (" + id + ") não encontrado!";
         }
 		makeForm();
 		return form.replaceFirst("<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\"\">", "<input type=\"hidden\" id=\"msg\" name=\"msg\" value=\""+ resp +"\">");
