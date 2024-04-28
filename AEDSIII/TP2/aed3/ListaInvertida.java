@@ -21,6 +21,7 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.RandomAccessFile;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class ListaInvertida {
 
@@ -179,7 +180,6 @@ public class ListaInvertida {
 
   // Insere um dado na lista da chave de forma NÃO ORDENADA
   public boolean create(String c, int d) throws Exception {
-
     // Percorre toda a lista testando se já não existe
     // o dado associado a essa chave
     int[] lista = read(c);
@@ -256,9 +256,7 @@ public class ListaInvertida {
 
   // Retorna a lista de dados de uma determinada chave
   public int[] read(String c) throws Exception {
-
     ArrayList<Integer> lista = new ArrayList<>();
-
     String chave = "";
     long endereco = -1;
     boolean jaExiste = false;
@@ -307,7 +305,6 @@ public class ListaInvertida {
 
   // Remove o dado de uma chave (mas não apaga a chave nem apaga blocos)
   public boolean delete(String c, int d) throws Exception {
-
     String chave = "";
     long endereco = -1;
     boolean jaExiste = false;
