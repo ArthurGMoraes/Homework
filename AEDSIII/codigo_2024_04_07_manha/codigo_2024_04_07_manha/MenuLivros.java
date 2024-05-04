@@ -10,6 +10,7 @@
 // -------------------------------------------------------
 
 import java.text.NumberFormat;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import arquivos.ArquivoCategorias;
@@ -105,6 +106,7 @@ public class MenuLivros {
       System.out.println("2) Busca livro");
       System.out.println("3) Altera livro");
       System.out.println("4) Exclui livro");
+      System.out.println("5) Pesquisar");
       System.out.println("\n0) Retornar ao menu anterior");
 
       System.out.print("\nOpção: ");
@@ -128,6 +130,8 @@ public class MenuLivros {
         case 4:
           excluirLivro();
           break;
+        case 5:
+          pesquisar();
         case 0:
           break;
         default:
@@ -299,6 +303,34 @@ public class MenuLivros {
           System.out.println("Erro na exclusão do livro!");
       } else
         System.out.println("Exclusão cancelada!");
+    } catch (Exception e) {
+      System.out.println("Erro no acesso ao arquivo");
+      e.printStackTrace();
+    }
+  }
+
+  pesquisar(){
+    String busca;
+    System.out.println("\n\n\nBOOKAEDS 1.0");
+    System.out.println("------------");
+    System.out.println("\n> Início > Livros > Busca");
+    System.out.print("\nISBN: ");
+    busca = console.nextLine();
+    if (busca.length() == 0)
+      return;
+
+    try {
+      ArrayList<Integer> result = arqLivros.buscar(busca);
+      if (result.isEmpty()) {
+        System.out.println("Nenhum livro encontrado.");
+        return;
+      }
+      for (int i : result){
+        Livro l = arqLivros.readID(i);
+        mostraLivro(l);
+      }
+      
+      
     } catch (Exception e) {
       System.out.println("Erro no acesso ao arquivo");
       e.printStackTrace();

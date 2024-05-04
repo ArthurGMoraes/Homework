@@ -62,6 +62,10 @@ public class ArquivoLivros extends Arquivo<Livro> {
     return super.read(id);
   }
 
+  public Livro readID(int id) throws Exception {
+    return super.read(id);
+  }
+
   @Override
   public boolean delete(int id) throws Exception {
     Livro obj = super.read(id);
@@ -102,7 +106,7 @@ public class ArquivoLivros extends Arquivo<Livro> {
     return false;
   }
 
-  public void buscar(String s) throws Exception{
+  public ArrayList<Intger> buscar(String s) throws Exception{
     List<String> palavras = removeStopWords(s);
     ArrayList<int[]> ids = new ArrayList<>();
     
@@ -131,9 +135,7 @@ public class ArquivoLivros extends Arquivo<Livro> {
       }
     }
     
-    for (int i : commonNumbers){
-      System.out.println(read(i));
-    }
+    return commonNumbers;
   }
 
   private List<String> getFileContentAsList(String resourceFilePath) throws IOException {
