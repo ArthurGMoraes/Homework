@@ -9,6 +9,10 @@
 // e da saída de dados de livros e das classes relacionadas.
 // -------------------------------------------------------
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.Charset;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -19,7 +23,7 @@ import entidades.Categoria;
 import entidades.Livro;
 
 public class MenuLivros {
-
+  private static BufferedReader in = new BufferedReader(new InputStreamReader(System.in, Charset.forName("ISO-8859-1")));
   private static Scanner console = new Scanner(System.in);
   private ArquivoLivros arqLivros;
   private ArquivoCategorias arqCategorias;
@@ -309,13 +313,16 @@ public class MenuLivros {
     }
   }
 
-  pesquisar(){
+  // ---------------------
+  // PESQUISAR_LIVRO
+  // ---------------------
+  public void pesquisar(){
     String busca;
     System.out.println("\n\n\nBOOKAEDS 1.0");
     System.out.println("------------");
     System.out.println("\n> Início > Livros > Busca");
-    System.out.print("\nISBN: ");
-    busca = console.nextLine();
+    System.out.print("\nPesquisar: ");
+    busca = readString();
     if (busca.length() == 0)
       return;
 
@@ -336,5 +343,21 @@ public class MenuLivros {
       e.printStackTrace();
     }
   }
+
+  private static String readString(){
+      String s = "";
+      char tmp;
+      try{
+         do{
+            tmp = (char)in.read();
+            if(tmp != '\n' && tmp != ' ' && tmp != 13){
+               s += tmp;
+            }
+         }while(tmp != '\n' && tmp != ' ');
+      }catch(IOException ioe){
+         System.out.println("lerPalavra: " + ioe.getMessage());
+      }
+      return s;
+   }
 
 }

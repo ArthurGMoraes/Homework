@@ -50,7 +50,7 @@ public class ArquivoLivros extends Arquivo<Livro> {
       
       listaInvertida.create(s, obj.getID());
     }
-    listaInvertida.print();
+    //listaInvertida.print();
     return id;
   }
 
@@ -106,7 +106,7 @@ public class ArquivoLivros extends Arquivo<Livro> {
     return false;
   }
 
-  public ArrayList<Intger> buscar(String s) throws Exception{
+  public ArrayList<Integer> buscar(String s) throws Exception{
     List<String> palavras = removeStopWords(s);
     ArrayList<int[]> ids = new ArrayList<>();
     
@@ -152,10 +152,11 @@ public class ArquivoLivros extends Arquivo<Livro> {
 
   private List<String> removeStopWords(String s) {
     s = s.toLowerCase();
+    System.out.println(s);
     s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 
     List<String> arrayS = new ArrayList<>(Arrays.asList(s.split(" ")));
-    System.out.println(stopwords);
+    //System.out.println(stopwords);
     arrayS.removeAll(stopwords);
     System.out.println(arrayS);
 
