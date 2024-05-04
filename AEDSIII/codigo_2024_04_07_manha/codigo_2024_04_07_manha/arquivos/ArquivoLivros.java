@@ -102,6 +102,40 @@ public class ArquivoLivros extends Arquivo<Livro> {
     return false;
   }
 
+  public void buscar(String s) throws Exception{
+    List<String> palavras = removeStopWords(s);
+    ArrayList<int[]> ids = new ArrayList<>();
+    
+    for (String i : palavras){
+      ids.add(listaInvertida.read(i));
+    }
+
+    // Initialize an array to store the count of occurrences for each number
+    int[] occurrences = new int[300];
+        
+    // Iterate over each array in the ArrayList
+    for (int[] array : ids) {
+        // Mark the numbers present in the current array
+        for (int number : array) {
+            occurrences[number]++;
+        }
+    }
+    
+    // ArrayList to store numbers that appear in all arrays
+    ArrayList<Integer> commonNumbers = new ArrayList<>();
+    
+    // Iterate over the occurrences array to find numbers that appear in all arrays
+    for (int i = 0; i < occurrences.length; i++) {
+      if (occurrences[i] == ids.size()) {
+        commonNumbers.add(i);
+      }
+    }
+    
+    for (int i : commonNumbers){
+      System.out.println(read(i));
+    }
+  }
+
   private List<String> getFileContentAsList(String resourceFilePath) throws IOException {
 
     File file = new File(resourceFilePath);
