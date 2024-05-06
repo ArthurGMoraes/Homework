@@ -86,7 +86,14 @@ public class ArquivoLivros extends Arquivo<Livro> {
   @Override
   public boolean update(Livro novoLivro) throws Exception {
     Livro livroAntigo = super.read(novoLivro.getID());
+    int id = livroAntigo.getID();
+    List<String> s;
     if (livroAntigo != null) {
+      s = removeStopWords(livroAntigo.getTitulo());
+
+      for (String i : s ){
+        listaInvertida.delete(s, id);
+      }
 
       // Testa alteração do ISBN
       if (livroAntigo.getIsbn().compareTo(novoLivro.getIsbn()) != 0) {
@@ -98,6 +105,12 @@ public class ArquivoLivros extends Arquivo<Livro> {
       if (livroAntigo.getIdCategoria() != novoLivro.getIdCategoria()) {
         relLivrosDaCategoria.delete(new ParIntInt(livroAntigo.getIdCategoria(), livroAntigo.getID()));
         relLivrosDaCategoria.create(new ParIntInt(novoLivro.getIdCategoria(), novoLivro.getID()));
+      }
+
+      s = removeStopWords(novoLivro.getTitulo());
+
+      for (String i : s ){
+        listaInvertida.create(i, id);
       }
 
       // Atualiza o livro
