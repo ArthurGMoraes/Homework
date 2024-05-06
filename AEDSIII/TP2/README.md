@@ -19,7 +19,7 @@ O trabalho foi no geral bem tranquilo. A única implementação mais complicada 
 - A inclusão de um livro acrescenta os termos do seu título à lista invertida?  
 Sim
 - A alteração de um livro modifica a lista invertida removendo ou acrescentando termos do título?  
-Não
+Sim
 - A remoção de um livro gera a remoção dos termos do seu título na lista invertida?  
 Sim
 - Há uma busca por palavras que retorna os livros que possuam essas palavras?  
@@ -33,6 +33,6 @@ Nenhuma
 - O trabalho está funcionando corretamente?  
 Sim
 - O trabalho está completo?  
-Não
+Sim
 - O trabalho é original e não a cópia de um trabalho de um colega?   
 Sim
