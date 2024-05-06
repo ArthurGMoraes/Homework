@@ -7,8 +7,9 @@ ArquivoLivros:
 - getFileContentAsList(): lê as stopwords de um arquivo e retorna uma lista.  
 - removeStopWords(): trata a entrada removendo as stopwords e retirando os acentos. Após isso retorna uma lista contendo as palavras separadas.
 - buscar(): chama listaInvertida.read() para cada termo da entrada e adiciona os arrays a uma lista. Após isso percorre a lista e conta a ocorrência dos ids em outro array. Ao final confere qual id está presente em todos os resultados confererindo se o valor da posição é igual ao tamanho da primeira lista.
-- alteração em create(): para cada termo do título faz-se a adição na lista invertida
-- alteração em delete(): para cada termo do título faz-se a deleção na lista invertida
+- alteração em create(): para cada termo do título faz-se a adição na lista invertida.
+- alteração em delete(): para cada termo do título faz-se a deleção na lista invertida.
+- alteração em update(): antes de alteração cada termo do título antigo é excluído e após isso os termos do novo título são adicionados.
   
 MenuLivros:
 - pesquisar(): opção do menu para chamar a função buscar de ArquivosLivros
