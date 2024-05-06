@@ -334,6 +334,7 @@ public class MenuLivros {
       }
       for (int i : result){
         Livro l = arqLivros.readID(i);
+        //System.out.println(l);
         mostraLivro(l);
       }
       

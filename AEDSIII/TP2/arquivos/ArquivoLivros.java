@@ -88,11 +88,12 @@ public class ArquivoLivros extends Arquivo<Livro> {
     Livro livroAntigo = super.read(novoLivro.getID());
     int id = livroAntigo.getID();
     List<String> s;
+
     if (livroAntigo != null) {
       s = removeStopWords(livroAntigo.getTitulo());
 
       for (String i : s ){
-        listaInvertida.delete(s, id);
+        listaInvertida.delete(i, id);
       }
 
       // Testa alteração do ISBN
@@ -109,13 +110,14 @@ public class ArquivoLivros extends Arquivo<Livro> {
 
       s = removeStopWords(novoLivro.getTitulo());
 
-      for (String i : s ){
-        listaInvertida.create(i, id);
+      for (String j : s ){
+        listaInvertida.create(j, id);
       }
 
       // Atualiza o livro
       return super.update(novoLivro);
     }
+
     return false;
   }
 
@@ -165,13 +167,13 @@ public class ArquivoLivros extends Arquivo<Livro> {
 
   private List<String> removeStopWords(String s) {
     s = s.toLowerCase();
-    System.out.println(s);
+    //System.out.println(s);
     s = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("[^\\p{ASCII}]", "");
 
     List<String> arrayS = new ArrayList<>(Arrays.asList(s.split(" ")));
     //System.out.println(stopwords);
     arrayS.removeAll(stopwords);
-    System.out.println(arrayS);
+    //System.out.println(arrayS);
 
     return arrayS;
   }
