@@ -14,7 +14,6 @@ public class Cifra {
         byte[][] grid = new byte[numRows][chave.length()];
         int index = 0;
 
-        // Fill the grid with bytes from the plaintext
         for (int r = 0; r < numRows; r++) {
             for (int c = 0; c < chave.length(); c++) {
                 if (index < cifrado.length) {
@@ -23,7 +22,6 @@ public class Cifra {
             }
         }
 
-        // Read the columns in reverse order to get the ciphertext
         byte[] ciphertext = new byte[cifrado.length];
         index = 0;
         for (int c = chave.length() - 1; c >= 0; c--) {
@@ -39,7 +37,6 @@ public class Cifra {
         int numRows = (int) Math.ceil((double) b.length / chave.length());
         byte[][] grid = new byte[numRows][chave.length()];
 
-        // Fill the grid column-wise in reverse order based on the key
         int index = 0;
         for (int c = chave.length() - 1; c >= 0; c--) {
             for (int r = 0; r < numRows; r++) {
@@ -49,13 +46,11 @@ public class Cifra {
             }
         }
 
-        // Read the grid row-wise to get the plaintext
         byte[] plaintext = new byte[b.length];
         index = 0;
         for (int r = 0; r < numRows; r++) {
             for (int c = 0; c < chave.length() && index < b.length; c++) {
                 plaintext[index++] = grid[r][c];
-                    
             }
         }
 

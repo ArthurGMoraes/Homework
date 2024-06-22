@@ -1,24 +1,18 @@
-TP3 AEDS III  
+TP4 AEDS III  
 Arthur Gonçalves de Moraes - 816479  
    
-LZW/BitSequence implementados sem nenhuma alteração  
-    
-Criação do arquivo MenuBackup para gerenciar a interação do usuário com as funções de backup.  
-- fazBackup(): cria um diretório com um backup compactados dos arquivos de dados do programa. Gerencia também um arquivo "versao.txt" para que a versão do próximo backup nao seja perdida com a reinicialização do sistema.  
-- voltaBackup(): permite que o usuário selecione um backup para ser restaurado entre aqueles disponíveis e sobrescreve os arquivos em dados.  
+Foi implementada uma classe para cifragem/decifragem (aeds3/Cifra.java) que utiliza as cifragens de Vigenere e de coluna. Cada classe de entidades faz a chamada para as funções de cifragem e decifragem dentro de suas funções toByteArray e fromByteArry, respectivamente. Além disso cada entidade armazena sua própria chave de cifragem.  
+  
+Existe um problema no trabalho pois não consegui lidar com os espaços não utilizados na matriz, fazendo com que ao cifrar e decifrar ocorram erros, principalmente em "Autores" e "Categorias" (acho que é porque os arquivos são menores e os erros ficam menos espalhados).
 
-- Há uma rotina de compactação usando o algoritmo LZW para fazer backup dos arquivos?  
-Sim
-- Há uma rotina de descompactação usando o algoritmo LZW para recuperação dos arquivos?  
-Sim
-- O usuário pode escolher a versão a recuperar?  
-Sim
-- Qual foi a taxa de compressão alcançada por esse backup? (Compare o tamanho dos arquivos compactados com os arquivos originais)  
-Aproximadamente 35%
+- Há uma função de cifragem em todas as classes de entidades, envolvendo pelo menos duas operações diferentes e usando uma chave criptográfica?  
+Sim  
+- Uma das operações de cifragem é baseada na substituição e a outra na transposição?    
+Sim  
 - O trabalho está funcionando corretamente?  
-Sim
-- O trabalho está completo?  
-Sim
+Em parte  
+- O trabalho está completo?   
+Sim  
 - O trabalho é original e não a cópia de um trabalho de um colega?    
-Sim
+Sim  
   

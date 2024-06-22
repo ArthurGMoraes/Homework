@@ -5,11 +5,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import aeds3.Registro;
+import aeds3.Cifra;
 
 public class Categoria implements Registro {
 
   private int ID;
   private String nome;
+  private String chave = "BANGAS";
 
 
   public Categoria() {
@@ -47,13 +49,15 @@ public class Categoria implements Registro {
     dos.writeInt(this.ID);
     dos.writeUTF(this.nome);
 
-    byte[] dados = ba_out.toByteArray();
+        byte[] dados = ba_out.toByteArray();
+        byte[] dadosCifrados = Cifra.cifrar(dados, chave);
 
-    return dados;
+    return dadosCifrados;
   }
 
   public void fromByteArray(byte[] ba) throws Exception {
-    ByteArrayInputStream ba_in = new ByteArrayInputStream(ba);
+    byte[] dadosDecifrados = Cifra.decifrar(ba, chave);
+    ByteArrayInputStream ba_in = new ByteArrayInputStream(dadosDecifrados);
     DataInputStream dis = new DataInputStream(ba_in);
     this.ID = dis.readInt();
     this.nome = dis.readUTF();
