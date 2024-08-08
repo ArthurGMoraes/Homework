@@ -27,7 +27,6 @@ class List {
             fim = fim->prox;
             tam++;
         }
-        //std::cout << "fim " << fim->elemento << std::endl;
     }
 
     void addInicio(int e){
@@ -39,13 +38,12 @@ class List {
             inicio = new Cell(e, inicio);
             tam++;
         }
-        //std::cout << "fim " << fim->elemento << std::endl;
     }
 
     void addPos(int e, int p){
         Cell* tmp = inicio;
         if (p > tam){
-            std::cout << "POSICAO " << p << " INVALIDA, ELEMENTO " << e << " NAO ADICIONADO"  << std::endl;
+            std::cout << "POSICAO " << p << " INVALIDA, ELEMENTO " << e << " NAO ADICIONADO"  << std::endl << std::endl;
         } else {
             if (p == 0){
                 addInicio(e);
@@ -59,7 +57,6 @@ class List {
                 tam++;
             }
         }
-        //std::cout << "fim " << fim->elemento << std::endl;
     }
 
     int rmFim(){
@@ -82,6 +79,9 @@ class List {
     }
     
     int rmInicio(){
+        if(inicio == nullptr){
+            return 0;
+        }
         int e = inicio->elemento;
         inicio = inicio->prox;
         tam--;
@@ -110,7 +110,14 @@ class List {
         return e;
     }
 
-    bool buscar(int e){}
+    bool buscar(int e){
+        for(Cell* i = inicio; i != nullptr; i = i->prox){
+            if (e == i->elemento){
+                return true;
+            }
+        }
+        return false;
+    }
 
     void print(){
         Cell* tmp = inicio;
@@ -118,14 +125,15 @@ class List {
             std::cout << tmp->elemento << std::endl;
             tmp = tmp->prox;
         }
-        //std::cout << this->tam << std::endl;
     };
 
 };
 
 int main() {
     std::cout << "ARTHUR GONCALVES DE MORAES - 816479" << std::endl << "IMPLEMENTACAO 1: LISTA ENCADEADA" << std::endl << std::endl;
+    
     List* l = new List();
+
     l->addFim(9);
     l->addFim(6);
     l->addFim(7);
@@ -136,12 +144,21 @@ int main() {
     l->addInicio(2);
     l->addPos(5, 0);
     l->addPos(5, 7);
+    l->print();
+
+    std::cout << std::endl;
+
+    std::cout << "ELEMENTO " << l->rmFim() << " REMOVIDO" << std::endl;
+    std::cout << "ELEMENTO " << l->rmInicio() << " REMOVIDO" << std::endl;
+    std::cout << "ELEMENTO " << l->rmInicio() << " REMOVIDO" << std::endl;
+    std::cout << "ELEMENTO " << l->rmPos(3) << " REMOVIDO" << std::endl;
     std::cout << std::endl;
     l->print();
-    l->rmFim();
-    l->rmInicio();
-    l->rmInicio();
-    l->rmPos(3);
+
     std::cout << std::endl;
-    l->print();
+
+    std::string resp = (l->buscar(1))?"SIM":"NAO";
+    std::cout << resp << std::endl;
+    resp = (l->buscar(12))?"SIM":"NAO";
+    std::cout << resp << std::endl;
 }
