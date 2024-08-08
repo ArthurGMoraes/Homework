@@ -1,0 +1,36 @@
+ARTHUR GONCALVES DE MORAES - 816479
+
+LISTA ENCADEADA:
+Classe Cell possui um inteiro "elemento" e um ponteiro para uma próxima celula;
+Classe Lista possui um ponteiro para a celula inicial da lita, um para a celula final e um inteiro "tam" para seu tamanho;
+addFim(), addInicio() e addPos() adicionam elementos ao fim, inicio e em uma posição desejada, respectivamente;
+rmFim(), rmInicio() e rmPos() removem elementos do fim, inicio e de uma posição desejada, respectivamente;
+buscar() percorre a lista e retorna true se o elemento for encontrado;
+print() imprime os elementos da lista em ordem.
+
+FILA:
+Classe Cell possui um inteiro "elemento" e um ponteiro para uma próxima celula;
+Classe Fila possui um ponteiro para a celula inicial da fila, um para a celula final e um inteiro "tam" para seu tamanho;
+add() adiciona um elemento ao fim da fila;
+rm() remove o primeiro elemento da fila;
+buscar() percorre a fila e retorna true se o elemento for encontrado; 
+print() imprime os elementos da fila em ordem.
+
+PILHA:
+Classe Cell possui um inteiro "elemento" e um ponteiro para uma próxima celula;
+Classe Pilha possui um ponteiro para a celula do topo da pilha e um inteiro "tam" para seu tamanho;
+add() adiciona um elemento ao topo da pilha;
+rm() remove o elemento do topo;
+buscar() percorre a pilha e retorna true se o elemento for encontrado; 
+print() imprime os elementos da pilha em ordem.
+
+MATRIZ:
+Uma implementação mais simples de uma matriz uma vez que nem todos os elementos estão encadeados, porém isso não compremete a funcionaliadde.
+Classe Cell possui um inteiro "elemento" e um ponteiro para a celula seguinte e a baixo;
+Classe Matriz possui um ponteiro para a celula inicial da matriz, um inteiro "row" para a quantidade de linha e um inteiro "col" para a quantidade de colunas;
+O construtor incializa a matriz de tamanho (row,col) com todos seus elementos = -1;
+getCell() percorre o matriz até a posição informada e retorna um apontador para a celula - é utilizado pelo setValue();
+setValue() permite alterar o valor de uma posição;
+deleteValue() retorna o valor de uma posição para -1;
+buscar() percorre a matriz e retorna true se o elemento for encontrado; 
+print() imprime os elementos da matriz em ordem.
