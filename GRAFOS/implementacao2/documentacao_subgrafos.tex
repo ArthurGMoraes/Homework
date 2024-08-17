@@ -1,0 +1,123 @@
+
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{listings}
+\usepackage{color}
+
+\title{Documentação: Listagem de Subgrafos de um Grafo Completo}
+\author{Arthur Gonçalves de Moraes}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introdução}
+Este documento descreve o funcionamento de um programa em C++ que calcula e lista todos os subgrafos possíveis de um grafo completo dado o número de vértices \(n\). O programa utiliza as funções \texttt{fatorial}, \texttt{somatorio} e \texttt{listarSubgrafos} para atingir esse objetivo.
+
+\section{Cálculo do Fatorial}
+A função \texttt{fatorial} calcula o fatorial de um número \(n\). O fatorial de \(n\) é o produto de todos os números inteiros positivos menores ou iguais a \(n\) e é denotado por \(n!\).
+
+\begin{lstlisting}[language=C++]
+int fatorial(int n) {
+    int fatorial = 1;
+    for (int i = 1; i <= n; i++) {
+        fatorial *= i;
+    }
+    return fatorial;
+}
+\end{lstlisting}
+
+\section{Cálculo do Somatório de Subgrafos}
+A função \texttt{somatorio} calcula o número total de subgrafos possíveis em um grafo completo de \(n\) vértices. Este número é obtido através de um somatório que considera todas as combinações de vértices e arestas possíveis.
+
+\begin{lstlisting}[language=C++]
+int somatorio(int n) {
+    int somatorio = 0;
+    for (int j = 1; j <= n; j++) {
+        int tmp1 = fatorial(n) / (fatorial(j) * fatorial(n - j));
+        int tmp2 = (j * (j - 1)) / 2;
+        tmp2 = pow(2, tmp2);
+        somatorio += (tmp1 * tmp2);
+    }
+    return somatorio;
+}
+\end{lstlisting}
+
+\section{Listagem de Subgrafos}
+A função \texttt{listarSubgrafos} utiliza os valores calculados para listar todos os subgrafos possíveis de um grafo completo com \(n\) vértices. Cada subgrafo é uma combinação de vértices e arestas.
+
+\begin{lstlisting}[language=C++]
+void listarSubgrafos(int n) {
+    int total_subgrafos = somatorio(n);
+    cout << "Total de subgrafos possiveis: " << total_subgrafos << endl;
+
+    for (int i = 1; i < pow(2,n); i++) {
+        vector<int> vertices;
+        for (int j = 0; j < n; j++) {
+            if (i & (1 << j)) {
+                vertices.push_back(j + 1);
+            }
+        }
+
+        int v_size = vertices.size();
+        int num_arestas = (v_size * (v_size - 1)) / 2;
+
+        for (int k = 0; k < (1 << num_arestas); k++) {
+            cout << "Subgrafo: { ";
+            for (int v : vertices) {
+                cout << v << " ";
+            }
+            cout << "} - Arestas: { ";
+
+            int edge_count = 0;
+            for (int x = 0; x < v_size; x++) {
+                for (int y = x + 1; y < v_size; y++) {
+                    if (k & (1 << edge_count)) {
+                        cout << "(" << vertices[x] << ", " << vertices[y] << ") ";
+                    }
+                    edge_count++;
+                }
+            }
+            cout << "}" << endl;
+        }
+    }
+}
+\end{lstlisting}
+
+\section{Detalhes sobre a Listagem dos Subgrafos}
+
+\subsection{Combinações de Vértices}
+A listagem dos subgrafos começa pela identificação de todas as possíveis combinações de vértices do grafo completo. Se \(n\) for o número total de vértices, então existem \(2^n - 1\) combinações não vazias de vértices. Cada uma dessas combinações representa um possível subgrafo.
+
+No código, isso é implementado através de um loop que percorre todos os números inteiros de 1 até \(2^n - 1\). Cada número é tratado como uma representação binária onde cada bit indica a presença (\texttt{1}) ou ausência (\texttt{0}) de um vértice específico no subgrafo.
+
+\subsection{Construção de Subgrafos com Arestas}
+Para cada combinação de vértices, o programa precisa determinar todas as possíveis combinações de arestas que podem existir entre os vértices selecionados. Se o subgrafo contém \(v\) vértices, então o número máximo de arestas possíveis é dado por \( \frac{v(v-1)}{2} \), que corresponde a um grafo completo dos \(v\) vértices.
+
+O código utiliza um loop adicional para percorrer todas as combinações de arestas possíveis. Esse loop considera todas as configurações de arestas, desde o subgrafo sem nenhuma aresta até o subgrafo que inclui todas as arestas possíveis.
+
+\subsection{Exemplo de Listagem de Subgrafos}
+Considere um grafo completo com 3 vértices, \(V = \{1, 2, 3\}\). Os subgrafos listados pelo programa incluirão:
+
+\begin{itemize}
+    \item Subgrafos com 1 vértice: \(\{1\}\), \(\{2\}\), \(\{3\}\), todos sem arestas.
+    \item Subgrafos com 2 vértices: \(\{1, 2\}\), \(\{1, 3\}\), \(\{2, 3\}\), cada um com possíveis configurações de arestas: sem arestas ou com a única aresta possível.
+    \item Subgrafos com 3 vértices: \(\{1, 2, 3\}\), com as configurações de arestas: sem arestas, apenas uma aresta, duas arestas ou todas as três arestas \((1, 2)\), \((1, 3)\), \((2, 3)\).
+\end{itemize}
+
+\section{Execução do Programa}
+O programa principal pede ao usuário que insira o número de vértices \(n\). Em seguida, ele chama a função \texttt{listarSubgrafos} para calcular e exibir todos os subgrafos possíveis.
+
+\begin{lstlisting}[language=C++]
+int main() {
+    int n;
+    cout << "Numero de vertices: ";
+    cin >> n;
+
+    listarSubgrafos(n);
+}
+\end{lstlisting}
+
+\end{document}
