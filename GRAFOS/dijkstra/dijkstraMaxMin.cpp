@@ -6,7 +6,7 @@
 
 using namespace std;
 
-typedef pair<int, int> pii; // pair for (edge_weight, vertex)
+typedef pair<int, int> pii; //(peso, vertice)
 
 // Function to implement modified Dijkstra's algorithm
 void DijkstraMaxMin(int start, const vector<vector<int>>& matrix, vector<int>& maxMinEdgeWeight, int V) {
@@ -34,47 +34,70 @@ void DijkstraMaxMin(int start, const vector<vector<int>>& matrix, vector<int>& m
     }
 }
 
-int main() {
-    int V, E, start, end;
 
-    // Open the file for reading
+bool readGraph(int *V, int *E, int *start, int *end, vector<vector<int>> &matrix){
     ifstream inputFile("graph_input.txt");
 
     if (!inputFile) {
-        cerr << "Error opening input file!" << endl;
+        cerr << "Erro ao abir arquivo" << endl;
+        return 0;
+    }
+
+    inputFile >> *V >> *E;
+    if(inputFile.fail()){
+        cerr << "Erro ao ler quantidade de vertices e arestas" << endl;
+        return 0;
+    }
+
+    matrix.resize(*V, vector<int>(*V, INT_MAX));
+    for (int i = 0; i < *V; i++) {
+        matrix[i][i] = 0;
+    }
+
+    for (int i = 0; i < *E; i++) {
+        int u, v, w;
+        inputFile >> u >> v >> w;
+        if(inputFile.fail()){
+            cerr << "Erro ao ler arestas" << endl;
+            return 0;
+        }
+        matrix[u][v] = w; 
+    }
+
+    inputFile >> *start >> *end;
+    if(inputFile.fail()){
+        cerr << "Erro ao ler vertices de inicio e fim" << endl;
+        return 0;
+    }
+
+    if((*start < 0 || *start > *V - 1) || (*end < 0 || *end > *V - 1)){
+        cerr << "Vertice de inico ou fim invalido" << endl;
+        return 0;
+    }
+
+    inputFile.close();
+    return 1;
+}
+
+
+int main() {
+    int  V, E, start, end;
+    vector<vector<int>> matrix;
+
+    cout << "IMPLEMENTACAO DIJKSTRA MAX_MIN - ARTHUR GONCALVES DE MORAES\n" << endl;
+
+    if (!readGraph(&V, &E, &start, &end, matrix)) {
+        cerr << "Programa encerrado" << endl;
         return 1;
     }
 
-    // Reading number of vertices and edges from the file
-    inputFile >> V >> E;
-
-    // Initialize adjacency matrix with INT_MAX
-    vector<vector<int>> matrix(V, vector<int>(V, INT_MAX));
-    for (int i = 0; i < V; i++) {
-        matrix[i][i] = 0; // Distance to itself is zero
-    }
-
-    // Reading the edges from the file
-    for (int i = 0; i < E; i++) {
-        int u, v, w;
-        inputFile >> u >> v >> w;
-        matrix[u][v] = w; // For directed graphs
-    }
-
-    // Reading the starting and ending vertices from the file
-    inputFile >> start >> end;
-
-    // Close the input file
-    inputFile.close();
-
-    vector<int> maxMinEdgeWeight(V, INT_MIN); // Store the max of min edge weights
+    vector<int> maxMinEdgeWeight(V, INT_MIN); 
     DijkstraMaxMin(start, matrix, maxMinEdgeWeight, V);
 
-    // Output the maximum of the minimum edge weights to the end vertex
     if (maxMinEdgeWeight[end] == INT_MIN) {
-        cout << "Vertex " << end << " is unreachable from vertex " << start << ".\n";
+        cout << "Vertice " << end << " nao e' alcancado por " << start << ".\n";
     } else {
-        cout << "Maximum of the minimum edge weights from vertex " << start << " to vertex " << end << ": " 
+        cout << "Max_Min de " << start << " a " << end << ": " 
              << maxMinEdgeWeight[end] << "\n";
     }
 

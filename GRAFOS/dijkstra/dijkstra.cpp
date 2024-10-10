@@ -8,9 +8,8 @@ using namespace std;
 
 typedef pair<int, int> pii;
 
-// Function to implement Dijkstra's algorithm
 void dijkstra(int start, const vector<vector<int>>& matrix, vector<int>& dist, int V) {
-    priority_queue<pii, vector<pii>, greater<pii>> pq; // Min-heap priority queue
+    priority_queue<pii, vector<pii>, greater<pii>> pq; // Min-heap
     pq.push({0, start});
     dist[start] = 0;
 
@@ -19,61 +18,82 @@ void dijkstra(int start, const vector<vector<int>>& matrix, vector<int>& dist, i
         int uDist = pq.top().first;
         pq.pop();
 
-        if (uDist > dist[u])
-            continue;
-
-        for (int v = 0; v < V; v++) {
-            int weight = matrix[u][v];
-            if (weight != INT_MAX && dist[u] + weight < dist[v]) { // Check if there's an edge
-                dist[v] = dist[u] + weight;
-                pq.push({dist[v], v});
+        if (!(uDist > dist[u])){
+            for (int v = 0; v < V; v++) {
+                int weight = matrix[u][v];
+                if (weight != INT_MAX && dist[u] + weight < dist[v]) { 
+                    dist[v] = dist[u] + weight;
+                    pq.push({dist[v], v});
+                }
             }
         }
+
+        
     }
 }
 
-int main() {
-    int V, E, start, end;
-
-    // Open the file for reading
+bool readGraph(int *V, int *E, int *start, int *end, vector<vector<int>> &matrix) {
     ifstream inputFile("graph_input.txt");
 
     if (!inputFile) {
-        cerr << "Error opening input file!" << endl;
-        return 1;
+        cerr << "Erro ao abir arquivo" << endl;
+        return 0;
     }
 
-    // Reading number of vertices and edges from the file
-    inputFile >> V >> E;
-
-    // Initialize adjacency matrix with INT_MAX
-    vector<vector<int>> matrix(V, vector<int>(V, INT_MAX));
-    for (int i = 0; i < V; i++) {
-        matrix[i][i] = 0; // Distance to itself is zero
+    inputFile >> *V >> *E;
+    if(inputFile.fail()){
+        cerr << "Erro ao ler quantidade de vertices e arestas" << endl;
+        return 0;
     }
 
-    // Reading the edges from the file
-    for (int i = 0; i < E; i++) {
+    matrix.resize(*V, vector<int>(*V, INT_MAX));
+    for (int i = 0; i < *V; i++) {
+        matrix[i][i] = 0;
+    }
+
+    for (int i = 0; i < *E; i++) {
         int u, v, w;
         inputFile >> u >> v >> w;
-        matrix[u][v] = w; // For directed graphs
-        matrix[v][u] = w; // For undirected graphs
+        if(inputFile.fail()){
+            cerr << "Erro ao ler arestas" << endl;
+            return 0;
+        }
+        matrix[u][v] = w; 
     }
 
-    // Reading the starting and ending vertices from the file
-    inputFile >> start >> end;
+    inputFile >> *start >> *end;
+    if(inputFile.fail()){
+        cerr << "Erro ao ler vertices de inicio e fim" << endl;
+        return 0;
+    }
 
-    // Close the input file
+    if((*start < 0 || *start > *V - 1) || (*end < 0 || *end > *V - 1)){
+        cerr << "Vertice de inico ou fim invalido" << endl;
+        return 0;
+    }
+
     inputFile.close();
+    return 1;
+}
+
+int main() {
+    int  V, E, start, end;
+    vector<vector<int>> matrix;
+
+    cout << "IMPLEMENTACAO DIJKSTRA - ARTHUR GONCALVES DE MORAES\n" << endl;
+
+    if (!readGraph(&V, &E, &start, &end, matrix)) {
+        cerr << "Programa encerrado" << endl;
+        return 1;
+    }
 
     vector<int> dist(V, INT_MAX);
     dijkstra(start, matrix, dist, V);
 
-    // Output the shortest distance to the end vertex
     if (dist[end] == INT_MAX) {
-        cout << "Vertex " << end << " is unreachable from vertex " << start << ".\n";
+        cout << "Vertice " << end << " nao e' alcancado por " << start << ".\n";
     } else {
-        cout << "Shortest distance from vertex " << start << " to vertex " << end << ": " << dist[end] << "\n";
+        cout << "O menor caminho de " << start << " a " << end << " e': " << dist[end] << "\n";
     }
 
     return 0;
