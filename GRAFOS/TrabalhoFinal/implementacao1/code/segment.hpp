@@ -59,7 +59,7 @@ vector<int> segmentImagePGM(Matrix image, double k) {
     int width = image.width;
     vector<Edge> edges;
     
-    // Create edges based on 4-connected neighbors
+    // arestas
     for (int y = 0; y < height; ++y) {
         for (int x = 0; x < width; ++x) {
             int node = y * width + x;
@@ -78,12 +78,11 @@ vector<int> segmentImagePGM(Matrix image, double k) {
 
     //cout << "AAAAAAAAAA";
 
-    // Sort edges by weight
     sort(edges.begin(), edges.end(), [](const Edge& a, const Edge& b) {
         return a.w < b.w;
     });
 
-    // Initialize components
+    // componentes
     vector<Component> components(width * height);
     for (int i = 0; i < width * height; ++i) {
         components[i] = {i, 1, 0.0};
